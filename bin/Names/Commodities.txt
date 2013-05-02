@@ -1,0 +1,66 @@
+Foodstuffs	Standard organic materials used by organic life for food.	0	10	10	1	1
+Liquor	Liquids that specialize in voluntary destruction of brain and liver cells.	1	250	7.5	1	1
+Rations	Pre-packaged, fortified food items that lack in both aesthetic and culinary appeal.	2	5	10	0.5	1
+Seeds	Various breeds of plant life specifically engineered for the harshest of environments.	3	20	5	1	1
+Hydrogen Fuel	A mixture of hydrogen, helium and other trace elements used for powering fusion reactors. Use caution when transporting.	4	50	2	1	7
+Mining Equipment	Equipment used for mining. Sometimes whistles while it works.	5	1000	3	0.5	5
+Medical Equipment	Equipment used primarily in medical facilities. Use for cloning super-soldier armies is strictly prohibited.	6	5000	5	1.2	5
+Terraforming Equipment	Equipment used for terraforming suitable candidates into suitable worlds for colonization	7	10000	2	1.5	5
+Communications Equipment	Used for receiving and transmitting a variety of signals. Also can provide rudimentary detection functionality.	8	2500	5	1.1	5
+Manufacturing Equipment	Equipment used for the manufacture of processed goods and machinery.	9	5000	2	0.9	5
+Construction Equipment	Equipment used in the construction of structures, both surface-based and moon-based.	10	1500	2	0.5	5
+Generators	Portable fusion generators. 	11	20000	1.5	1.2	5
+Explosives	They go boom.	12	15000	2	1.5	5
+Small Arms	Various types of small personal weapons ranging from pistols to assault rifles. May also contain swords and 'YAARGH!'	13	10000	2	1.8	2
+Fertilizer	Various chemicals and compounds used to aid production of organic products	14	50	1.5	0.5	2
+Polymers	Various polymers used for fabrication, construction and manufacture.	15	100	2	0.7	8
+Spice	Addictive and often illegal drug used by barbarians on various worlds. May turn eyes blue and/or delusions of divinity.	16	25000	5	2	6
+Pharmaceuticals	Medical substances used for the treatment of various maladies and afflictions. Please contact you doctor if there are any death or death-like symptoms.	17	5000	3	0.5	1
+Hull Materials	Specialized material composites used in the manufacture of hardened structures and, more commonly, hull plating for starships and space stations.	18	50	4	1	3
+Structural Materials	Materials used in the construction of most structures.	19	20	5	1	2
+Gas Cylinders	Metal cylinders specifically designed for storing gasses.	20	4	2	1	2
+Containment Cylinders	Specialized metal cylinders used for storing volatile materials. Utilize climate controls to maintain stability.	21	10	2	1	2
+Superconductors	A metallic alloy that maintains a superconductive state at room temperature.	22	500	3	1.5	4
+Optical Components	Used for the manufacture of computer systems.	23	750	2	2	6
+Rubber Duckies	The original rubber ducky was found on a planet with a long-dead civilization. It's duplication and proliferation throughout the galaxy have caused some authorities to outlaw their sale and production. This makes them highly sought after by many of the elite.	24	100	1.5	2	8
+Luxury Items	High quality items ranging from jewelry to a posh top hat. Users may feel pretentious.	25	10000	2.5	1.5	6
+Nanites	Machines that coordinate to interact and adapt objects for specific purpose. Resistance is futile.	26	10000	1.1	2	5
+Textiles	Materials used in clothes, bedding and some diapers.	27	200	4	0.2	1
+Antimatter	Matter made up of particles that have opposite charge and spin than that of conventional matter. Highly unstable.	28	1000	2	0.2	0
+Artifacts	Items and trinkets found on worlds with long dead civilizations.	29	1000	10	1.5	0
+Phlebotinum	Used in the creation of wormhole generators. Extracted from Numenite.	30	50000	2	0.8	4
+Unobtainium	Used in the creation of dark matter engines. Extracted from Umbarite.	31	25000	2	1.2	4
+Diamonds	A carbon crystal-lattice structure used for a variety of luxury and industial applications	32	20000	3	1.3	8
+Ampanite	Fictional metal ore	33	20	2	0.5	2
+Calmanum	Fictional metal ore	34	30	2	0.5	6
+Orenium	Fictional metal ore	35	50	2	0.5	2
+Tinconite	Fictional metal ore	36	40	2	0.5	6
+Ancanite	Fictional metal ore	37	75	2	0.5	2
+Formenum	Fictional metal ore	38	100	2	0.5	6
+Parmanum	Fictional metal ore	39	125	2	0.5	2
+Andonium	Fictional metal ore	40	100	2.1	0.6	3
+Harmanum	Fictional metal ore	41	125	2.2	0.6	3
+Thulinite	Fictional metal ore	42	150	2.3	0.6	3
+Anganum	Fictional metal ore	43	200	2.4	0.7	4
+Antonium	Fictional metal ore	44	500	2.5	0.75	4
+Numenite	Fictional metal ore; Small chance of yeilding Phlebotinum	45	2000	2.75	0.9	4
+Umbarite	Fictional metal ore; Small chance of yeilding Unobtainium	46	2500	3	0.9	4
+Aldarite	Fictional metal 	47	2	1.5	1	2
+Hyarmenum	Fictional metal 	48	4	1.5	1	2
+Ngwalmenum	Fictional metal 	49	6	1.5	1	2
+Unquerite	Fictional metal 	50	8	1.5	1	2
+Vilyarite	Fictional metal 	51	10	1.5	1	2
+Yantanum	Fictional metal 	52	12	1.5	1	2
+Annarite	Fictional metal 	53	3	1.5	1	2
+Lambenum	Fictional metal 	54	5	1.5	1	2
+Quesserium	Fictional metal 	55	7	1.5	1	2
+Ungwenite	Fictional metal 	56	9	1.5	1	3
+Urenum	Fictional metal 	57	11	1.5	1	3
+Ardanum	Fictional metal 	58	8	1.75	1	3
+Maltanum	Fictional metal 	59	10	1.75	1	3
+Romenite	Fictional metal 	60	12	1.75	1	3
+Esserite	Fictional metal 	61	15	1.75	1	3
+Ngoldite	Fictional metal 	62	20	1.75	1	4
+Hwestanum	Fictional metal 	63	25	2	1	4
+Silmerite	Fictional metal 	64	50	2.5	1	4
+Valarite	Fictional metal 	65	100	3	1	4

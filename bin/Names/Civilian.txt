@@ -1,0 +1,6 @@
+Transport
+Freighter
+Hauler
+Cargo Ship
+Starliner
+Yacht

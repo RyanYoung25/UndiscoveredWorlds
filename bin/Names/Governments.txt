@@ -1,0 +1,12 @@
+Alliance
+Coalition
+Commonwealth
+Confederation
+Democracy
+Dominion
+Empire
+Federation
+Hegemony
+League
+Republic
+Sovereignty

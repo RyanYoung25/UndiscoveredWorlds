@@ -1,0 +1,8 @@
+Marauder
+Frigate
+Corvette
+Destroyer
+Cruiser
+Battlecruiser
+Battleship
+Dreadnought
