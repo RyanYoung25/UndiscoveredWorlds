@@ -32,8 +32,8 @@ public class Cluster extends Location
 		for (int z = 0; z < Sectors.length; z++)
 		{
 			Sectors[z] = new Sector(z);
-			Sectors[z].SetX((byte)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
-			Sectors[z].SetY((byte)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
+			Sectors[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
+			Sectors[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
 		}
 	}
 	

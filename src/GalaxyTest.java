@@ -18,12 +18,12 @@ public class GalaxyTest {
 		
 		JFrame frame = new JFrame("Galaxy Test");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GUITest yay = new GUITest(Andromeda.GetClusters());
+		GUITest yay = new GUITest(Andromeda.GetSectors());
 		frame.add(yay);
 		frame.setSize(700, 700);
 		frame.setVisible(true);
 		
-		//Code for tradeing interface
+		//Code for trading interface
 		items1= new Vector<Item>();
     items2 = new Vector<Item>();
     items1.add(new Item("name", "Description", 0, 50, 500, 5000, 50000));

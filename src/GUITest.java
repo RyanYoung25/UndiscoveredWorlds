@@ -26,7 +26,7 @@ public class GUITest extends JPanel
 		this.setBackground(Color.BLACK);
 		g.setColor(Color.WHITE);
 		
-		for( Cluster x : c)
+		for( Sector x : s)
 		{
 			g.drawOval(x.GetX() + xoff, x.GetY() + yoff, 10, 10);
 		}

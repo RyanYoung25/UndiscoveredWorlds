@@ -44,12 +44,12 @@ public class Sector extends Location
 		return y;
 	}
 	
-	public void SetX(byte X)
+	public void SetX(int X)
 	{
 		x = X;
 	}
 	
-	public void SetY(byte Y)
+	public void SetY(int Y)
 	{
 		y = Y;
 	}
