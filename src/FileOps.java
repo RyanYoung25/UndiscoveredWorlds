@@ -25,7 +25,7 @@ public class FileOps
 	private ArrayList<OrbitalRecord> OrbitalClasses = new ArrayList<OrbitalRecord>();
 	private ArrayList<StarRecord> StarClasses = new ArrayList<StarRecord>();
 	private ArrayList<Item> Items = new ArrayList<Item>();
-	public static final String NAMES_PATH = "Names\\";
+	public static final String NAMES_PATH = "Names" + File.separator; 
 	private int StarFreqCeiling;
 	
 	public FileOps()
