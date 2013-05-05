@@ -9,11 +9,8 @@ public class UndiscoveredWorldsGUI extends JFrame{
 	
 	public UndiscoveredWorldsGUI(){
 		super("Undiscovered Worlds");
-		Galaxy Andromeda = new Galaxy();
-
-		Andromeda.Generate(1);
-		Andromeda.DisplayCluster();
-		GUITest yay = new GUITest(Andromeda.GetSectors());
+		
+		UWPanel panel = new UWPanel();
 		
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
@@ -25,13 +22,13 @@ public class UndiscoveredWorldsGUI extends JFrame{
 		infoPanel.setPreferredSize(new Dimension(260,720));
 		infoPanel.setBackground(Color.WHITE);
 
-		mapPanel.setPreferredSize(new Dimension(720,720));
-		//mapPanel.setBackground(Color.BLACK);
+		//mapPanel.setPreferredSize(new Dimension(720,720));
+		//mapPanel.setBackground(Color.WHITE);
 
 		tradingPanel.setPreferredSize(new Dimension(260,720));
 		tradingPanel.setBackground(Color.WHITE);
 
-		mapPanel.add(yay);
+		mapPanel.add(panel);
 		add(infoPanel);
 		add(mapPanel);
 		add(tradingPanel);
