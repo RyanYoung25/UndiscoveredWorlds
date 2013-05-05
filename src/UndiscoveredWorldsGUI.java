@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class UndiscoveredWorldsGUI extends JFrame{
 	
-	private JPanel infoPanel;
+	private JPanel optionsPanel;
 	private JPanel mapPanel;
 	private JPanel tradingPanel;
 	
@@ -11,25 +11,27 @@ public class UndiscoveredWorldsGUI extends JFrame{
 		super("Undiscovered Worlds");
 		
 		UWPanel panel = new UWPanel();
+		UWOptionsPanel options = new UWOptionsPanel();
 		
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
 		
-		infoPanel = new JPanel();
+		optionsPanel = new JPanel();
 		mapPanel = new JPanel();
 		tradingPanel = new JPanel();
 		
-		infoPanel.setPreferredSize(new Dimension(260,720));
-		infoPanel.setBackground(Color.WHITE);
+		//optionsPanel.setPreferredSize(new Dimension(260,720));
+		//optionsPanel.setBackground(Color.WHITE);
 
 		//mapPanel.setPreferredSize(new Dimension(720,720));
 		//mapPanel.setBackground(Color.WHITE);
 
-		tradingPanel.setPreferredSize(new Dimension(260,720));
-		tradingPanel.setBackground(Color.WHITE);
+		tradingPanel.setPreferredSize(new Dimension(260,700));
+		tradingPanel.setBackground(Color.LIGHT_GRAY);
 
 		mapPanel.add(panel);
-		add(infoPanel);
+		optionsPanel.add(options);
+		add(optionsPanel);
 		add(mapPanel);
 		add(tradingPanel);
 		
