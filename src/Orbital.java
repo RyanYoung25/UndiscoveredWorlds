@@ -1,70 +1,61 @@
 
-
-public class Orbital extends Location
-{
+public class Orbital extends Location {
 
 	protected int Radius;
 	protected OrbitalRecord OrbitalClass;
 	protected StarRecord ParentStar;
 	protected TradePort port;
-/*	
-	public Orbital(int radius)
-	{
-		super();
-	}
-*/
-	public Orbital(int radius, byte oclass, int parent)
-	{
+
+	/*
+	 * public Orbital(int radius) { super(); }
+	 */
+	public Orbital(int radius, byte oclass, int parent) {
 		Radius = radius;
 		setOrbitalClass(oclass);
 		ParentStar = Ops.getStarDetails(parent);
-		if (rand.nextInt(TradePort.CHANCE) >= OrbitalClass.GetHazard())
-		{
+		if (rand.nextInt(TradePort.CHANCE) >= OrbitalClass.GetHazard()) {
 			port = new TradePort(this);
 		}
 	}
-	
-	public OrbitalRecord getOrbitalClass()
-	{
+
+	public OrbitalRecord getOrbitalClass() {
 		return OrbitalClass;
 	}
-	
-	public int getRadius()
-	{
+
+	public int getRadius() {
 		return Radius;
 	}
-	
-	public String getOrbital()
-	{
-		switch (OrbitalClass.GetType())
-		{
-			case 0:
-				return "Planet";
-			case 1:
-				return "Gas Giant";
-			case 2:
-				return "Ring";
-			case 3:
-				return "Belt";
-			default:
-				return "";
+
+	public String getOrbital() {
+		switch (OrbitalClass.GetType()) {
+		case 0:
+			return "Planet";
+		case 1:
+			return "Gas Giant";
+		case 2:
+			return "Ring";
+		case 3:
+			return "Belt";
+		default:
+			return "";
 		}
 	}
-	
-	public void setOrbitalClass(byte oclass)
-	{
+
+	public void setOrbitalClass(byte oclass) {
 		OrbitalClass = Ops.getOrbitalClasses(oclass);
 	}
 
-	public String GetDetails()
-	{
-		String details = String.format("Class: %s - %s %s", OrbitalClass.GetID(), OrbitalClass.GetClassification(), getOrbital());
-		if (port == null)
-		{
+	public TradePort getTradePort() {
+		return port;
+	}
+
+	public String GetDetails() {
+		String details = String.format("Class: %s - %s %s",
+				OrbitalClass.GetID(), OrbitalClass.GetClassification(),
+				getOrbital());
+		if (port == null) {
 			return details;
-		}
-		else
-		{
+		} else {
 			return details + " - Trade Port";
 		}
 	}

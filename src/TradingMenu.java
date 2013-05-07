@@ -1,6 +1,4 @@
 
-
-
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,25 +12,25 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-public class TradingMenu extends JFrame
+public class TradingMenu extends JPanel
 {
 
-  private JList<Item>            playersInventory;
-  private JList<Item>            merchantsInventory;
-  private JPanel                 buttonPanel;
-  private JButton                buy;               // put price of selected
-                                                     // items in parenthesis on
-                                                     // button
-  private JButton                sell;              // put price of selected
-                                                     // items in parenthesis on
+  private JList            playersInventory;
+  private JList            merchantsInventory;
+  private JPanel           buttonPanel;
+  private JButton          buy;               // put price of selected
+                                               // items in parenthesis on
+                                               // button
+  private JButton          sell;              // put price of selected
+                                               // items in parenthesis on
   // button
-  private JButton                leave;
-  private JLabel                 playerBank;
-  private JLabel                 merchantBank;
-  private Merchant               thePlayer;
-  private Merchant               theMerchant;
-  private DefaultListModel<Item> merchantList;
-  private DefaultListModel<Item> playerList;
+  private JButton          leave;
+  private JLabel           playerBank;
+  private JLabel           merchantBank;
+  private Merchant         thePlayer;
+  private Merchant         theMerchant;
+  private DefaultListModel merchantList;
+  private DefaultListModel playerList;
 
   public TradingMenu(Merchant player, Merchant merchant)
   {
@@ -41,8 +39,8 @@ public class TradingMenu extends JFrame
     theMerchant = merchant;
     addMerchantModel();
     addPlayerModel();
-    playersInventory = new JList<Item>(playerList);
-    merchantsInventory = new JList<Item>(merchantList);
+    playersInventory = new JList(playerList);
+    merchantsInventory = new JList(merchantList);
 
     buy = new JButton("Buy");
     sell = new JButton("Sell");
@@ -64,7 +62,7 @@ public class TradingMenu extends JFrame
     add(playerBank);
     add(new JLabel());
     add(merchantBank);
-    
+
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
     sell.addActionListener(handler);
@@ -73,7 +71,7 @@ public class TradingMenu extends JFrame
 
   private void addPlayerModel()
   {
-    playerList = new DefaultListModel<Item>();
+    playerList = new DefaultListModel();
     Vector<Item> v = thePlayer.getInventory();
     for (Item item : v)
     {
@@ -83,7 +81,7 @@ public class TradingMenu extends JFrame
 
   private void addMerchantModel()
   {
-    merchantList = new DefaultListModel<Item>();
+    merchantList = new DefaultListModel();
     Vector<Item> v = theMerchant.getInventory();
     for (Item item : v)
     {
@@ -106,7 +104,7 @@ public class TradingMenu extends JFrame
     {
       try
       {
-        if(event.getActionCommand().equals("Buy"))
+        if (event.getActionCommand().equals("Buy"))
         {
           Item item = (Item) merchantsInventory.getSelectedValue();
           merchantList.removeElement(item);
@@ -116,8 +114,7 @@ public class TradingMenu extends JFrame
           updateBanks();
           repaint();
           System.out.println(thePlayer.toString());
-        }
-        else if(event.getActionCommand().equals("Sell"))
+        } else if (event.getActionCommand().equals("Sell"))
         {
           Item item = (Item) playersInventory.getSelectedValue();
           playerList.removeElement(item);
@@ -127,15 +124,13 @@ public class TradingMenu extends JFrame
           updateBanks();
           repaint();
           System.out.println(thePlayer.toString());
-        }
-        else
+        } else
         {
-          //Implement leave button
+          // Implement leave button
         }
-      }
-      catch(Exception e)
+      } catch (Exception e)
       {
-        
+
       }
     }
 

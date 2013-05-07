@@ -24,15 +24,15 @@ public class GalaxyTest {
 		frame.setVisible(true);
 		
 		//Code for trading interface
-		items1= new Vector<Item>();
+	/*items1= new Vector<Item>();
     items2 = new Vector<Item>();
     items1.add(new Item("name", "Description", 0, 50, 500, 5000, 50000));
     items2.add(new Item("SecondName", "Description", 4, 4, 4, 4, 4));
     
-    TradingMenu menu = new TradingMenu(new Player("Person1", items1), new Player("Person2", items2));
+    TradingMenu menu = new TradingMenu(new Player("Person1", items1), );
     menu.setSize(300, 200);
     menu.setVisible(true);
-    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/  //Commented out because of changes
 		
 	}
 
