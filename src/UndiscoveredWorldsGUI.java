@@ -12,6 +12,7 @@ public class UndiscoveredWorldsGUI extends JFrame{
 		
 		UWPanel panel = new UWPanel();
 		UWOptionsPanel options = new UWOptionsPanel();
+		//TradingMenu trading = new TradingMenu(null, null);
 		
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
