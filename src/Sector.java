@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 
 public class Sector extends Location
 {
@@ -10,10 +11,24 @@ public class Sector extends Location
 	{
 		super();
 		Name = name;
+		Picture = Pics.getSectorPic(rand.nextInt(10));
 		StarSystems = new StarSystem[1 + rand.nextInt(MAX_SYSTEMS)];
 		for (int z = 0; z < StarSystems.length; z++)
 		{
 			StarSystems[z] = new StarSystem((byte)z,Name,(byte)rand.nextInt(7));
+		}
+	}
+	
+	public void Generate()
+	{
+		StarSystems = new StarSystem[1 + rand.nextInt(MAX_SYSTEMS)];
+		double spacing = 360.0 / StarSystems.length;
+		int radius = 100;
+		for (int z = 0; z < StarSystems.length; z++)
+		{
+			StarSystems[z] = new StarSystem((byte)z,Name,(byte)rand.nextInt(7));
+			StarSystems[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
+			StarSystems[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
 		}
 	}
 	

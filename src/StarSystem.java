@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.image.BufferedImage;
 
 public class StarSystem extends Location
 {	
@@ -11,8 +12,9 @@ public class StarSystem extends Location
 	private Orbital[] Orbitals;
 	private byte Star;
 	private StarRecord StarClass;
-	private byte x = (byte)((rand.nextInt(200))-100);
-	private byte y = (byte)((rand.nextInt(200))-100);
+	private byte x;
+	private byte y;
+	private BufferedImage Halo;
 	
 	public StarSystem(byte star, int sector, byte starclass)
 	{
@@ -20,6 +22,8 @@ public class StarSystem extends Location
 		Orbitals = new Orbital[1 + rand.nextInt(MAX_PLANETS)];
 		Star = star;
 		StarClass = Ops.getStarDetails(starclass);
+		Picture = Pics.getStarPic(0);
+		Halo = Pics.getStarHaloPic(0);
 		int u = 10000 / Orbitals.length;
 		int z = u;
 		for (int v = 0; v < Orbitals.length; v++)
@@ -74,9 +78,19 @@ public class StarSystem extends Location
 		return Orbitals;
 	}
 	
+	public void SetX(int X)
+	{
+		x = (byte) X;
+	}
+	
 	public byte GetX()
 	{
 		return x;
+	}
+	
+	public void SetY(int Y)
+	{
+		y = (byte) Y;
 	}
 	
 	public byte GetY()

@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class GUITest extends JPanel
@@ -27,10 +28,9 @@ public class GUITest extends JPanel
 		this.setBackground(Color.BLACK);
 		g.setColor(Color.WHITE);
 		
-		for( Sector x : s)
+		for( int x = 0; x < s.length; x++)
 		{
-			g.drawOval(x.GetX() + xoff, x.GetY() + yoff, 10, 10);
+			g.drawOval(s[x].GetX() + xoff, s[x].GetY() + yoff, 10, 10);
 		}
-	}
-	
+	}	
 }

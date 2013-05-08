@@ -6,9 +6,10 @@ public class OrbitalRecord
 	private byte Type;				// 0 = planet/moon; 1 = gas giant; 2 = ring; 3 = belt
 	private boolean Planetary;	// whether or not orbital can orbit a planet
 	private byte Hazard;			// 1 = habitable; 2 = requires domes; 3 = aerostat only; 4 = dangerous; 5 = uninhabitable
+	private byte Appearance;		// 1 = Hell; 2 = Terrestrial; 3 = Barren; 4 = Ocean; 5 = Volcanic; 6 = Slush
 	private byte[] Properties;		// values for various attributes on planet;
 	
-	public OrbitalRecord(char id,String Class, byte HZ, byte type, byte moony, byte haz, byte carbon)
+	public OrbitalRecord(char id,String Class, byte HZ, byte type, byte moony, byte haz, byte appearance)
 	{
 		OrbitalID = id;
 		Classification = Class;
@@ -23,6 +24,7 @@ public class OrbitalRecord
 			Planetary = true;
 		}	
 		Hazard = haz;
+		Appearance = appearance;
 	}
 	
 	public OrbitalRecord(String[] record)
@@ -71,6 +73,11 @@ public class OrbitalRecord
 	public byte GetHazard()
 	{
 		return Hazard;
+	}
+	
+	public byte GetAppearance()
+	{
+		return Appearance;
 	}
 	
 	public byte GetAMRating()

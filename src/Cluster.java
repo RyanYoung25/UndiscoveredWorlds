@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+
 public class Cluster extends Location
 {
 	private Sector[] Sectors;
@@ -6,6 +8,7 @@ public class Cluster extends Location
 	private short Name2;
 	private int x;
 	private int y;
+	
 
 	public Cluster(long s)
 	{
@@ -13,14 +16,16 @@ public class Cluster extends Location
 		seed = s;
 		Name = (short) rand.nextInt(Ops.getCluster1NameCount());
 		Name2 = (short) rand.nextInt(Ops.getCluster2NameCount());
+		Picture = Pics.getClusterPic(rand.nextInt(10));
 	}
 	
-	public Cluster(long s, short name, short name2)
+	public Cluster(long s, short name, short name2, BufferedImage pic)
 	{
 		super();
 		seed = s;
 		Name = name;
 		Name2 = name2;
+		Picture = pic;
 		Generate();
 	}
 	
