@@ -1,6 +1,17 @@
 
+/**
+ * Moons provide the last structural tier after the Planet class for galaxy generation and manipulation.
+ * @author Bryant
+ *
+ */
 public class Moon extends Orbital
 {
+	/**
+	 * Constructor.
+	 * @param radius = relative distance of this moon from its planet.
+	 * @param oclass = orbital classification of this moon.
+	 * @param parent = classification of this moon's star.
+	 */
 	public Moon(int radius, byte oclass, int parent)
 	{
 		super(radius,oclass,parent);
@@ -11,6 +22,11 @@ public class Moon extends Orbital
 		}
 	}
 
+	/**
+	 * Effectively used to override Orbital's getOrbital method (Note: does not actually do so)
+	 * @param type = number corresponds to the Type variable within an OrbitalClass.
+	 * @return String
+	 */
 	public static String getOrbital(int type)
 	{
 		if (type == 0)
@@ -25,6 +41,9 @@ public class Moon extends Orbital
 			return "";
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 	{

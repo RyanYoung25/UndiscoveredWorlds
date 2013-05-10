@@ -264,7 +264,7 @@ public class FileOps
 	
 	public String getMoon(int sector, int star, int planet, int moon)
 	{
-		return getSystem(sector, star)+ " " + getPlanet(planet) + Planet.getMoon(moon);
+		return getSystem(sector, star)+ " " + getPlanet(planet) + Planet.getMoonDetails(moon);
 	}
 	
 	public String getGov (String domain, int second)
