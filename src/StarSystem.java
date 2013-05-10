@@ -1,29 +1,39 @@
 import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 
+/**
+ * The StarSystem class provides the next structural tier after the Cluster class for galaxy generation and manipulation.
+ * @author Bryant
+ */
 public class StarSystem extends Location
 {	
-	public static int MIN_HZ = 470;
-	public static int MAX_HZ = 1800;
-	private static ArrayList<Integer> HotOrbitals = new ArrayList<Integer>();
-	private static ArrayList<Integer> HZOrbitals = new ArrayList<Integer>();
-	private static ArrayList<Integer> ColdOrbitals = new ArrayList<Integer>();
+	public static int MIN_HZ = 470;		// Determines minimum radius of habitable zone
+	public static int MAX_HZ = 1800;	// Determines maximum radius of habitable zone
+	private static ArrayList<Integer> HotOrbitals = new ArrayList<Integer>(); 	// Used for determining orbital generation
+	private static ArrayList<Integer> HZOrbitals = new ArrayList<Integer>();	// Used for determining orbital generation
+	private static ArrayList<Integer> ColdOrbitals = new ArrayList<Integer>();	// Used for determining orbital generation
 	
-	private Orbital[] Orbitals;
-	private byte Star;
-	private StarRecord StarClass;
-	private byte x;
-	private byte y;
-	private BufferedImage Halo;
+	private Orbital[] Orbitals;		// Stores information for all orbitals in this StarSystem.
+	private byte Star;				// Number corresponds to the first part of a StarSystem's name (i.e. Alpha, Beta, etc.)
+	private StarRecord StarClass;	// Used to reference data for a particular star class.
+	private byte x;					// X coordinate location within this StarSystem's sector.
+	private byte y;					// Y coordinate location within this StarSystem's sector.
+	private BufferedImage Halo;		// References image information for this star's halo effect.
 	
+	/**
+	 * Constructor.
+	 * @param star = Number corresponds to the first part of a StarSystem's name (i.e. Alpha, Beta, etc.)
+	 * @param sector = Number corresponds to the second part of a StarSystem's name (i.e. Aquilae, Draconis. etc.)
+	 * @param starclass = Number corresponds to the stellar classification of this StarSystem's star.
+	 */
 	public StarSystem(byte star, int sector, byte starclass)
 	{
 		super();
 		Orbitals = new Orbital[1 + rand.nextInt(MAX_PLANETS)];
 		Star = star;
 		StarClass = Ops.getStarDetails(starclass);
-		Picture = Pics.getStarPic(0);
-		Halo = Pics.getStarHaloPic(0);
+		Picture = Pics.getStarPic(starclass);
+		Halo = Pics.getStarHaloPic(starclass);
 		int u = 10000 / Orbitals.length;
 		int z = u;
 		for (int v = 0; v < Orbitals.length; v++)
@@ -33,6 +43,11 @@ public class StarSystem extends Location
 		}
 	}
 
+	/**
+	 * Generates selected orbital and determines if it's a planet, ring or belt.
+	 * @param radius = relative distance from star, determines habitability rating.
+	 * @param index = index of selected orbital within this StarSystem.
+	 */
 	public void GenOrbital(int radius, int index)
 	{
 		byte oclass = (byte) GenOrbitalClass(radius);	
@@ -46,63 +61,104 @@ public class StarSystem extends Location
 		}
 	}
 	
+	/**
+	 * Determines an orbital's habitablity rating based off of its distance from parent star.
+	 * @param radius = relative distance from star
+	 * @return int
+	 */
 	public static int GenOrbitalClass(int radius)
 	{
-		if (radius < MIN_HZ)
+		if (radius < MIN_HZ) // Too hot!
 		{
 			return (HotOrbitals.get(rand.nextInt(HotOrbitals.size())));
 		}
-		else if ( radius > MAX_HZ)
+		else if ( radius > MAX_HZ) // Too cold!
 		{
 			return (ColdOrbitals.get(rand.nextInt(ColdOrbitals.size())));
 		}
-		else
+		else // Just right
 		{
 			return (HZOrbitals.get(rand.nextInt(HZOrbitals.size())));
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 	{
 		return Ops.getSystem(Star);
 	}
 	
+	/**
+	 * Returns indicated Orbital stored within this StarSystem.
+	 * @param index = index of desired Orbital
+	 * @return Orbital
+	 */
 	public Orbital GetOrbital(int index)
 	{
 		return GetOrbital()[index];
 	}
 	
+	/**
+	 * If no index is provided, GetOrbital returns all Orbitals within this StarSystem.
+	 * @return
+	 */
 	public Orbital[] GetOrbital()
 	{
 		return Orbitals;
 	}
 	
+	/**
+	 * Sets the X coordinate for this StarSystem within its Sector.
+	 * @param X = desired X coordinate.
+	 */
 	public void SetX(int X)
 	{
 		x = (byte) X;
 	}
 	
+	/**
+	 * Returns X coordinate for this StarSystem within its Sector.
+	 * @return byte
+	 */
 	public byte GetX()
 	{
 		return x;
 	}
 	
+	/**
+	 * Sets the Y coordinate for this StarSystem within its Sector.
+	 * @param Y = desired Y coordinate.
+	 */
 	public void SetY(int Y)
 	{
 		y = (byte) Y;
 	}
 	
+	/**
+	 * Returns Y coordinate for this StarSystem within its Sector.
+	 * @return byte
+	 */
 	public byte GetY()
 	{
 		return y;
 	}
 	
+	/**
+	 * Returns StarRecord information specific to this StarSystem.
+	 * @return StarRecord
+	 */
 	public StarRecord GetStarClass()
 	{
 		return StarClass;
 	}
 	
+	/**
+	 * Returns a detailed description of this StarSystem's star's properties.
+	 * @return String
+	 */
 	public String GetDetails()
 	{
 		int subclass = (Math.abs(x) % 10);
@@ -118,16 +174,28 @@ public class StarSystem extends Location
 							 StarClass.getExactLuminosity((byte)subclass));
 	}
 	
+	/**
+	 * Shift a star's subclass to an appropriate value (9 is lowest subclass, 0 is highest)
+	 * @param subclass = subclass data derived from X coordinate. Ranges from 0-9.
+	 * @return int
+	 */
 	public static int GetSubClass(int subclass)
 	{
 		return 9 - ((subclass) % 10);
 	}
 	
+	/**
+	 * Generates this star's stellar classification.
+	 * @return
+	 */
 	public static byte GenStarClass()
 	{
 		return (byte) ((Ops.getStarClass(rand.nextInt(Ops.getStarFreqCeiling()))) + rand.nextInt(10)); 
 	}
 	
+	/**
+	 * Used for determining where particular planets can generate
+	 */
 	public static void SortOrbitals()
 	{
 		for (int x = 0; x < Ops.getOrbitalClasses().size(); x++)
