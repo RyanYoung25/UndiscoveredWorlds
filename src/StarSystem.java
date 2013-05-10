@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.awt.image.BufferedImage;
 
 /**
- * The StarSystem class provides the next structural tier after the Cluster class for galaxy generation and manipulation.
+ * The StarSystem class provides the next structural tier after the Sector class for galaxy generation and manipulation.
  * @author Bryant
  */
 public class StarSystem extends Location
