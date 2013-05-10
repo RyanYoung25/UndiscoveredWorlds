@@ -16,6 +16,7 @@ public class Cluster extends Location
 
 	/**
 	 * Constructor.
+	 * Creates the "lite" version of a cluster with no sector data.
 	 * @param s = seed value provided by Galaxy.
 	 */
 	public Cluster(long s)
