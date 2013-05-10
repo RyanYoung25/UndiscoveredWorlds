@@ -1,14 +1,14 @@
 
 /**
+ * This class provides information specific to individual star types as well as habitability information.
  * @author Bryant
- *
  */
 public class StarRecord 
 {
 	public static final double MIN_ORBITAL_FORMATION = 0.3;	// used for determining the actual minimum distance and orbital can form
 	public static final double HZ_BAND_START = 0.725;		// used for calculating actual minimum HZ distance
 	public static final double HZ_BAND_END = 3.0;			// used for calculating actual maximum HZ distance
-	public static final double MAX_ORBITAL_FORMATION = 120;	// used for calculating maximum orbial formation from parent star
+	public static final double MAX_ORBITAL_FORMATION = 120;	// used for calculating maximum orbital formation from parent star
 	
 	private int StarID;				// Star ID number.
 	private char Classification;	// Stellar classification (based of actual classification system).

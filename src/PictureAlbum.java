@@ -3,10 +3,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 
-public class PictureAlbum {
+public class PictureAlbum 
+{
 
 	public static final String IMG_FOLDER = "Art" + File.separator;
 	

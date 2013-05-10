@@ -1,6 +1,6 @@
 /**
+ * This class provides information specific to individual Orbital types.
  * @author Bryant
- *
  */
 public class OrbitalRecord 
 {	
