@@ -10,6 +10,7 @@ public class Player implements Merchant
   private double       bank;
   private Vector<Item> inventory;
   private double       fuel;
+  private Location		currentlocation;
   
   private Vector<TradePort> recentLocation;
 
@@ -66,5 +67,15 @@ public class Player implements Merchant
   public String toString()
   {
     return inventory.toString();
+  }
+  
+  public Location getLoc()
+  {
+	  return currentlocation;
+  }
+  
+  public void setLoc(Location locale)
+  {
+	  currentlocation = locale;
   }
 }
