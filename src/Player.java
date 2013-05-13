@@ -10,6 +10,8 @@ public class Player implements Merchant
   private double       bank;
   private Vector<Item> inventory;
   private double       fuel;
+  
+  private Vector<TradePort> recentLocation;
 
   public Player()
   {
