@@ -14,11 +14,12 @@ public class Sector extends Location
 	 * Constructor.
 	 * @param name = provided by Cluster. Value corresponds to an entry in Ops.
 	 */
-	public Sector(int name)
+	public Sector(int name, Location cluster)
 	{
 		super();
 		Name = name;
 		Picture = Pics.getSectorPic(rand.nextInt(10));
+		parent = cluster;
 		Generate();
 	}
 	

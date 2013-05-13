@@ -49,7 +49,7 @@ public class Galaxy extends Location
 	public void Generate(int index)
 	{
 		StarSystem.SortOrbitals();
-		CurrentCluster = new Cluster(Clusters[index].GetSeed(),Clusters[index].GetName(),Clusters[index].GetName2(),Clusters[index].GetPic());
+		CurrentCluster = new Cluster(Clusters[index].GetSeed(),Clusters[index].GetName(),Clusters[index].GetName2(),Clusters[index].GetPic(),this);
 	}
 
 	/**

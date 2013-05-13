@@ -18,6 +18,7 @@ public class Location
 	public static int MAX_MOONS = 10;						// Constant determines number of orbitals around a planet (1 to MAX)
 	
 	protected BufferedImage Picture;						// Used to reference image data
+	protected Location parent;
 	
 	/**
 	 * constructor
@@ -34,5 +35,15 @@ public class Location
 	public BufferedImage GetPic()
 	{
 		return Picture;
+	}
+	
+	public Location getParent()
+	{
+		return parent;
+	}
+	
+	public void setParent(Location target)
+	{
+		parent = target;
 	}
 }

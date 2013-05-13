@@ -35,13 +35,14 @@ public class Cluster extends Location
 	 * @param name2 = number corresponding to entry in Ops.ClusterNames2.
 	 * @param pic = assigned BufferedImage.
 	 */
-	public Cluster(long s, short name, short name2, BufferedImage pic)
+	public Cluster(long s, short name, short name2, BufferedImage pic, Location maker)
 	{
 		super();
 		seed = s;
 		Name = name;
 		Name2 = name2;
 		Picture = pic;
+		parent = maker;
 		Generate();
 	}
 	
@@ -55,7 +56,7 @@ public class Cluster extends Location
 		int radius = 100;
 		for (int z = 0; z < Sectors.length; z++)
 		{
-			Sectors[z] = new Sector(z);
+			Sectors[z] = new Sector(z,this);
 			Sectors[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
 			Sectors[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
 		}
