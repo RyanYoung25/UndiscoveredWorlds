@@ -32,7 +32,7 @@ public class GalaxyTest {
     Player player = new Player("Person1", items1);
     player.setLoc(Andromeda.GetOrbital(0, 0, 0));
     
-    TradingMenu menu = new TradingMenu(new Player("Person1", items1));
+    TradingMenu menu = new TradingMenu(player);
     menu.setSize(300, 200);
     menu.setVisible(true);
     menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //Commented out because of changes

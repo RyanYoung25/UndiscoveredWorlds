@@ -31,12 +31,13 @@ public class TradingMenu extends JFrame
   private Merchant         theMerchant;
   private DefaultListModel merchantList;
   private DefaultListModel playerList;
-
   public TradingMenu(Player player)
   {
 
     thePlayer = player;
     makeMerchant();
+    //for testing only
+    
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
