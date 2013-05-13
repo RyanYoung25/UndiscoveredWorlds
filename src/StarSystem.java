@@ -219,4 +219,9 @@ public class StarSystem extends Location
 			}
 		}
 	}
+	
+	public BufferedImage getHalo()
+	{
+		return Halo;
+	}
 }

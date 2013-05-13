@@ -12,6 +12,7 @@ public class Cluster extends Location
 	private short Name2;		// Number corresponding to entry in Ops.ClusterNames2.
 	private int x;				// X coordinate data.
 	private int y;				// Y coordinate data.
+	private Singularity anchor; // Singularity forms the center of every Cluster; its coordinates are always 0,0
 	
 
 	/**
@@ -43,6 +44,7 @@ public class Cluster extends Location
 		Name2 = name2;
 		Picture = pic;
 		parent = maker;
+		anchor = new Singularity();
 		Generate();
 	}
 	
@@ -149,5 +151,14 @@ public class Cluster extends Location
 	public void SetY(int Y)
 	{
 		y = Y;
+	}
+	
+	/**
+	 * Returns the black hole that holds this cluster together.
+	 * @return Singularity
+	 */
+	public Singularity getCenter()
+	{
+		return anchor;
 	}
 }

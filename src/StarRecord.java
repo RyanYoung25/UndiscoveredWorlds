@@ -85,7 +85,7 @@ public class StarRecord
 	 */
 	public double getExactLuminosity(byte starsubclass)
 	{
-		return  (MinLuminosity + ((MaxLuminosity - MinLuminosity) / (starsubclass)));
+		return  (MinLuminosity + ((MaxLuminosity - MinLuminosity) / (starsubclass+1)));
 	}
 	
 	/**
