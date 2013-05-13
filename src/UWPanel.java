@@ -14,7 +14,7 @@ public class UWPanel extends JPanel{
 	public UWPanel(){
 		setLayout(new FlowLayout());
 		setPreferredSize(new Dimension(720,700));
-		setBackground(Color.BLACK);
+		setBackground(Color.GREEN);
 		label = new JLabel("This is a test label");
 		add(label);
 	}
