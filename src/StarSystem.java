@@ -53,11 +53,11 @@ public class StarSystem extends Location
 		byte oclass = (byte) GenOrbitalClass(radius);	
 		if (Ops.getOrbitalClasses(oclass).GetType() < 2) // is planet
 		{
-			Orbitals[index] = new Planet(radius, oclass, StarClass.getID());
+			Orbitals[index] = new Planet(radius, oclass, StarClass.getID(),this);
 		}
 		else // is ring or belt
 		{
-			Orbitals[index] = new Ring(radius,oclass,StarClass.getID());
+			Orbitals[index] = new Ring(radius,oclass,StarClass.getID(),this);
 		}
 	}
 	

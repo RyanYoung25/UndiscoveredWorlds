@@ -13,13 +13,13 @@ public class Planet extends Orbital
 	 * @param oclass = classification of this planet.
 	 * @param parent = classification of this planet's star.
 	 */
-	public Planet(int radius, byte oclass, int parent)
+	public Planet(int radius, byte oclass, int star, Location target)
 	{
-		super(radius, oclass, parent);
+		super(radius, oclass, star,target);
 		Moons = new Moon[rand.nextInt(MAX_MOONS)];
 		for(int x = 0; x < Moons.length; x++)
 		{
-			Moons[x] = new Moon(radius,oclass,parent);
+			Moons[x] = new Moon(radius,oclass,star,this);
 		}
 	}
 	

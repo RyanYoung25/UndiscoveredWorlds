@@ -19,12 +19,13 @@ public class Orbital extends Location
 	 * @param oclass = orbital classification. Corresponds to an OrbitalRecord.
 	 * @param parent = stellar classification. Corresponds to a StarRecord.
 	 */
-	public Orbital(int radius, byte oclass, int parent) 
+	public Orbital(int radius, byte oclass, int star,Location target) 
 	{
 		Radius = radius;
 		setOrbitalClass(oclass);
 		Picture = GetOrbitalPic();
-		ParentStar = Ops.getStarDetails(parent);
+		ParentStar = Ops.getStarDetails(star);
+		parent = target;
 		if (rand.nextInt(TradePort.CHANCE) >= OrbitalClass.GetHazard()) 
 		{
 			port = new TradePort(this);

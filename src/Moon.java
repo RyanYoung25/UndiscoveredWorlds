@@ -12,9 +12,9 @@ public class Moon extends Orbital
 	 * @param oclass = orbital classification of this moon.
 	 * @param parent = classification of this moon's star.
 	 */
-	public Moon(int radius, byte oclass, int parent)
+	public Moon(int radius, byte oclass, int parent, Location target)
 	{
-		super(radius,oclass,parent);
+		super(radius,oclass,parent, target);
 		setOrbitalClass((byte) StarSystem.GenOrbitalClass(radius));
 		if(getOrbitalClass().GetType()==1)
 		{

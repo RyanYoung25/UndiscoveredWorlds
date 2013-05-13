@@ -11,8 +11,8 @@ public class Ring extends Orbital
 	 * @param oclass = classification of this ring.
 	 * @param parent = classification of this ring's star.
 	 */
-	public Ring(int radius, byte oclass, int parent)
+	public Ring(int radius, byte oclass, int star, Location target)
 	{
-		super(radius, oclass, parent);
+		super(radius, oclass, star, target);
 	}
 }
