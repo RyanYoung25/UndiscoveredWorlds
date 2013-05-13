@@ -15,7 +15,7 @@ public class UWPanel extends JPanel{
 	public UWPanel(){
 		setLayout(new FlowLayout());
 		setPreferredSize(new Dimension(720,700));
-		setBackground(Color.GREEN);
+		setBackground(Color.BLACK);
 		
 		label = new JLabel();
 		label.setToolTipText("" + new ImageIcon("Art" + File.separator + "Barren01.png").getDescription());

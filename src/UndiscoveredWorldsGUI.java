@@ -1,26 +1,49 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class UndiscoveredWorldsGUI extends JFrame{
+public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 	
-	private JPanel mapPanel;
+	private JButton optionsButton;
 	
 	public UndiscoveredWorldsGUI(){
 		super("Undiscovered Worlds");
 		
-		UWPanel panel = new UWPanel();
+		optionsButton = new JButton("?");
+		optionsButton.setLocation(700, 1);
+		optionsButton.setSize(20, 20);
+		optionsButton.addActionListener(this);
+		
+		UWOptionsPanel options = new UWOptionsPanel();
+		options.setPreferredSize(new Dimension(300,720));
+		
+		Galaxy Andromeda = new Galaxy();
+
+		Andromeda.Generate(1);
+		Andromeda.DisplayCluster();
+		
+		GUITest test = new GUITest(Andromeda.GetSectors());
+		test.setPreferredSize(new Dimension(720,720));
+		test.setLocation(0, 0);
+		test.setLayout(null);
 		
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
-		
-		mapPanel = new JPanel();
 
-		//mapPanel.setPreferredSize(new Dimension(720,720));
-		//mapPanel.setBackground(Color.WHITE);
-
-		mapPanel.add(panel);
-		add(mapPanel);
+		test.add(optionsButton);
+		add(test);
 		
+	}
+	
+	public void actionPerformed(ActionEvent event){
+		UWOptionsPanel optionWindow = new UWOptionsPanel();
+		optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		optionWindow.setLocation((this.getWidth()/4), (this.getHeight()/4));
+		optionWindow.setSize(400, 400);
+		optionWindow.setVisible(true);
+		optionWindow.setResizable(true);
 	}
 	
 }
