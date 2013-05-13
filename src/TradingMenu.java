@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-public class TradingMenu extends JPanel
+public class TradingMenu extends JFrame
 {
 
   private JList            playersInventory;
@@ -27,16 +27,16 @@ public class TradingMenu extends JPanel
   private JButton          leave;
   private JLabel           playerBank;
   private JLabel           merchantBank;
-  private Merchant         thePlayer;
+  private Player           thePlayer;
   private Merchant         theMerchant;
   private DefaultListModel merchantList;
   private DefaultListModel playerList;
 
-  public TradingMenu(Merchant player, Merchant merchant)
+  public TradingMenu(Player player)
   {
 
     thePlayer = player;
-    theMerchant = merchant;
+    makeMerchant();
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
@@ -47,7 +47,7 @@ public class TradingMenu extends JPanel
     leave = new JButton("Leave");
 
     playerBank = new JLabel("" + player.getMoney());
-    merchantBank = new JLabel("" + merchant.getMoney());
+    merchantBank = new JLabel("" + theMerchant.getMoney());
 
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new GridLayout(3, 1));
@@ -67,6 +67,18 @@ public class TradingMenu extends JPanel
     buy.addActionListener(handler);
     sell.addActionListener(handler);
 
+  }
+
+  private void makeMerchant()
+  {
+    if(thePlayer.hasBeenHere(thePlayer.getLoc()))
+    {
+      theMerchant = new TradePort(thePlayer.getPort(thePlayer.getLoc()));
+    }
+    else
+    {
+      theMerchant = new TradePort(thePlayer.getLoc());
+    }
   }
 
   private void addPlayerModel()
@@ -113,7 +125,6 @@ public class TradingMenu extends JPanel
           thePlayer.purchase((double) item.getBasePrice(), item);
           updateBanks();
           repaint();
-          System.out.println(thePlayer.toString());
         } else if (event.getActionCommand().equals("Sell"))
         {
           Item item = (Item) playersInventory.getSelectedValue();
@@ -123,7 +134,6 @@ public class TradingMenu extends JPanel
           theMerchant.purchase((double) item.getBasePrice(), item);
           updateBanks();
           repaint();
-          System.out.println(thePlayer.toString());
         } else
         {
           // Implement leave button

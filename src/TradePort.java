@@ -16,9 +16,9 @@ public class TradePort extends Location implements Merchant
 	 * Constructor. Generates "lite" version of TradePort.
 	 * @param loc = Orbital that this TradePort is based on.
 	 */
-	public TradePort(Orbital loc)
+	public TradePort(Location loc)
 	{
-		locale = loc;
+		locale = (Orbital) loc;
 	}
 	
 	/**

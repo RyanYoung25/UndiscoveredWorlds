@@ -142,4 +142,6 @@ public class Orbital extends Location
 				return Pics.getRingPic(9);
 		}
 	}
+	
+	
 }
