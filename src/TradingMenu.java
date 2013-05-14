@@ -28,7 +28,7 @@ public class TradingMenu extends JFrame
   private JLabel           playerBank;
   private JLabel           merchantBank;
   private Player           thePlayer;
-  private Merchant         theMerchant;
+  private TradePort         theMerchant;
   private DefaultListModel merchantList;
   private DefaultListModel playerList;
   public TradingMenu(Player player)
@@ -36,8 +36,6 @@ public class TradingMenu extends JFrame
 
     thePlayer = player;
     makeMerchant();
-    //for testing only
-    
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
@@ -137,7 +135,9 @@ public class TradingMenu extends JFrame
           repaint();
         } else
         {
-          // Implement leave button
+          Orbital loc = ((TradePort) theMerchant).getLocale();
+          thePlayer.setLoc(loc.getParent());
+          //TODO: figure out how to close the menu RY
         }
       } catch (Exception e)
       {

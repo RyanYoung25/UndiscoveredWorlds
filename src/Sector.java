@@ -54,16 +54,16 @@ public class Sector extends Location
 	 * @param index = index of desired StarSystem within this Sector.
 	 * @return StarSystem
 	 */
-	public StarSystem GetStar(int index)
+	public StarSystem getChild(int index)
 	{
-		return GetStar()[index];
+		return getChild()[index];
 	}
 	
 	/**
 	 * If no index is provided, GetStar returns all StarSystems within this Sector.
 	 * @return StarSystem[]
 	 */
-	public StarSystem[] GetStar()
+	public StarSystem[] getChild()
 	{
 		return StarSystems;
 	}

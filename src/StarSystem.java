@@ -96,16 +96,16 @@ public class StarSystem extends Location
 	 * @param index = index of desired Orbital
 	 * @return Orbital
 	 */
-	public Orbital GetOrbital(int index)
+	public Orbital getChild(int index)
 	{
-		return GetOrbital()[index];
+		return getChild()[index];
 	}
 	
 	/**
 	 * If no index is provided, GetOrbital returns all Orbitals within this StarSystem.
 	 * @return
 	 */
-	public Orbital[] GetOrbital()
+	public Orbital[] getChild()
 	{
 		return Orbitals;
 	}

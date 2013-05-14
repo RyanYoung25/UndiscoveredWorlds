@@ -76,16 +76,16 @@ public class Cluster extends Location
 	 * @param index = index of a particular sector within this cluster's sector array.
 	 * @return Sector
 	 */
-	public Sector GetSector(int index)
+	public Sector getChild(int index)
 	{
-		return GetSector()[index];
+		return getChild()[index];
 	}
 	
 	/**
 	 * Returns all of the sectors in this cluster.
 	 * @return Sector[]
 	 */
-	public Sector[] GetSector()
+	public Sector[] getChild()
 	{
 		return Sectors;
 	}

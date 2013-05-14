@@ -91,7 +91,7 @@ public class Galaxy extends Location
 	 */
 	public Sector GetSector(int index)
 	{
-		return CurrentCluster.GetSector(index);
+		return CurrentCluster.getChild(index);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class Galaxy extends Location
 	 */
 	public StarSystem GetStar(Sector sector, int index)
 	{
-		return sector.GetStar(index);
+		return sector.getChild(index);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class Galaxy extends Location
 	 */
 	public StarSystem GetStar(int sector, int index)
 	{
-		return GetSector(sector).GetStar(index);
+		return GetSector(sector).getChild(index);
 	}
 	
 	/** Returns selected Orbital from the StarSystem passed to this method.
@@ -123,7 +123,7 @@ public class Galaxy extends Location
 	 */
 	public Orbital GetOrbital(StarSystem star, int index)
 	{
-		return star.GetOrbital(index);
+		return star.getChild(index);
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public class Galaxy extends Location
 	 */
 	public Sector[] GetSectors ()
 	{
-		return CurrentCluster.GetSector();
+		return CurrentCluster.getChild();
 	}
 	
 	/**
@@ -210,13 +210,13 @@ public class Galaxy extends Location
 	public void DisplayCluster()
 	{
 		System.out.printf("%s\n", CurrentCluster.toString());
-		for (int x = 0; x < GetCluster().GetSector().length; x++)
+		for (int x = 0; x < GetCluster().getChild().length; x++)
 		{
 			System.out.printf("%s\n", SectorDetails(x));
-			for (int y = 0; y < GetSector(x).GetStar().length; y++)
+			for (int y = 0; y < GetSector(x).getChild().length; y++)
 			{
 				System.out.printf("%s\n", StarDetails(x,y));
-				for (int z = 0; z < GetStar(x,y).GetOrbital().length; z++)
+				for (int z = 0; z < GetStar(x,y).getChild().length; z++)
 				{
 					System.out.printf("%s\n", OrbitalDetails(x,y,z));
 					
