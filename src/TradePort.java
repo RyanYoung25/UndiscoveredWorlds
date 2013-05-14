@@ -31,7 +31,7 @@ public class TradePort extends Location implements Merchant
 	{
 		locale = port.getLocale();
 		money = (int) port.getMoney();
-		inventory = getInventory();
+		inventory = port.getInventory();
 	}
 	/**
 	 * Generates the starting credit balance of this TradePort based on its orbital's stability and hazard ratings
@@ -56,7 +56,7 @@ public class TradePort extends Location implements Merchant
 		{
 			if (locale.getOrbitalClass().GetProperties()[x.getClassification()] >= 6)
 			{
-				temp.addElement(x);
+				temp.add(x);
 			}
 		}
 		return temp;
