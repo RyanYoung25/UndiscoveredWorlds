@@ -46,4 +46,9 @@ public class Location
 	{
 		parent = target;
 	}
+	
+	public Location getChild(int index)
+	{
+    return null;
+	}
 }
