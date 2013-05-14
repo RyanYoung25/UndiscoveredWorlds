@@ -16,8 +16,8 @@ public class StarSystem extends Location
 	private Orbital[] Orbitals;		// Stores information for all orbitals in this StarSystem.
 	private byte Star;				// Number corresponds to the first part of a StarSystem's name (i.e. Alpha, Beta, etc.)
 	private StarRecord StarClass;	// Used to reference data for a particular star class.
-	private byte x;					// X coordinate location within this StarSystem's sector.
-	private byte y;					// Y coordinate location within this StarSystem's sector.
+	private int x;					// X coordinate location within this StarSystem's sector.
+	private int y;					// Y coordinate location within this StarSystem's sector.
 	private BufferedImage Halo;		// References image information for this star's halo effect.
 	
 	/**
@@ -123,7 +123,7 @@ public class StarSystem extends Location
 	 * Returns X coordinate for this StarSystem within its Sector.
 	 * @return byte
 	 */
-	public byte GetX()
+	public int GetX()
 	{
 		return x;
 	}
@@ -141,7 +141,7 @@ public class StarSystem extends Location
 	 * Returns Y coordinate for this StarSystem within its Sector.
 	 * @return byte
 	 */
-	public byte GetY()
+	public int GetY()
 	{
 		return y;
 	}

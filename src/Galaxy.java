@@ -232,4 +232,10 @@ public class Galaxy extends Location
 			}
 		}
 	}
+	
+	public Location randomStart()
+	{
+	  int randInt = rand.nextInt(GetSectors().length);
+	  return GetSector(randInt);
+	}
 }

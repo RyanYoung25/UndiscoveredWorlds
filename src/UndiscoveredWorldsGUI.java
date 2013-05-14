@@ -20,11 +20,20 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		options.setPreferredSize(new Dimension(300,720));
 		
 		Galaxy Andromeda = new Galaxy();
+		Player player = new Player();
 
 		Andromeda.Generate(1);
-		Andromeda.DisplayCluster();
+		//Andromeda.DisplayCluster();
 		
-		GUITest test = new GUITest(Andromeda.GetSectors());
+		player.setLoc(Andromeda.randomStart());
+		
+		SpacePanel test = new SpacePanel(player);
+		//test.populateSpace();
+		//test.setPreferredSize(new Dimension(720, 720));
+		//test.setLocation(0, 0);
+		this.add(test);
+		System.out.println("This was run");
+	/*	GUITest test = new GUITest(Andromeda.GetSectors());
 		test.setPreferredSize(new Dimension(720,720));
 		test.setLocation(0, 0);
 		test.setLayout(null);
@@ -34,7 +43,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 
 		test.add(optionsButton);
 		add(test);
-		
+		*/
 	}
 	
 	public void actionPerformed(ActionEvent event){
