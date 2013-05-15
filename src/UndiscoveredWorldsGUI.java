@@ -32,7 +32,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		//test.setPreferredSize(new Dimension(720, 720));
 		//test.setLocation(0, 0);
 		this.add(test);
-		System.out.println("This was run");
+		//System.out.println("This was run");
 	/*	GUITest test = new GUITest(Andromeda.GetSectors());
 		test.setPreferredSize(new Dimension(720,720));
 		test.setLocation(0, 0);
@@ -49,7 +49,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		UWOptionsPanel optionWindow = new UWOptionsPanel();
 		optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		optionWindow.setLocation((this.getWidth()/4), (this.getHeight()/4));
-		optionWindow.setSize(400, 400);
+		optionWindow.setSize(400, 200);
 		optionWindow.setVisible(true);
 		optionWindow.setResizable(true);
 	}
