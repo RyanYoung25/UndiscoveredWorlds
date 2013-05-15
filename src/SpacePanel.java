@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
@@ -23,10 +24,13 @@ public class SpacePanel extends JPanel
 
   public void populateSpace()
   {
+    //this.removeAll();
     this.setLayout(null);
     this.setBounds(0, 0, 720, 720);
     currentLocation = this.player.getLoc();
     Location[] locations = currentLocation.getChild();
+    if(locations != null)
+    {
     for (int i = 0; i < locations.length; i++)
     {
       Location loc = locations[i];
@@ -39,6 +43,14 @@ public class SpacePanel extends JPanel
       this.add(b);
     }
     repaint();
+    }
+    else
+    {
+      TradingMenu menu = new TradingMenu(player);
+      menu.setSize(500, 500);
+      menu.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  
+      menu.setVisible(true);
+    }
   }
 
   private class LocationListener implements ActionListener

@@ -12,6 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+/**
+ * This class is a frame that has some very simple trading. The Frame only needs a player. If 
+ * this frame is brought up and passed a player that does not have a trade port location unknown
+ * things will happen. NEED TO TEST MORE
+ * 
+ * @author Ryan
+ *
+ */
 public class TradingMenu extends JFrame
 {
 
@@ -31,6 +39,11 @@ public class TradingMenu extends JFrame
   private TradePort         theMerchant;
   private DefaultListModel merchantList;
   private DefaultListModel playerList;
+  
+  /**
+   * Constructor needs a player. Has no default constructor because you need a player to play
+   * @param player The player of the game in the correct location 
+   */
   public TradingMenu(Player player)
   {
 
