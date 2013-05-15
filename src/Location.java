@@ -110,4 +110,9 @@ public class Location
   {
     return 0;
   }
+  
+  public int whatAmI()
+  {
+    return 0;
+  }
 }

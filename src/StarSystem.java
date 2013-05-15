@@ -224,4 +224,14 @@ public class StarSystem extends Location
 	{
 		return Halo;
 	}
+	
+	public Location getParent()
+	{
+	  return parent;
+	}
+	
+	public int whatAmI()
+	{
+	  return 3;
+	}
 }

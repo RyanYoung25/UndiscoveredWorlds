@@ -161,4 +161,9 @@ public class Cluster extends Location
 	{
 		return anchor;
 	}
+	
+	public int whatAmI()
+	{
+	  return 1;
+	}
 }

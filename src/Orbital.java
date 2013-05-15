@@ -79,6 +79,11 @@ public class Orbital extends Location
 	{
 		OrbitalClass = Ops.getOrbitalClasses(oclass);
 	}
+	
+	public Location getParent()
+	{
+	  return parent;
+	}
 
 	/**
 	 * Returns reference of the TradePort object attached to this Orbital if applicable.
@@ -143,5 +148,8 @@ public class Orbital extends Location
 		}
 	}
 	
-	
+	public int whatAmI()
+	{
+	  return 4;
+	}
 }

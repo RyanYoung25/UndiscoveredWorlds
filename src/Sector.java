@@ -104,4 +104,9 @@ public class Sector extends Location
 	{
 		y = Y;
 	}
+	
+	public int whatAmI()
+	{
+	  return 2;
+	}
 }

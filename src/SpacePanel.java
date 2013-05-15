@@ -1,10 +1,10 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
@@ -12,43 +12,77 @@ public class SpacePanel extends JPanel
 
   private static final int SCALAR = 2;
   private static final int SHIFT  = 360;
-  Player                   player;
-  Location                 currentLocation;
+  private Player           player;
+  private Location         currentLocation;
+  private JLabel           locationName;
 
   public SpacePanel(Player player)
   {
     this.player = player;
     this.setBackground(Color.BLACK);
+    locationName = new JLabel("");
     populateSpace();
   }
 
   public void populateSpace()
   {
-    //this.removeAll();
+    this.removeAll();
     this.setLayout(null);
     this.setBounds(0, 0, 720, 720);
-    currentLocation = this.player.getLoc();
+    currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
-    if(locations != null)
+    locationName.setBounds(200, 0, 200, 30);
+    switch (currentLocation.whatAmI())
     {
-    for (int i = 0; i < locations.length; i++)
+    case 4:
+      locationName.setText("Orbital");
+      break;
+    case 3:
+      locationName.setText("Star System");
+      break;
+    case 2:
+      locationName.setText("Sector");
+      break;
+    case 1:
+      locationName.setText("Cluster");
+      break;
+    default:
+      locationName.setText("Error");
+    }
+    this.add(locationName);
+    JButton back = new JButton("<");
+    back.addActionListener(new ActionListener()
     {
-      Location loc = locations[i];
-      JButton b = new JButton(loc.toString());
-      b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT, 50,
-          50);
-      b.setBackground(Color.BLUE);
-      LocationListener handler = new LocationListener(i);
-      b.addActionListener(handler);
-      this.add(b);
-    }
-    repaint();
-    }
-    else
+
+      @Override
+      public void actionPerformed(ActionEvent arg0)
+      {
+        player.setLoc(currentLocation.getParent());
+        populateSpace();
+      }
+
+    });
+    back.setBounds(0, 0, 25, 25);
+    this.add(back);
+    if (locations != null)
+    {
+      for (int i = 0; i < locations.length; i++)
+      {
+        Location loc = locations[i];
+        JButton b = new JButton(loc.toString());
+        b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
+            50, 50);
+        b.setBackground(Color.BLUE);
+        LocationListener handler = new LocationListener(i);
+        b.addActionListener(handler);
+        this.add(b);
+      }
+      repaint();
+    } else
     {
       TradingMenu menu = new TradingMenu(player);
       menu.setSize(500, 500);
-      menu.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);  
+      menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       menu.setVisible(true);
     }
   }
