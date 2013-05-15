@@ -40,10 +40,9 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
-
+*/
 		test.add(optionsButton);
-		add(test);
-		*/
+		//add(test);
 	}
 	
 	public void actionPerformed(ActionEvent event){
