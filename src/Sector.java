@@ -36,6 +36,8 @@ public class Sector extends Location
 			StarSystems[z] = new StarSystem((byte)z,Name,(byte)rand.nextInt(7));
 			StarSystems[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
 			StarSystems[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
+			StarSystems[z].setParent(this);  //Ryan's code hope it works
+			
 		}
 	}
 	

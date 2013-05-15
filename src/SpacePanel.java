@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,7 +11,7 @@ import javax.swing.JPanel;
 public class SpacePanel extends JPanel
 {
 
-  private static final int SCALAR = 2;
+  private static final int SCALAR = 1;
   private static final int SHIFT  = 360;
   private Player           player;
   private Location         currentLocation;
@@ -32,24 +33,6 @@ public class SpacePanel extends JPanel
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
-    switch (currentLocation.whatAmI())
-    {
-    case 4:
-      locationName.setText("Orbital");
-      break;
-    case 3:
-      locationName.setText("Star System");
-      break;
-    case 2:
-      locationName.setText("Sector");
-      break;
-    case 1:
-      locationName.setText("Cluster");
-      break;
-    default:
-      locationName.setText("Error");
-    }
-    this.add(locationName);
     JButton back = new JButton("<");
     back.addActionListener(new ActionListener()
     {
@@ -63,6 +46,26 @@ public class SpacePanel extends JPanel
 
     });
     back.setBounds(0, 0, 25, 25);
+    back.setVisible(true);
+    switch (currentLocation.whatAmI())
+    {
+    case 4:
+      locationName.setText("Orbital");
+      break;
+    case 3:
+      locationName.setText("Star System");
+      break;
+    case 2:
+      locationName.setText("Sector");
+      break;
+    case 1:
+      locationName.setText("Cluster");
+      back.setVisible(false);
+      break;
+    default:
+      locationName.setText("Error");
+    }
+    this.add(locationName);
     this.add(back);
     if (locations != null)
     {
@@ -75,6 +78,10 @@ public class SpacePanel extends JPanel
         b.setBackground(Color.BLUE);
         LocationListener handler = new LocationListener(i);
         b.addActionListener(handler);
+        b.setIcon(new ImageIcon(loc.Picture));
+        b.setOpaque(false);
+        b.setBorderPainted(false);
+        b.setContentAreaFilled(false);
         this.add(b);
       }
       repaint();
