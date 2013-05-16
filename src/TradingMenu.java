@@ -2,6 +2,8 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
@@ -10,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  * This class is a frame that has some very simple trading. The Frame only needs
@@ -19,9 +22,10 @@ import javax.swing.JPanel;
  * @author Ryan
  * 
  */
-public class TradingMenu extends JFrame
+public class TradingMenu extends JFrame implements WindowFocusListener
 {
-
+  private JScrollPane	   playerScroll;
+  private JScrollPane	   merchantScroll;
   private JList            playersInventory;
   private JList            merchantsInventory;
   private JPanel           buttonPanel;
@@ -48,13 +52,22 @@ public class TradingMenu extends JFrame
    */
   public TradingMenu(Player player)
   {
-
+	requestFocus();
+	addWindowFocusListener(this);
     thePlayer = player;
     makeMerchant();
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
     merchantsInventory = new JList(merchantList);
+    
+    playerScroll = new JScrollPane(playersInventory);
+    playerScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    playerScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    
+    merchantScroll = new JScrollPane(merchantsInventory);
+    merchantScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    merchantScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
     buy = new JButton("Buy");
     sell = new JButton("Sell");
@@ -70,9 +83,9 @@ public class TradingMenu extends JFrame
     buttonPanel.add(leave);
 
     setLayout(new GridLayout(2, 3));
-    add(playersInventory);
+    add(playerScroll);
     add(buttonPanel);
-    add(merchantsInventory);
+    add(merchantScroll);
     add(playerBank);
     add(new JLabel());
     add(merchantBank);
@@ -157,7 +170,6 @@ public class TradingMenu extends JFrame
         {
           Orbital loc = ((TradePort) theMerchant).getLocale();
           thePlayer.setLoc(loc.getParent());
-          // TODO: figure out how to close the menu RY
         }
       } catch (Exception e)
       {
@@ -166,4 +178,11 @@ public class TradingMenu extends JFrame
     }
 
   }
+
+public void windowGainedFocus(WindowEvent arg0) {	
+}
+
+public void windowLostFocus(WindowEvent arg0) {
+	dispose();
+}
 }
