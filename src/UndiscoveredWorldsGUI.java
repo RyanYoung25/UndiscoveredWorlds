@@ -31,6 +31,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		//test.populateSpace();
 		//test.setPreferredSize(new Dimension(720, 720));
 		//test.setLocation(0, 0);
+		this.add(optionsButton);
 		this.add(test);
 		//System.out.println("This was run");
 	/*	GUITest test = new GUITest(Andromeda.GetSectors());
@@ -41,7 +42,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 		setLayout(new FlowLayout());
 		setBackground(Color.DARK_GRAY);
 */
-		test.add(optionsButton);
+		//test.add(optionsButton);
 		//add(test);
 	}
 	

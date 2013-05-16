@@ -78,6 +78,7 @@ public class TradingMenu extends JFrame
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
     sell.addActionListener(handler);
+    leave.addActionListener(handler);
 
   }
 
@@ -146,7 +147,12 @@ public class TradingMenu extends JFrame
           theMerchant.purchase((double) item.getBasePrice(), item);
           updateBanks();
           repaint();
+        }else if (event.getActionCommand().equals("Leave"))
+        {
+        	dispose();
+        	//You are welcome -Jon
         } else
+        	
         {
           Orbital loc = ((TradePort) theMerchant).getLocale();
           thePlayer.setLoc(loc.getParent());
