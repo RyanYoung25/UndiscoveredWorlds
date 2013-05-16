@@ -9,7 +9,7 @@
 
 ------------------------------------------------------
 
-[ ]Images on top level are too large
+[X]Images on top level are too large
 
 [ ]Back button does nothing on first click on bottom level
 
