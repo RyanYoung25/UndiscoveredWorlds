@@ -15,7 +15,7 @@
 
 [P]Option disappears when navigating away from first view
 
-[ ]White sidebar appears in window when navigating from first view
+[P]White sidebar appears in window when navigating from first view
 
 [ ]Clickable items are sometimes generated too close to another clickable
    or the edge of screen
