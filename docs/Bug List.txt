@@ -5,6 +5,7 @@
     [ ]Open
     [X]Fixed
     [M]Meet with group
+    [P]Partially fixed
 
 ------------------------------------------------------
 
@@ -12,7 +13,7 @@
 
 [ ]Back button does nothing on first click on bottom level
 
-[ ]Option disappears when navigating away from first view
+[P]Option disappears when navigating away from first view
 
 [ ]White sidebar appears in window when navigating from first view
 
