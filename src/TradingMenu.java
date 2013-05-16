@@ -157,7 +157,6 @@ public class TradingMenu extends JFrame
         {
           Orbital loc = ((TradePort) theMerchant).getLocale();
           thePlayer.setLoc(loc.getParent());
-          // TODO: figure out how to close the menu RY
         }
       } catch (Exception e)
       {

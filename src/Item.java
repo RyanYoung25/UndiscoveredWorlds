@@ -67,6 +67,8 @@ public class Item implements Serializable
    */
   public void modify()
   {
+    modifiedPrice = (int) (basePrice * modifier);
+    modifiedPrice = (int) (basePrice / modifier);
     modifiedPrice = basePrice;
   }
 
