@@ -30,4 +30,9 @@
 
 [X]Cost not displayed in store
 
+[ ]Adjusted prices only work one way.(Store to player)
+
 [X]Multiple option and trading windows can be created
+
+[ ]Shops restore inventory when player leaves. (If player buys all items and
+   leaves, those items are still in the shop on return.)

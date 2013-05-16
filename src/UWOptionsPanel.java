@@ -29,12 +29,15 @@ public class UWOptionsPanel extends JFrame implements ActionListener, WindowFocu
 	
 		saveButton = new JButton("Save Game");
 		saveButton.addActionListener(this);
+		saveButton.setFocusPainted(false);
 		
 		loadButton = new JButton("Load Game");
 		loadButton.addActionListener(this);
+		loadButton.setFocusPainted(false);
 		
 		returnButton = new JButton("Return to Game");
 		returnButton.addActionListener(this);
+		returnButton.setFocusPainted(false);
 		
 		add(saveButton);
 		add(loadButton);

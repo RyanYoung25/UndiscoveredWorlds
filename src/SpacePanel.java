@@ -90,6 +90,7 @@ public class SpacePanel extends JPanel
       TradingMenu menu = new TradingMenu(player);
       menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      menu.setResizable(false);
       menu.setVisible(true);
     }
   }

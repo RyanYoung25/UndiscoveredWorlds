@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 /**
  * This class is a frame that has some very simple trading. The Frame only needs
@@ -67,7 +69,9 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
+    playersInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     merchantsInventory = new JList(merchantList);
+    merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
@@ -123,9 +127,11 @@ public class TradingMenu extends JFrame implements WindowFocusListener
 
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
+    buy.setFocusPainted(false);
     sell.addActionListener(handler);
+    sell.setFocusPainted(false);
     leave.addActionListener(handler);
-
+    leave.setFocusPainted(false);
   }
 
   private void makeMerchant()
