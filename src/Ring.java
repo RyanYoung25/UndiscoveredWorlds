@@ -15,4 +15,14 @@ public class Ring extends Orbital
 	{
 		super(radius, oclass, star, target);
 	}
+	
+	public int GetX()
+	{
+		return 0;
+	}
+	
+	public int GetY()
+	{
+		return 0;
+	}
 }

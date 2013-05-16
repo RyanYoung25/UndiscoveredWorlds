@@ -178,4 +178,17 @@ public class Orbital extends Location
 			} 
 	    return 0;
 	  }
+	  
+	  @Override
+	  public String toString()
+	  {
+		  for(int i = 0; i < getParent().getChild().length; i++)
+		  {
+			  if(getParent().getChild(i) == this)
+			  {
+				  return getParent() + " " + FileOps.RomanNum(i);
+			  }
+		  }
+		  return getParent().toString();
+	  }
 }

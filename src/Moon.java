@@ -23,19 +23,19 @@ public class Moon extends Orbital
 	}
 
 	/**
-	 * Effectively used to override Orbital's getOrbital method (Note: does not actually do so)
+	 * Override Orbital's getOrbital method
 	 * @param type = number corresponds to the Type variable within an OrbitalClass.
 	 * @return String
 	 */
-	public static String getOrbital(int type)
+	public String getOrbital()
 	{
-		if (type == 0)
+		if (getOrbitalClass().GetType() == 0)
 			return "Moon";
-		if (type == 1)
+		if (getOrbitalClass().GetType() == 1)
 			return "Not Possible";
-		if (type == 2)
+		if (getOrbitalClass().GetType() == 2)
 			return "Ring";
-		if (type == 3)
+		if (getOrbitalClass().GetType() == 3)
 			return "Ring";
 		else
 			return "";
@@ -47,13 +47,11 @@ public class Moon extends Orbital
 	@Override
 	public String toString()
 	{
-		if (port == null)
+		String planet = getParent().toString();
+		for(int j = 0; j <getParent().getChild().length; j++)
 		{
-			return getOrbitalClass().GetClassification() + " " + getOrbital(getOrbitalClass().GetType());
+			return planet + "-" + Planet.getMoonDetails(j);
 		}
-		else
-		{
-			return getOrbitalClass().GetClassification() + " " + getOrbital(getOrbitalClass().GetType()) + " - Trade Port";
-		}
+		return planet;
 	}
 }
