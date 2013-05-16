@@ -49,7 +49,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event){
 		UWOptionsPanel optionWindow = new UWOptionsPanel();
 		optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		optionWindow.setLocation((this.getWidth()/4), (this.getHeight()/4));
+		optionWindow.setLocation( (int) (this.getLocation().getX() +(this.getWidth()/4)),(int)(this.getLocation().getY() + (this.getHeight()/3)));
 		optionWindow.setSize(400, 200);
 		optionWindow.setVisible(true);
 		optionWindow.setResizable(false);
