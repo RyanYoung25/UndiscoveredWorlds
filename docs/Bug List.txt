@@ -25,3 +25,5 @@
 [ ]Bottom level generation only generates one clickable
 
 [ ]Merchants and players can have negative wallets
+
+[X]Leave button in shop does not work
