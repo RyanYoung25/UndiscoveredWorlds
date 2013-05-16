@@ -1,0 +1,26 @@
+======================================================
+=			KNOWN BUGS			=
+======================================================
+{Key}
+    [ ]Open
+    [X]Fixed
+    [M]Meet with group
+
+------------------------------------------------------
+
+[ ]Images on top level are too large
+
+[ ]Back button does nothing on first click on bottom level
+
+[ ]Option disappears when navigating away from first view
+
+[ ]White sidebar appears in window when navigating from first view
+
+[ ]Clickable items are sometimes generated too close to another clickable
+   or the edge of screen
+
+[ ]Ports can generate without any items(Should have items or not be clickable)
+
+[ ]Bottom level generation only generates one clickable
+
+[ ]Merchants and players can have negative wallets
