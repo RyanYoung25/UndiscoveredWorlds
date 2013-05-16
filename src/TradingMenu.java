@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -30,6 +32,10 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   private JList            playersInventory;
   private JList            merchantsInventory;
   private JPanel           buttonPanel;
+  private JLabel		   topPlayerLabel;
+  private JLabel		   topMerchantLabel;
+  private JPanel		   playerPanel;
+  private JPanel		   merchantPanel;
   private JButton          buy;               // put price of selected
                                                // items in parenthesis on
                                                // button
@@ -53,6 +59,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
    */
   public TradingMenu(Player player)
   {
+	super("Trading");
     requestFocus();
     addWindowFocusListener(this);
     thePlayer = player;
@@ -74,26 +81,45 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     merchantScroll
         .setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-    buy = new JButton("Buy");
-    sell = new JButton("Sell");
-    leave = new JButton("Leave");
+    buy = new JButton("<-- Buy ---");
+    sell = new JButton("--- Sell -->");
+    leave = new JButton("Leave Shop");
+    
+    topPlayerLabel = new JLabel("Player");
+    topMerchantLabel = new JLabel("Merchant");
 
-    playerBank = new JLabel("" + player.getMoney());
-    merchantBank = new JLabel("" + theMerchant.getMoney());
+    playerBank = new JLabel("Player Funds: $" + player.getMoney());
+    merchantBank = new JLabel("Merchant Funds: $" + theMerchant.getMoney());
+    
+    playerPanel = new JPanel();
+    playerPanel.setLayout(new BorderLayout());
+    playerPanel.add(topPlayerLabel, BorderLayout.NORTH);
+    playerPanel.add(playerScroll, BorderLayout.CENTER);
+    playerPanel.add(playerBank, BorderLayout.SOUTH);
 
     buttonPanel = new JPanel();
-    buttonPanel.setLayout(new GridLayout(3, 1));
+    buttonPanel.setLayout(new GridLayout(5, 1));
+    buttonPanel.add(new JLabel());
     buttonPanel.add(buy);
     buttonPanel.add(sell);
     buttonPanel.add(leave);
+    buttonPanel.add(new JLabel());
+    
+    merchantPanel = new JPanel();
+    merchantPanel.setLayout(new BorderLayout());
+    merchantPanel.add(topMerchantLabel, BorderLayout.NORTH);
+    merchantPanel.add(merchantScroll, BorderLayout.CENTER);
+    merchantPanel.add(merchantBank, BorderLayout.SOUTH);
 
-    setLayout(new GridLayout(2, 3));
-    add(playerScroll);
+    setLayout(new GridLayout(1, 3));
+    //add(playerScroll);
+    add(playerPanel);
     add(buttonPanel);
-    add(merchantScroll);
-    add(playerBank);
-    add(new JLabel());
-    add(merchantBank);
+    add(merchantPanel);
+    //add(merchantScroll);
+    //add(playerBank);
+    //add(new JLabel());
+    //add(merchantBank);
 
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
@@ -150,7 +176,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     {
       try
       {
-        if (event.getActionCommand().equals("Buy"))
+        if (event.getSource() == buy)
         {
           Item item = (Item) merchantsInventory.getSelectedValue();
           merchantList.removeElement(item);
@@ -160,7 +186,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
           updateBanks();
           item.unModify();
           repaint();
-        } else if (event.getActionCommand().equals("Sell"))
+        } else if (event.getSource() == sell)
         {
           Item item = (Item) playersInventory.getSelectedValue();
           playerList.removeElement(item);
@@ -169,7 +195,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
           theMerchant.purchase((double) item.getModifiedPrice(), item);
           updateBanks();
           repaint();
-        } else if (event.getActionCommand().equals("Leave"))
+        } else if (event.getSource() == leave)
         {
           dispose();
           // You are welcome -Jon -- Thank you -Ryan

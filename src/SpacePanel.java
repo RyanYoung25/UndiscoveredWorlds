@@ -88,7 +88,7 @@ public class SpacePanel extends JPanel
     } else
     {
       TradingMenu menu = new TradingMenu(player);
-      menu.setSize(500, 500);
+      menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       menu.setVisible(true);
     }
