@@ -27,3 +27,7 @@
 [ ]Merchants and players can have negative wallets
 
 [X]Leave button in shop does not work
+
+[ ]Cost not displayed in store
+
+[ ]Multiple option windows can be created

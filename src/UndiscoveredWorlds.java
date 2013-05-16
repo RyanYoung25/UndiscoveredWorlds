@@ -6,6 +6,6 @@ public class UndiscoveredWorlds {
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setSize(740, 740);
 		app.setVisible(true);
-		app.setResizable(true);
+		app.setResizable(false);
 	}
 }
