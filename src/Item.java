@@ -1,27 +1,26 @@
-
-
 import java.io.Serializable;
 import java.util.Random;
 
-
 public class Item implements Serializable
 {
+
   private String name;
-  private String description; 
-  private int IDNumber;
-  private int basePrice;
+  private String description;
+  private int    IDNumber;
+  private int    basePrice;
   private double modifier;
   private double volatility;
-  private int classification;
-  private int modifiedPrice;  //for future use
-  private Random generator;
-  
+  private int    classification;
+  private int    modifiedPrice; // for future use
+  private Random generator;     
+
   public Item()
   {
     this("", " ", 0, 0, 0, 0, 0);
   }
-  
-  public Item(String name, String description, int IdNumber,int basePrice,double modifier,double volatility, int classification)
+
+  public Item(String name, String description, int IdNumber, int basePrice,
+      double modifier, double volatility, int classification)
   {
     setName(name);
     setDescription(description);
@@ -35,15 +34,11 @@ public class Item implements Serializable
 
   public Item(String[] rec)
   {
-	  this	 (rec[0],
-			  rec[1],
-			  Integer.parseInt(rec[2]),
-			  Integer.parseInt(rec[3]),
-			  Double.parseDouble(rec[4]),
-			  Double.parseDouble(rec[5]),
-			  Integer.parseInt(rec[6]));
+    this(rec[0], rec[1], Integer.parseInt(rec[2]), Integer.parseInt(rec[3]),
+        Double.parseDouble(rec[4]), Double.parseDouble(rec[5]), Integer
+            .parseInt(rec[6]));
   }
-  
+
   public String getName()
   {
     return name;
@@ -63,16 +58,28 @@ public class Item implements Serializable
   {
     IDNumber = iDNumber;
   }
-  
+
   /**
    * Use to modify the price. Will be implemented at a later date.
    * 
    */
   public void modify()
   {
-    
-    modifiedPrice = (int) (basePrice * modifier);
-    modifiedPrice = (int) (basePrice / modifier);
+    double number = generator.nextDouble() * 1.5;
+    if (number > volatility)
+    {
+      modifiedPrice = (int) (basePrice / modifier);
+    } else if (number < volatility)
+    {
+      modifiedPrice = (int) (basePrice * modifier);
+    } else
+    {
+      modifiedPrice = basePrice;
+    }
+  }
+  
+  public void unModify()
+  {
     modifiedPrice = basePrice;
   }
 
@@ -89,6 +96,11 @@ public class Item implements Serializable
   public double getModifier()
   {
     return modifier;
+  }
+  
+  public int getModifiedPrice()
+  {
+    return modifiedPrice;
   }
 
   public void setModifier(double modifier)
@@ -125,9 +137,9 @@ public class Item implements Serializable
   {
     this.classification = classification;
   }
-  
+
   public String toString()
   {
-    return "$" + getBasePrice() + "$ " + name;
+    return "$" + getModifiedPrice() + " " + name;
   }
 }

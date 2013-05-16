@@ -24,8 +24,9 @@ import javax.swing.JScrollPane;
  */
 public class TradingMenu extends JFrame implements WindowFocusListener
 {
-  private JScrollPane	   playerScroll;
-  private JScrollPane	   merchantScroll;
+
+  private JScrollPane      playerScroll;
+  private JScrollPane      merchantScroll;
   private JList            playersInventory;
   private JList            merchantsInventory;
   private JPanel           buttonPanel;
@@ -52,22 +53,26 @@ public class TradingMenu extends JFrame implements WindowFocusListener
    */
   public TradingMenu(Player player)
   {
-	requestFocus();
-	addWindowFocusListener(this);
+    requestFocus();
+    addWindowFocusListener(this);
     thePlayer = player;
     makeMerchant();
     addMerchantModel();
     addPlayerModel();
     playersInventory = new JList(playerList);
     merchantsInventory = new JList(merchantList);
-    
+
     playerScroll = new JScrollPane(playersInventory);
-    playerScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    playerScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-    
+    playerScroll
+        .setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    playerScroll
+        .setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
     merchantScroll = new JScrollPane(merchantsInventory);
-    merchantScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    merchantScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    merchantScroll
+        .setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+    merchantScroll
+        .setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
     buy = new JButton("Buy");
     sell = new JButton("Sell");
@@ -114,6 +119,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     Vector<Item> v = thePlayer.getInventory();
     for (Item item : v)
     {
+      //item.modify();
       playerList.addElement(item);
     }
   }
@@ -124,6 +130,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     Vector<Item> v = theMerchant.getInventory();
     for (Item item : v)
     {
+      item.modify();
       merchantList.addElement(item);
     }
 
@@ -148,29 +155,27 @@ public class TradingMenu extends JFrame implements WindowFocusListener
           Item item = (Item) merchantsInventory.getSelectedValue();
           merchantList.removeElement(item);
           playerList.addElement(item);
-          theMerchant.sale((double) item.getBasePrice(), item);
-          thePlayer.purchase((double) item.getBasePrice(), item);
+          theMerchant.sale((double) item.getModifiedPrice(), item);
+          thePlayer.purchase((double) item.getModifiedPrice(), item);
           updateBanks();
+          item.unModify();
           repaint();
         } else if (event.getActionCommand().equals("Sell"))
         {
           Item item = (Item) playersInventory.getSelectedValue();
           playerList.removeElement(item);
           merchantList.addElement(item);
-          thePlayer.sale((double) item.getBasePrice(), item);
-          theMerchant.purchase((double) item.getBasePrice(), item);
+          thePlayer.sale((double) item.getModifiedPrice(), item);
+          theMerchant.purchase((double) item.getModifiedPrice(), item);
           updateBanks();
           repaint();
         } else if (event.getActionCommand().equals("Leave"))
         {
           dispose();
-          // You are welcome -Jon
-        } else
-
-        {
+          // You are welcome -Jon -- Thank you -Ryan
           Orbital loc = ((TradePort) theMerchant).getLocale();
           thePlayer.setLoc(loc.getParent());
-        }
+        } 
       } catch (Exception e)
       {
 
@@ -179,10 +184,12 @@ public class TradingMenu extends JFrame implements WindowFocusListener
 
   }
 
-public void windowGainedFocus(WindowEvent arg0) {	
-}
+  public void windowGainedFocus(WindowEvent arg0)
+  {
+  }
 
-public void windowLostFocus(WindowEvent arg0) {
-	dispose();
-}
+  public void windowLostFocus(WindowEvent arg0)
+  {
+    dispose();
+  }
 }
