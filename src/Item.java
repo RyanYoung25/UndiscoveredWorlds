@@ -1,6 +1,7 @@
 
 
 import java.io.Serializable;
+import java.util.Random;
 
 
 public class Item implements Serializable
@@ -13,6 +14,7 @@ public class Item implements Serializable
   private double volatility;
   private int classification;
   private int modifiedPrice;  //for future use
+  private Random generator;
   
   public Item()
   {
@@ -28,6 +30,7 @@ public class Item implements Serializable
     setModifier(modifier);
     setVolatility(volatility);
     setClassification(classification);
+    generator = new Random();
   }
 
   public Item(String[] rec)
@@ -67,6 +70,7 @@ public class Item implements Serializable
    */
   public void modify()
   {
+    
     modifiedPrice = (int) (basePrice * modifier);
     modifiedPrice = (int) (basePrice / modifier);
     modifiedPrice = basePrice;
