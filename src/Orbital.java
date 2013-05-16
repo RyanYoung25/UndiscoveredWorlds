@@ -7,7 +7,9 @@ import java.awt.image.BufferedImage;
  */
 public class Orbital extends Location 
 {
-
+	private static final int OFFSET = 20;
+	private static final int MULTI = 7;
+	
 	protected int Radius;					// Relative distance from parent, be it a star or planet.
 	protected OrbitalRecord OrbitalClass;	// References information specific to this Orbital's classification.
 	protected StarRecord ParentStar;		// References information specific to this Orbital's parent star.
@@ -152,4 +154,28 @@ public class Orbital extends Location
 	{
 	  return 4;
 	}
+	
+	public int GetX()
+	  {
+		for (int x = 0; x < getParent().getChild().length; x++)
+		{
+			if(this == getParent().getChild(x))
+			{
+				return (int)((x+OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
+			}
+		}
+	    return 0;
+	  }
+	  
+	  public int GetY()
+	  {
+		  for (int x = 0; x < getParent().getChild().length; x++)
+			{
+				if(this == getParent().getChild(x))
+				{
+					return (int)((x+OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
+				}
+			} 
+	    return 0;
+	  }
 }

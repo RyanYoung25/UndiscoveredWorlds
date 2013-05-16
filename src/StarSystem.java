@@ -234,4 +234,18 @@ public class StarSystem extends Location
 	{
 	  return 3;
 	}
+	
+/*	public int[][] getOrbits()
+	{
+		int[][] orbits = new int[Orbitals.length][2];
+		
+		for(int x = 0; x < orbits.length; x++)
+		{
+			orbits[x][0] = (int)((x+1) * 10 * Math.sin(Math.toRadians(rand.nextInt(360))));
+			orbits[x][1] = (int)((x+1) * 10 * Math.cos(Math.toRadians(rand.nextInt(360))));
+		}
+		
+		return orbits;
+	}*/
+	
 }
