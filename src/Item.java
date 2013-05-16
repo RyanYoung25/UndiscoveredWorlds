@@ -12,6 +12,7 @@ public class Item implements Serializable
   private double modifier;
   private double volatility;
   private int classification;
+  private int modifiedPrice;  //for future use
   
   public Item()
   {
@@ -58,6 +59,15 @@ public class Item implements Serializable
   public void setIDNumber(int iDNumber)
   {
     IDNumber = iDNumber;
+  }
+  
+  /**
+   * Use to modify the price. Will be implemented at a later date.
+   * 
+   */
+  public void modify()
+  {
+    modifiedPrice = basePrice;
   }
 
   public int getBasePrice()
@@ -112,6 +122,6 @@ public class Item implements Serializable
   
   public String toString()
   {
-    return name;
+    return "$" + getBasePrice() + "$ " + name;
   }
 }
