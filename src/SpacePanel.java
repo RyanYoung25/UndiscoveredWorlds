@@ -34,6 +34,7 @@ public class SpacePanel extends JPanel
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
     JButton back = new JButton("<");
+    back.setToolTipText("Return to " + currentLocation.getParent());
     back.addActionListener(new ActionListener()
     {
 
@@ -82,7 +83,13 @@ public class SpacePanel extends JPanel
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
-        b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");
+        b.setToolTipText("<HTML>"
+        				+ "Name: " + loc.toString() 
+        				+ "<BR />" 
+        				+ "Type: "
+        				+ "<BR />"
+        				+ "Location: "+ loc.getParent().toString() 
+        				+ "</HTML>");
         this.add(b);
       }
       repaint();
