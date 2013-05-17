@@ -82,6 +82,7 @@ public class SpacePanel extends JPanel
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
+        b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");
         this.add(b);
       }
       repaint();
