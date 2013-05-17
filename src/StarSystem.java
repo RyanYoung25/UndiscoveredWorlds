@@ -88,7 +88,8 @@ public class StarSystem extends Location
 	@Override
 	public String toString()
 	{
-		return Ops.getSystem(Star);
+		Sector temp = (Sector)getParent();
+		return Ops.getSystem(Star) + " " + temp.getName(1);
 	}
 	
 	/**
