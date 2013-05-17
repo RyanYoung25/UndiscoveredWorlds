@@ -69,12 +69,13 @@ public class SpacePanel extends JPanel
     locationName.setBackground(Color.WHITE);
     this.add(locationName);
     this.add(back);
+    renderScene();
     if (locations != null)
     {
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
-        JButton b = new JButton(loc.toString());
+        JButton b = new JButton();
         b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
             50, 50);
         b.setBackground(Color.BLUE);
@@ -109,6 +110,10 @@ public class SpacePanel extends JPanel
       player.setLoc(currentLocation.getParent());
       populateSpace();
     }
+  }
+  public void renderScene()
+  {
+  	
   }
 
   private class LocationListener implements ActionListener
