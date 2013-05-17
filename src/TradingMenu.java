@@ -71,14 +71,14 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     addMerchantModel();
     addPlayerModel();
     
-    ListListener listListener = new ListListener();
+    //ListListener listListener = new ListListener();
     
     playersInventory = new JList(playerList);
     playersInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     //playersInventory.addListSelectionListener(listListener);
     merchantsInventory = new JList(merchantList);
     merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-   // merchantsInventory.addListSelectionListener(listListener);
+    //merchantsInventory.addListSelectionListener(listListener);
 
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
@@ -191,23 +191,39 @@ public class TradingMenu extends JFrame implements WindowFocusListener
       {
         if (event.getSource() == buy)
         {
-          Item item = (Item) merchantsInventory.getSelectedValue();
-          merchantList.removeElement(item);
-          playerList.addElement(item);
-          theMerchant.sale((double) item.getModifiedPrice(), item);
-          thePlayer.purchase((double) item.getModifiedPrice(), item);
-          updateBanks();
-          item.unModify();
-          repaint();
+        	String[] mInventory = merchantsInventory.getSelectedValue().toString().split(" ");
+			String money = mInventory[0].substring(1);
+			if(Integer.parseInt(money) > thePlayer.getMoney()){
+				topPlayerLabel.setText("Player could not afford that!");
+			}else{
+				topPlayerLabel.setText("Player could afford that!");
+				Item item = (Item) merchantsInventory.getSelectedValue();
+		          merchantList.removeElement(item);
+		          playerList.addElement(item);
+		          theMerchant.sale((double) item.getModifiedPrice(), item);
+		          thePlayer.purchase((double) item.getModifiedPrice(), item);
+		          updateBanks();
+		          item.unModify();
+		          repaint();
+			}
+          
         } else if (event.getSource() == sell)
         {
-          Item item = (Item) playersInventory.getSelectedValue();
-          playerList.removeElement(item);
-          merchantList.addElement(item);
-          thePlayer.sale((double) item.getModifiedPrice(), item);
-          theMerchant.purchase((double) item.getModifiedPrice(), item);
-          updateBanks();
-          repaint();
+        	String[] pInventory = playersInventory.getSelectedValue().toString().split(" ");
+			String money = pInventory[0].substring(1);
+			if(Integer.parseInt(money) > theMerchant.getMoney()){
+				topMerchantLabel.setText("Merchant could not afford that!");
+			}else{
+				topMerchantLabel.setText("Merchant could afford that!");
+				Item item = (Item) playersInventory.getSelectedValue();
+		          playerList.removeElement(item);
+		          merchantList.addElement(item);
+		          thePlayer.sale((double) item.getModifiedPrice(), item);
+		          theMerchant.purchase((double) item.getModifiedPrice(), item);
+		          updateBanks();
+		          repaint();
+			}
+          
         } else if (event.getSource() == leave)
         {
           dispose();
@@ -224,6 +240,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   }
   //This breaks something and Im not sure why.
   //The list do not update properly when this is active
+  /*
   private class ListListener implements ListSelectionListener{
 
 	@Override
@@ -253,6 +270,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
 	}
 	  
   }
+*/
 
   public void windowGainedFocus(WindowEvent arg0)
   {
