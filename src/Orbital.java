@@ -195,6 +195,10 @@ public class Orbital extends Location
 	@Override
 	public BufferedImage GetCenterImage()
 	{
+		if(getParent().getClass() == StarSystem.class)
+		{
+			return getParent().GetPic();
+		}
 		return super.GetCenterImage();
 	}
 }
