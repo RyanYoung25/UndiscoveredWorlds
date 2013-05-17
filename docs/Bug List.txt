@@ -11,7 +11,7 @@
 
 [X]Images on top level are too large
 
-[ ]Back button does nothing on first click on bottom level
+[X]Back button does nothing on first click on bottom level
 
 [P]Option disappears when navigating away from first view
 
@@ -20,7 +20,7 @@
 [ ]Clickable items are sometimes generated too close to another clickable
    or the edge of screen
 
-[ ]Ports can generate without any items(Should have items or not be clickable)
+[P]Ports can generate without any items(Should have items or not be clickable)
 
 [P]Bottom level generation only generates one clickable
 

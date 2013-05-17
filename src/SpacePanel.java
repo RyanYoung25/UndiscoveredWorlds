@@ -76,12 +76,18 @@ public class SpacePanel extends JPanel
       {
         Location loc = locations[i];
         JButton b = new JButton();
-        b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
-            50, 50);
+        if(currentLocation.whatAmI() == 1){
+        	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
+                    100, 100);
+        	b.setIcon(new ImageIcon(loc.GetPic(75)));
+        }else{
+        	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
+                    50, 50);
+        	b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
+        }
         b.setBackground(Color.BLUE);
         LocationListener handler = new LocationListener(i);
         b.addActionListener(handler);
-        b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(true);
