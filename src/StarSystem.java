@@ -235,6 +235,11 @@ public class StarSystem extends Location
 	  return 3;
 	}
 	
+	@Override
+	public BufferedImage GetCenterImage()
+	{
+		return super.GetCenterImage();
+	}
 /*	public int[][] getOrbits()
 	{
 		int[][] orbits = new int[Orbitals.length][2];

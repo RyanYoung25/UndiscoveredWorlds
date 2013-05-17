@@ -87,6 +87,11 @@ public class Location
   {
 	  return PictureAlbum.getScaledSquareImage(Picture, scale);
   }
+  
+  public BufferedImage GetCenterImage()
+  {
+	  return getParent().Picture;
+  }
 
   public Location getParent()
   {

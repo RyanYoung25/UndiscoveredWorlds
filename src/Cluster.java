@@ -162,6 +162,12 @@ public class Cluster extends Location
 		return anchor;
 	}
 	
+	@Override
+	public BufferedImage GetCenterImage()
+	  {
+		  return Pics.getBlackHole();
+	  }
+	
 	public int whatAmI()
 	{
 	  return 1;

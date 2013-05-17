@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+
 
 /**
  * The Cluster class provides the next structural tier after the Cluster class for galaxy generation and manipulation.
@@ -112,4 +114,10 @@ public class Sector extends Location
 	{
 	  return 2;
 	}
+	
+	@Override
+	public BufferedImage GetCenterImage()
+	  {
+		  return super.GetCenterImage();
+	  }
 }

@@ -191,4 +191,10 @@ public class Orbital extends Location
 		  }
 		  return getParent().toString();
 	  }
+	  
+	@Override
+	public BufferedImage GetCenterImage()
+	{
+		return super.GetCenterImage();
+	}
 }

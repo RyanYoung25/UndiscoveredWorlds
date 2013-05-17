@@ -1,3 +1,5 @@
+import java.awt.image.BufferedImage;
+
 
 /**
  * Galaxy class handles generation and manipulation for all elements within instantiated galaxy object.
@@ -238,4 +240,10 @@ public class Galaxy extends Location
 	  int randInt = rand.nextInt(GetSectors().length);
 	  return GetSector(randInt);
 	}
+	
+	@Override
+	public BufferedImage GetCenterImage()
+	  {
+		  return null;
+	  }
 }
