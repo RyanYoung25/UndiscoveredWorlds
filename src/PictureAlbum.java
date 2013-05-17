@@ -146,24 +146,9 @@ public class PictureAlbum
 	{
 		return StarHaloPics[index];
 	}
-/*	
-	public static BufferedImage getScaledSquareImage(BufferedImage image)
-	{
-		BufferedImage temp = new BufferedImage(DEFAULT_SIZE,DEFAULT_SIZE,BufferedImage.TYPE_4BYTE_ABGR);
-		Graphics2D g = temp.createGraphics();
-		g.drawImage(image, DEFAULT_SIZE, DEFAULT_SIZE, null);
-		g.dispose();
-		return temp;
-	}
-*/
+
 	public static Image getScaledSquareImage(BufferedImage pic, int scale)
 	{
-/*		int length = image.getWidth();
-		BufferedImage temp = new BufferedImage(length, length, BufferedImage.TYPE_4BYTE_ABGR);
-		AffineTransform mapper = new AffineTransform();
-		mapper.scale(scale, scale);
-		AffineTransformOp Op = new AffineTransformOp(mapper, AffineTransformOp.TYPE_BILINEAR);
-		return Op.filter(image, temp);
-*/		return pic.getScaledInstance(scale, scale, BufferedImage.SCALE_AREA_AVERAGING);
+		return pic.getScaledInstance(scale, scale, BufferedImage.SCALE_AREA_AVERAGING);
 	}
 }
