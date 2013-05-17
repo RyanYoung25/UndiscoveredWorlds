@@ -186,7 +186,7 @@ public class Orbital extends Location
 		  {
 			  if(getParent().getChild(i) == this)
 			  {
-				  return getParent() + " " + FileOps.RomanNum(i);
+				  return getParent() + " " + FileOps.RomanNum(i+1);
 			  }
 		  }
 		  return getParent().toString();
