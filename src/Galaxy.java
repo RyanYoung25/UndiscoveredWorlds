@@ -211,7 +211,7 @@ public class Galaxy extends Location
 	 */
 	public void DisplayCluster()
 	{
-		System.out.printf("%s\n", CurrentCluster.toString());
+		System.out.printf("%s\n", CurrentCluster);
 		for (int x = 0; x < GetCluster().getChild().length; x++)
 		{
 			System.out.printf("%s\n", SectorDetails(x));

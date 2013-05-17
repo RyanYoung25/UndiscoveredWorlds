@@ -39,7 +39,7 @@ public class StarSystem extends Location
 		int z = u;
 		for (int v = 0; v < Orbitals.length; v++)
 		{
-			GenOrbital(rand.nextInt(z), v);
+			GenOrbital(rand.nextInt(u)+z, v);
 			z += u;
 		}
 	}
