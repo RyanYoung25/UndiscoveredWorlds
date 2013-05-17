@@ -26,8 +26,9 @@ public class PictureAlbum
 	private BufferedImage[] LavaPics;
 	private BufferedImage[] OceanPics;
 	private BufferedImage[] SlushPics;
-	
-	
+	private BufferedImage Starfield;
+	private BufferedImage Galaxy;
+	private BufferedImage BlackHole;
 	
 	public PictureAlbum ()
 	{
@@ -40,6 +41,11 @@ public class PictureAlbum
 		{
 			System.err.println(e.getMessage());
 		}
+	}
+	
+	private BufferedImage loadImage(String name) throws IOException
+	{
+		return ImageIO.read(new File(IMG_FOLDER + name + ".png"));
 	}
 	
 	private BufferedImage[] loadImage(String name, int number) throws IOException
@@ -69,7 +75,9 @@ public class PictureAlbum
 			LavaPics = loadImage("Lava",5);
 			OceanPics = loadImage("Ocean",5);
 			SlushPics = loadImage("Slush",5);
-			
+			Starfield = loadImage("Starfield");
+			Galaxy = loadImage("Galaxy");
+			BlackHole = loadImage("BlackHole");
 		}
 		catch (IOException e)
 		{
@@ -146,9 +154,24 @@ public class PictureAlbum
 	{
 		return StarHaloPics[index];
 	}
+	
+	public BufferedImage getStarfield()
+	{
+		return Starfield;
+	}
 
+	public BufferedImage getGalaxy()
+	{
+		return Galaxy;
+	}
+	
+	public BufferedImage getBlackHole()
+	{
+		return BlackHole;
+	}
+	
 	public static Image getScaledSquareImage(BufferedImage pic, int scale)
 	{
-		return pic.getScaledInstance(scale, scale, BufferedImage.SCALE_AREA_AVERAGING);
+		return pic.getScaledInstance(scale, scale, BufferedImage.SCALE_SMOOTH);
 	}
 }
