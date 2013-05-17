@@ -5,6 +5,8 @@
  */
 public class Sector extends Location
 {
+	private static final int DEFAULT_RADIUS = 150;
+	private static final int DISTANCE_MOD = 150;
 	private StarSystem[] StarSystems;	//Holds all StarSystem information for this Sector.
 	private int Name;					// Number corresponding to entry in Ops.SectorNames 
 	private int x;						// X coordinate data.
@@ -30,12 +32,11 @@ public class Sector extends Location
 	{
 		StarSystems = new StarSystem[1 + rand.nextInt(MAX_SYSTEMS)];
 		double spacing = 360.0 / StarSystems.length;
-		int radius = 100;
 		for (int z = 0; z < StarSystems.length; z++)
 		{
 			StarSystems[z] = new StarSystem((byte)z,Name,(byte)rand.nextInt(7));
-			StarSystems[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
-			StarSystems[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
+			StarSystems[z].SetX((int)(((DEFAULT_RADIUS + rand.nextInt(DISTANCE_MOD)) * Math.cos(Math.toRadians(spacing*z)))));
+			StarSystems[z].SetY((int)(((DEFAULT_RADIUS + rand.nextInt(DISTANCE_MOD)) * Math.sin(Math.toRadians(spacing*z)))));
 			StarSystems[z].setParent(this);  //Ryan's code hope it works
 			
 		}

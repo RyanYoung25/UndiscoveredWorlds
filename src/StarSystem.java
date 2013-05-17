@@ -116,7 +116,7 @@ public class StarSystem extends Location
 	 */
 	public void SetX(int X)
 	{
-		x = (byte) X;
+		x = X;
 	}
 	
 	/**
@@ -134,7 +134,7 @@ public class StarSystem extends Location
 	 */
 	public void SetY(int Y)
 	{
-		y = (byte) Y;
+		y = Y;
 	}
 	
 	/**
