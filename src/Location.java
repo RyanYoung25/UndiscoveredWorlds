@@ -79,7 +79,6 @@ public class Location
    */
   public BufferedImage GetPic()
   {
-	
     return Picture;
   }
   

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 /**
@@ -240,6 +241,17 @@ public class StarSystem extends Location
 	public BufferedImage GetCenterImage()
 	{
 		return super.GetCenterImage();
+	}
+	
+	@Override
+	public BufferedImage GetPic()
+	{
+	    return Halo;
+	}
+	
+	public Image GetPic(int scale)
+	{
+		return PictureAlbum.getScaledSquareImage(Halo, scale);
 	}
 /*	public int[][] getOrbits()
 	{
