@@ -84,7 +84,7 @@ public class SpacePanel extends JPanel
         b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
         b.setOpaque(false);
         b.setBorderPainted(false);
-        b.setContentAreaFilled(false);
+        b.setContentAreaFilled(true);
 
         b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");  //not working TODO: fix
 
