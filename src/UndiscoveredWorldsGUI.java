@@ -15,6 +15,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		optionsButton = new JButton("?");
 		optionsButton.setLocation(702, 0);
 		optionsButton.setSize(38, 38);
+		optionsButton.setToolTipText("Options Menu");
 		optionsButton.addActionListener(this);
 
 		Galaxy Andromeda = new Galaxy();

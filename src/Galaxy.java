@@ -244,6 +244,6 @@ public class Galaxy extends Location
 	@Override
 	public BufferedImage GetCenterImage()
 	  {
-		  return null;
+		  return Pics.getGalaxy();
 	  }
 }

@@ -51,7 +51,12 @@ public class Sector extends Location
 	@Override
 	public String toString()
 	{
-		return Ops.getSector(Name,0) + " Sector";
+		return getName(0) + " Sector";
+	}
+	
+	public String getName(int mod)
+	{
+		return Ops.getSector(Name,mod);
 	}
 	
 	/**

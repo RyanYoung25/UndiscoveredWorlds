@@ -161,7 +161,7 @@ public class Orbital extends Location
 		{
 			if(this == getParent().getChild(x))
 			{
-				return (int)((x+OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
+				return (int)((x + OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
 			}
 		}
 	    return 0;
@@ -173,7 +173,7 @@ public class Orbital extends Location
 			{
 				if(this == getParent().getChild(x))
 				{
-					return (int)((x+OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
+					return (int)((x + OFFSET) * MULTI * Math.sin(Math.toRadians(rand.nextInt(360))));
 				}
 			} 
 	    return 0;
@@ -186,7 +186,7 @@ public class Orbital extends Location
 		  {
 			  if(getParent().getChild(i) == this)
 			  {
-				  return getParent() + " " + FileOps.RomanNum(i);
+				  return getParent() + " " + FileOps.RomanNum(i+1);
 			  }
 		  }
 		  return getParent().toString();
