@@ -65,6 +65,7 @@ public class SpacePanel extends JPanel
     default:
       locationName.setText("Error");
     }
+    locationName.setBackground(Color.WHITE);
     this.add(locationName);
     this.add(back);
     if (locations != null)
@@ -82,17 +83,20 @@ public class SpacePanel extends JPanel
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
-        b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");
+        b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");  //not working TODO: fix
         this.add(b);
       }
       repaint();
     } else
     {
+      
       TradingMenu menu = new TradingMenu(player);
       menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       menu.setResizable(false);
       menu.setVisible(true);
+      player.setLoc(currentLocation.getParent());
+      populateSpace();
     }
   }
 

@@ -36,10 +36,10 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   private JList            playersInventory;
   private JList            merchantsInventory;
   private JPanel           buttonPanel;
-  private JLabel		   topPlayerLabel;
-  private JLabel		   topMerchantLabel;
-  private JPanel		   playerPanel;
-  private JPanel		   merchantPanel;
+  private JLabel           topPlayerLabel;
+  private JLabel           topMerchantLabel;
+  private JPanel           playerPanel;
+  private JPanel           merchantPanel;
   private JButton          buy;               // put price of selected
                                                // items in parenthesis on
                                                // button
@@ -63,22 +63,22 @@ public class TradingMenu extends JFrame implements WindowFocusListener
    */
   public TradingMenu(Player player)
   {
-	super("Trading");
+    super("Trading");
     requestFocus();
     addWindowFocusListener(this);
     thePlayer = player;
     makeMerchant();
     addMerchantModel();
     addPlayerModel();
-    
-    //ListListener listListener = new ListListener();
-    
+
+    // ListListener listListener = new ListListener();
+
     playersInventory = new JList(playerList);
     playersInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    //playersInventory.addListSelectionListener(listListener);
+    // playersInventory.addListSelectionListener(listListener);
     merchantsInventory = new JList(merchantList);
     merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    //merchantsInventory.addListSelectionListener(listListener);
+    // merchantsInventory.addListSelectionListener(listListener);
 
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
@@ -95,13 +95,13 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     buy = new JButton("<-- Buy ---");
     sell = new JButton("--- Sell -->");
     leave = new JButton("Leave Shop");
-    
+
     topPlayerLabel = new JLabel("Player");
     topMerchantLabel = new JLabel("Merchant");
 
     playerBank = new JLabel("Player Funds: $" + player.getMoney());
     merchantBank = new JLabel("Merchant Funds: $" + theMerchant.getMoney());
-    
+
     playerPanel = new JPanel();
     playerPanel.setLayout(new BorderLayout());
     playerPanel.add(topPlayerLabel, BorderLayout.NORTH);
@@ -115,7 +115,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     buttonPanel.add(sell);
     buttonPanel.add(leave);
     buttonPanel.add(new JLabel());
-    
+
     merchantPanel = new JPanel();
     merchantPanel.setLayout(new BorderLayout());
     merchantPanel.add(topMerchantLabel, BorderLayout.NORTH);
@@ -123,14 +123,14 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     merchantPanel.add(merchantBank, BorderLayout.SOUTH);
 
     setLayout(new GridLayout(1, 3));
-    //add(playerScroll);
+    // add(playerScroll);
     add(playerPanel);
     add(buttonPanel);
     add(merchantPanel);
-    //add(merchantScroll);
-    //add(playerBank);
-    //add(new JLabel());
-    //add(merchantBank);
+    // add(merchantScroll);
+    // add(playerBank);
+    // add(new JLabel());
+    // add(merchantBank);
 
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
@@ -140,15 +140,18 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     leave.addActionListener(handler);
     leave.setFocusPainted(false);
   }
-
+  /**
+   * This method creates the merchant and checks if you have previously been there.
+   */
   private void makeMerchant()
   {
     if (thePlayer.hasBeenHere(thePlayer.getLoc()))
     {
-      theMerchant = new TradePort(thePlayer.getPort(thePlayer.getLoc()));
+      theMerchant = thePlayer.getPort(thePlayer.getLoc());
     } else
     {
       theMerchant = new TradePort(thePlayer.getLoc());
+      thePlayer.addPort(theMerchant);
     }
   }
 
@@ -158,7 +161,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     Vector<Item> v = thePlayer.getInventory();
     for (Item item : v)
     {
-      //item.modify();
+      // item.modify();
       playerList.addElement(item);
     }
   }
@@ -177,8 +180,8 @@ public class TradingMenu extends JFrame implements WindowFocusListener
 
   private void updateBanks()
   {
-    playerBank.setText("" + thePlayer.getMoney());
-    merchantBank.setText("" + theMerchant.getMoney());
+    playerBank.setText("Player Funds: $" + thePlayer.getMoney());
+    merchantBank.setText("Merchant Funds: $" + theMerchant.getMoney());
   }
 
   private class ButtonListener implements ActionListener
@@ -191,46 +194,56 @@ public class TradingMenu extends JFrame implements WindowFocusListener
       {
         if (event.getSource() == buy)
         {
-        	String[] mInventory = merchantsInventory.getSelectedValue().toString().split(" ");
-			String money = mInventory[0].substring(1);
-			if(Integer.parseInt(money) > thePlayer.getMoney()){
-				topPlayerLabel.setText("Player could not afford that!");
-			}else{
-				topPlayerLabel.setText("Player could afford that!");
-				Item item = (Item) merchantsInventory.getSelectedValue();
-		          merchantList.removeElement(item);
-		          playerList.addElement(item);
-		          theMerchant.sale((double) item.getModifiedPrice(), item);
-		          thePlayer.purchase((double) item.getModifiedPrice(), item);
-		          updateBanks();
-		          item.unModify();
-		          repaint();
-			}
-          
+          Item item = (Item) merchantsInventory.getSelectedValue();
+          int money = item.getModifiedPrice();
+          if (money > thePlayer.getMoney())
+          {
+            topPlayerLabel.setText("Player can not afford that!");  // as far as
+                                                                   // aesthetics
+                                                                   // this looks
+                                                                   // fine,
+                                                                   // saying
+                                                                   // they can't
+                                                                   // afford and
+                                                                   // then
+                                                                   // nothing
+          } else
+          {
+            topPlayerLabel.setText("Player");
+            merchantList.removeElement(item);
+            playerList.addElement(item);
+            theMerchant.sale((double) item.getModifiedPrice(), item);
+            thePlayer.purchase((double) item.getModifiedPrice(), item);
+            updateBanks();
+            item.unModify();
+            repaint();
+          }
+
         } else if (event.getSource() == sell)
         {
-        	String[] pInventory = playersInventory.getSelectedValue().toString().split(" ");
-			String money = pInventory[0].substring(1);
-			if(Integer.parseInt(money) > theMerchant.getMoney()){
-				topMerchantLabel.setText("Merchant could not afford that!");
-			}else{
-				topMerchantLabel.setText("Merchant could afford that!");
-				Item item = (Item) playersInventory.getSelectedValue();
-		          playerList.removeElement(item);
-		          merchantList.addElement(item);
-		          thePlayer.sale((double) item.getModifiedPrice(), item);
-		          theMerchant.purchase((double) item.getModifiedPrice(), item);
-		          updateBanks();
-		          repaint();
-			}
-          
+          Item item = (Item) playersInventory.getSelectedValue(); //I think this is easier
+          int money = item.getModifiedPrice();  //Just a little easier to read
+          if(money > theMerchant.getMoney())
+          {
+            topMerchantLabel.setText("Merchant can not afford that!");
+          } else
+          {
+            topMerchantLabel.setText("Merchant");
+            playerList.removeElement(item);
+            merchantList.addElement(item);
+            thePlayer.sale((double) item.getModifiedPrice(), item);
+            theMerchant.purchase((double) item.getModifiedPrice(), item);
+            updateBanks();
+            repaint();
+          }
+
         } else if (event.getSource() == leave)
         {
           dispose();
           // You are welcome -Jon -- Thank you -Ryan
           Orbital loc = ((TradePort) theMerchant).getLocale();
           thePlayer.setLoc(loc.getParent());
-        } 
+        }
       } catch (Exception e)
       {
 
@@ -238,39 +251,32 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     }
 
   }
-  //This breaks something and Im not sure why.
-  //The list do not update properly when this is active
-  /*
-  private class ListListener implements ListSelectionListener{
 
-	@Override
-	public void valueChanged(ListSelectionEvent lse) {
-		
-		if(lse.getSource() == merchantsInventory){
-			String[] mInventory = merchantsInventory.getSelectedValue().toString().split(" ");
-			String money = mInventory[0].substring(1);
-			if(Integer.parseInt(money) > thePlayer.getMoney()){
-				topPlayerLabel.setText("Player can not afford that!");
-				buy.setEnabled(false);
-			}else{
-				topPlayerLabel.setText("Player can afford that!");
-				buy.setEnabled(true);
-			}
-		}if(lse.getSource() == playersInventory){
-			String[] pInventory = playersInventory.getSelectedValue().toString().split(" ");
-			String money = pInventory[0].substring(1);
-			if(Integer.parseInt(money) > theMerchant.getMoney()){
-				topMerchantLabel.setText("Merchant can not afford that!");
-				sell.setEnabled(false);
-			}else{
-				topMerchantLabel.setText("Merchant can afford that!");
-				sell.setEnabled(true);
-			}
-		}
-	}
-	  
-  }
-*/
+  // This breaks something and Im not sure why.
+  // The list do not update properly when this is active
+  /*
+   * private class ListListener implements ListSelectionListener{
+   * 
+   * @Override public void valueChanged(ListSelectionEvent lse) {
+   * 
+   * if(lse.getSource() == merchantsInventory){ String[] mInventory =
+   * merchantsInventory.getSelectedValue().toString().split(" "); String money =
+   * mInventory[0].substring(1); if(Integer.parseInt(money) >
+   * thePlayer.getMoney()){
+   * topPlayerLabel.setText("Player can not afford that!");
+   * buy.setEnabled(false); }else{
+   * topPlayerLabel.setText("Player can afford that!"); buy.setEnabled(true); }
+   * }if(lse.getSource() == playersInventory){ String[] pInventory =
+   * playersInventory.getSelectedValue().toString().split(" "); String money =
+   * pInventory[0].substring(1); if(Integer.parseInt(money) >
+   * theMerchant.getMoney()){
+   * topMerchantLabel.setText("Merchant can not afford that!");
+   * sell.setEnabled(false); }else{
+   * topMerchantLabel.setText("Merchant can afford that!");
+   * sell.setEnabled(true); } } }
+   * 
+   * }
+   */
 
   public void windowGainedFocus(WindowEvent arg0)
   {

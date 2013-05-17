@@ -54,7 +54,7 @@ public class TradePort extends Location implements Merchant
 		Vector<Item> temp = new Vector<Item>();
 		for ( Item x : Ops.GetItems())
 		{
-			if (locale.getOrbitalClass().GetProperties()[x.getClassification()] >= 6)
+			if (locale.getOrbitalClass().GetProperties()[x.getClassification()] <= 6)  //I changed from > to < now there are more items
 			{
 				temp.add(x);
 			}
