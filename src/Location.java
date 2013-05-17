@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -57,7 +58,7 @@ public class Location
                                                                 // around a
                                                                 // planet (1 to
                                                                 // MAX)
-
+  
   protected BufferedImage    Picture;                          // Used to
                                                                 // reference
                                                                 // image data
@@ -73,12 +74,18 @@ public class Location
 
   /**
    * Returns location's image data
-   * 
+   * If no scale is specified it will scale to DEFAULT_SIZE
    * @return
    */
   public BufferedImage GetPic()
   {
+	
     return Picture;
+  }
+  
+  public Image GetPic(int scale)
+  {
+	  return PictureAlbum.getScaledSquareImage(Picture, scale);
   }
 
   public Location getParent()

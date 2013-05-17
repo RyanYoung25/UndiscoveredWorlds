@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
 {
-
+  public static final int DEFAULT_SIZE = 35;
   private static final int SCALAR = 1;
   private static final int SHIFT  = 360;
   private Player           player;
@@ -78,7 +78,7 @@ public class SpacePanel extends JPanel
         b.setBackground(Color.BLUE);
         LocationListener handler = new LocationListener(i);
         b.addActionListener(handler);
-        b.setIcon(new ImageIcon(loc.Picture));
+        b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);

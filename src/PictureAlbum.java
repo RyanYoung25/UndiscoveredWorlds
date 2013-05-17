@@ -1,3 +1,6 @@
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,8 +27,11 @@ public class PictureAlbum
 	private BufferedImage[] OceanPics;
 	private BufferedImage[] SlushPics;
 	
+	
+	
 	public PictureAlbum ()
 	{
+
 		try
 		{
 			loadImages();
@@ -72,6 +78,11 @@ public class PictureAlbum
 	}
 	
 	public BufferedImage getClusterPic(int index)
+	{
+		return ClusterPics[index];
+	}
+	
+	public BufferedImage getClusterPic(int index, int scale)
 	{
 		return ClusterPics[index];
 	}
@@ -135,6 +146,24 @@ public class PictureAlbum
 	{
 		return StarHaloPics[index];
 	}
-	
-
+/*	
+	public static BufferedImage getScaledSquareImage(BufferedImage image)
+	{
+		BufferedImage temp = new BufferedImage(DEFAULT_SIZE,DEFAULT_SIZE,BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics2D g = temp.createGraphics();
+		g.drawImage(image, DEFAULT_SIZE, DEFAULT_SIZE, null);
+		g.dispose();
+		return temp;
+	}
+*/
+	public static Image getScaledSquareImage(BufferedImage pic, int scale)
+	{
+/*		int length = image.getWidth();
+		BufferedImage temp = new BufferedImage(length, length, BufferedImage.TYPE_4BYTE_ABGR);
+		AffineTransform mapper = new AffineTransform();
+		mapper.scale(scale, scale);
+		AffineTransformOp Op = new AffineTransformOp(mapper, AffineTransformOp.TYPE_BILINEAR);
+		return Op.filter(image, temp);
+*/		return pic.getScaledInstance(scale, scale, BufferedImage.SCALE_AREA_AVERAGING);
+	}
 }
