@@ -10,6 +10,10 @@
 Open
 ------------------------------------------------------
 
+	[ ]Planets and other clickable items are semitransparent on background.
+
+	[ ]Some stars on the bottom level are clickable to open a shop
+
 	[ ]Clickable items are sometimes generated too close to another clickable
 	   or the edge of screen
 
