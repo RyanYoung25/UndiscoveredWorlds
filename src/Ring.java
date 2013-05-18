@@ -18,11 +18,11 @@ public class Ring extends Orbital
 	
 	public int GetX()
 	{
-		return 0;
+		return 0-OFFSET;
 	}
 	
 	public int GetY()
 	{
-		return 0;
+		return 0-OFFSET;
 	}
 }
