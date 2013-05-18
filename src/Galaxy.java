@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
  */
 public class Galaxy extends Location
 {
+	private static final int MULTI = 200;
+	private static final int HALF_LENGTH = 63;
+	private static final int MIN_ORBIT = 100;
+	
 	private Cluster CurrentCluster;		// Stores currently loaded cluster
 	private Cluster[] Clusters;			// Stores a "lite" version of all the clusters in the galaxy
 	
@@ -60,11 +64,10 @@ public class Galaxy extends Location
 	public void PlaceClusters()
 	{
 		double spacing = 360.0 / Clusters.length;
-		int radius = 100;
 		for (int z = 0; z < Clusters.length; z++)
 		{
-			Clusters[z].SetX((int)((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z))));
-			Clusters[z].SetY((int)((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z))));
+			Clusters[z].SetX((int)((MIN_ORBIT + rand.nextInt(MULTI)) * Math.cos(Math.toRadians(spacing*z)))-HALF_LENGTH);
+			Clusters[z].SetY((int)((MIN_ORBIT + rand.nextInt(MULTI)) * Math.sin(Math.toRadians(spacing*z)))-HALF_LENGTH);
 		}
 	}
 	

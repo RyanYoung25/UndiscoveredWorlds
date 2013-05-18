@@ -6,6 +6,10 @@ import java.awt.image.BufferedImage;
  */
 public class Cluster extends Location
 {
+	private static final int MULTI = 200;
+	private static final int HALF_LENGTH = 63;
+	private static final int MIN_ORBIT = 100;
+	
 	private Sector[] Sectors;	// Holds all sector information for this cluster.
 	private long seed;			// Seed value provided by Galaxy.
 	private short Name;			// Number corresponding to entry in Ops.ClusterNames.
@@ -59,8 +63,8 @@ public class Cluster extends Location
 		for (int z = 0; z < Sectors.length; z++)
 		{
 			Sectors[z] = new Sector(z,this);
-			Sectors[z].SetX((int)(((radius + rand.nextInt(250)) * Math.cos(Math.toRadians(spacing*z)))));
-			Sectors[z].SetY((int)(((radius + rand.nextInt(250)) * Math.sin(Math.toRadians(spacing*z)))));
+			Sectors[z].SetX((int)(((MIN_ORBIT + rand.nextInt(MULTI)) * Math.cos(Math.toRadians(spacing*z))))-HALF_LENGTH);
+			Sectors[z].SetY((int)(((MIN_ORBIT + rand.nextInt(MULTI)) * Math.sin(Math.toRadians(spacing*z))))-HALF_LENGTH);
 		}
 	}
 	
