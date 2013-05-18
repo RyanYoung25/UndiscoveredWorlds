@@ -164,6 +164,12 @@ public class SpacePanel extends JPanel
 		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
 		  this.add(center);
 	  }
+	  if (locations[0].getParent().whatAmI() == 1)
+	  {
+		  JLabel singularity = new JLabel(new ImageIcon(locations[0].getParent().GetCenterImage()));
+		  singularity.setBounds(SHIFT - 64, SHIFT - 64,	128, 128);
+		  this.add(singularity);
+	  }
   }
 
   private class LocationListener implements ActionListener
