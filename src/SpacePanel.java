@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,7 +34,11 @@ public class SpacePanel extends JPanel
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
-    JButton back = new JButton("<");
+    JButton back = new JButton();
+    back.setIcon(new ImageIcon("Art" + File.separator + "BackButton.png"));
+    back.setOpaque(false);
+    back.setBorderPainted(false);
+    back.setContentAreaFilled(false);
     back.setToolTipText("Return to " + currentLocation.getParent());
     back.addActionListener(new ActionListener()
     {
@@ -91,12 +96,9 @@ public class SpacePanel extends JPanel
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(true);
-
-        b.setToolTipText("<HTML>" + loc.toString() +"<BR />" + "More info here" +"</HTML>");  //not working TODO: fix
-
         b.setToolTipText("<HTML>"
         				+ "Name: " + loc.toString() 
-        				+ "<BR />" 
+        				+ "<BR />"
         				+ "Type: "
         				+ "<BR />"
         				+ "Location: "+ loc.getParent().toString() 

@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.*;
 
@@ -15,6 +16,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		optionsButton = new JButton("?");
 		optionsButton.setLocation(702, 0);
 		optionsButton.setSize(38, 38);
+		optionsButton.setIcon(new ImageIcon());
 		optionsButton.setToolTipText("Options Menu");
 		optionsButton.addActionListener(this);
 
