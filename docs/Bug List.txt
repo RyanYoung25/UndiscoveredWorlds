@@ -23,9 +23,7 @@ Partially Completed
 ------------------------------------------------------
 
 	[P]Option disappears when navigating away from first view
-	   Only occurs once you've navigated up a level.
-
-	[P]White sidebar appears in window when navigating from first view
+	   Only occurs once you've navigated up a level. Reappears on hover.
 
 	[P]Ports can generate without any items(Should have items or not be clickable)
 
@@ -45,4 +43,6 @@ Completed
 	[X]Cost not displayed in store
 
 	[X]Multiple option and trading windows can be created
+
+	[X]White sidebar appears in window when navigating from first view
 

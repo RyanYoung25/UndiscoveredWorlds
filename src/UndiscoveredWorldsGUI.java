@@ -30,7 +30,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 
 		SpacePanel test = new SpacePanel(player);
 		// test.populateSpace();
-		// test.setPreferredSize(new Dimension(720, 720));
+		// test.setPreferredSize(new Dimension(740, 740));
 		// test.setLocation(0, 0);
 		this.add(optionsButton);
 		this.add(test);

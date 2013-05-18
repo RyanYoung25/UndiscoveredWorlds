@@ -6,8 +6,6 @@
 
 	∙ Add Start screen with option to load game or start new one
 
-	∙ Add background images
-
 	∙ Fix shops to have random amounts of money
 
 	∙ Fix sector generation (Too close to edge occasionally)
@@ -16,5 +14,3 @@
 	  and everything.
 
 	∙ Fix Option Button graphical issues
-
-	∙ Fix white sidebar

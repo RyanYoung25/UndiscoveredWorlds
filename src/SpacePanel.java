@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
 {
-  public static final int DEFAULT_WINDOW_SIZE = 720;
+  public static final int DEFAULT_WINDOW_SIZE = 740;
   public static final int DEFAULT_SIZE = 35;
   private static final int SCALAR = 1;
   private static final int SHIFT  = DEFAULT_WINDOW_SIZE/2;
