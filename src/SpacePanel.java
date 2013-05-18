@@ -100,12 +100,12 @@ public class SpacePanel extends JPanel
     this.add(back);
     if (locations != null)
     {
-      renderScene(locations);
+      
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
         JButton b = new JButton();
-        if(currentLocation.whatAmI() == 1){
+/*        if(currentLocation.whatAmI() == 1){
         	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
                     100, 100);
         	b.setIcon(new ImageIcon(loc.GetPic(75)));
@@ -113,13 +113,15 @@ public class SpacePanel extends JPanel
         	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
                     50, 50);
         	b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
-        }
+        }*/
+        b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT, 50, 50);
+        b.setIcon(new ImageIcon(loc.GetNavImage()));
         b.setBackground(Color.BLUE);
         LocationListener handler = new LocationListener(i);
         b.addActionListener(handler);
         b.setOpaque(false);
         b.setBorderPainted(false);
-        b.setContentAreaFilled(true);
+        b.setContentAreaFilled(false);
         b.setToolTipText("<HTML>"
         				+ "Name: " + loc.toString() 
         				+ "<BR />"
@@ -130,6 +132,7 @@ public class SpacePanel extends JPanel
 
         this.add(b);
       }
+      renderScene(locations);
       repaint();
     } else
     {
@@ -145,9 +148,24 @@ public class SpacePanel extends JPanel
   }
   public void renderScene(Location[] locations)
   {
-	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetBGImage(),DEFAULT_WINDOW_SIZE)));
-	  bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
-	  this.add(bg);
+	  for(int j = 0; j < locations.length; j++)
+	  {
+		  Location loc = locations[j];
+		  JLabel p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
+		  p.setBackground(Color.BLACK);
+		  p.setOpaque(false);
+		  int length = loc.GetPic().getWidth();
+		  p.setBounds(	(int)(loc.GetX()+SHIFT-(length/3)),
+				  		(int)(loc.GetY()+SHIFT-(length/3)),
+				  		length, length);
+		  this.add(p);
+	  }
+	  if (locations[0].getParent().whatAmI() == 1)
+	  {
+		  JLabel singularity = new JLabel(new ImageIcon(locations[0].getParent().GetCenterImage()));
+		  singularity.setBounds(SHIFT - 64, SHIFT - 64,	128, 128);
+		  this.add(singularity);
+	  }
 	  if (locations[0].getParent().whatAmI() == 3)
 	  {
 		  
@@ -164,12 +182,10 @@ public class SpacePanel extends JPanel
 		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
 		  this.add(center);
 	  }
-	  if (locations[0].getParent().whatAmI() == 1)
-	  {
-		  JLabel singularity = new JLabel(new ImageIcon(locations[0].getParent().GetCenterImage()));
-		  singularity.setBounds(SHIFT - 64, SHIFT - 64,	128, 128);
-		  this.add(singularity);
-	  }
+	  
+	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetBGImage(),DEFAULT_WINDOW_SIZE)));
+	  bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+	  this.add(bg);
   }
 
   private class LocationListener implements ActionListener

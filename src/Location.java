@@ -82,9 +82,9 @@ public class Location
     return Picture;
   }
   
-  public Image GetPic(int scale)
+  public Image GetPic(int x)
   {
-	  return PictureAlbum.getScaledSquareImage(Picture, scale);
+	  return Picture;
   }
   
   public BufferedImage GetCenterImage()
@@ -95,6 +95,11 @@ public class Location
   public BufferedImage GetBGImage()
   {
 	  return Pics.getStarfield();
+  }
+  
+  public Image GetNavImage()
+  {
+	  return PictureAlbum.getScaledSquareImage(Pics.getArrow(),12);
   }
 
   public Location getParent()
@@ -131,5 +136,4 @@ public class Location
   {
     return 0;
   }
-  
 }

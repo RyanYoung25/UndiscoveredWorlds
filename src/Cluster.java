@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 public class Cluster extends Location
 {
 	private static final int MULTI = 200;
-	private static final int HALF_LENGTH = 63;
+	private static final int HALF_LENGTH = 0;
 	private static final int MIN_ORBIT = 100;
 	
 	private Sector[] Sectors;	// Holds all sector information for this cluster.

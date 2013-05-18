@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 
@@ -202,4 +203,10 @@ public class Orbital extends Location
 		}
 		return super.GetCenterImage();
 	}
+	
+	@Override
+	public Image GetPic(int x)
+	  {
+		  return PictureAlbum.getScaledSquareImage(Picture, x);
+	  }
 }

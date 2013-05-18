@@ -180,7 +180,7 @@ public class PictureAlbum
 		return Port;
 	}
 	
-	public BufferedImage geArrow()
+	public BufferedImage getArrow()
 	{
 		return Arrow;
 	}
