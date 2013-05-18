@@ -13,10 +13,10 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		super("Undiscovered Worlds");
 		setBackground(Color.BLACK);
 		
-		optionsButton = new JButton("?");
+		optionsButton = new JButton();
 		optionsButton.setLocation(702, 0);
 		optionsButton.setSize(38, 38);
-		optionsButton.setIcon(new ImageIcon());
+		optionsButton.setIcon(new ImageIcon("Art" + File.separator + "OptionButton.png"));
 		optionsButton.setToolTipText("Options Menu");
 		optionsButton.addActionListener(this);
 

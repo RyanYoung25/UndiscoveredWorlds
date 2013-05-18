@@ -51,7 +51,8 @@ public class SpacePanel extends JPanel
       }
 
     });
-    back.setBounds(0, 0, 38, 38);
+    back.setLocation(0, 0);
+    back.setSize(38, 38);
     back.setVisible(true);
     switch (currentLocation.whatAmI())
     {
