@@ -7,33 +7,42 @@
     [M]Meet with group
     [P]Partially fixed
 
+Open
 ------------------------------------------------------
 
-[X]Images on top level are too large
+	[ ]Clickable items are sometimes generated too close to another clickable
+	   or the edge of screen
 
-[X]Back button does nothing on first click on bottom level
+	[ ]Adjusted prices only work one way.(Store to player)
 
-[P]Option disappears when navigating away from first view
-   Only occurs once you've navigted up a level.
+	[ ]Shops restore inventory when player leaves. (If player buys all items and
+	   leaves, those items are still in the shop on return.)
 
-[P]White sidebar appears in window when navigating from first view
 
-[ ]Clickable items are sometimes generated too close to another clickable
-   or the edge of screen
+Partially Completed
+------------------------------------------------------
 
-[P]Ports can generate without any items(Should have items or not be clickable)
+	[P]Option disappears when navigating away from first view
+	   Only occurs once you've navigated up a level.
 
-[P]Bottom level generation only generates one clickable
+	[P]White sidebar appears in window when navigating from first view
 
-[X]Merchants and players can have negative wallets
+	[P]Ports can generate without any items(Should have items or not be clickable)
 
-[X]Leave button in shop does not work
+	[P]Bottom level generation only generates one clickable
 
-[X]Cost not displayed in store
 
-[ ]Adjusted prices only work one way.(Store to player)
+Completed
+------------------------------------------------------
+	[X]Images on top level are too large
 
-[X]Multiple option and trading windows can be created
+	[X]Back button does nothing on first click on bottom level
+	
+	[X]Merchants and players can have negative wallets
 
-[ ]Shops restore inventory when player leaves. (If player buys all items and
-   leaves, those items are still in the shop on return.)
+	[X]Leave button in shop does not work
+
+	[X]Cost not displayed in store
+
+	[X]Multiple option and trading windows can be created
+
