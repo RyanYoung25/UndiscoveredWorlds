@@ -31,6 +31,7 @@ public class PictureAlbum
 	private BufferedImage Galaxy;
 	private BufferedImage BlackHole;
 	private BufferedImage Port;
+	private BufferedImage Arrow;
 	
 	public PictureAlbum ()
 	{
@@ -81,6 +82,7 @@ public class PictureAlbum
 			Galaxy = loadImage("Galaxy");
 			BlackHole = loadImage("BlackHole");
 			Port = loadImage("Port");
+			Arrow = loadImage("Arrow");
 		}
 		catch (IOException e)
 		{
@@ -176,6 +178,11 @@ public class PictureAlbum
 	public BufferedImage getPort()
 	{
 		return Port;
+	}
+	
+	public BufferedImage geArrow()
+	{
+		return Arrow;
 	}
 	
 	public static Image getScaledSquareImage(BufferedImage pic, int scale)
