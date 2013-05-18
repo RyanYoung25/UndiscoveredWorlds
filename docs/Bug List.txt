@@ -15,8 +15,11 @@ Open
 
 	[ ]Adjusted prices only work one way.(Store to player)
 
-	[ ]Shops restore inventory when player leaves. (If player buys all items and
+	[X ]Shops restore inventory when player leaves. (If player buys all items and
 	   leaves, those items are still in the shop on return.)
+	   
+	   Tanya: I can not push for some reason (I'll work on this with Bryant on Monday), 
+	   so you can not see changes I made. 
 
 
 Partially Completed
