@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -144,8 +145,12 @@ public class SpacePanel extends JPanel
   }
   public void renderScene(Location[] locations)
   {
+	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetBGImage(),DEFAULT_WINDOW_SIZE)));
+	  bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+	  this.add(bg);
 	  if (locations[0].getParent().whatAmI() == 3)
 	  {
+		  
 		  JLabel center = new JLabel(new ImageIcon(locations[0].GetCenterImage()));
 		  center.setBounds(	SHIFT - (locations[0].GetCenterImage().getWidth()/2), 
 				  			SHIFT - (locations[0].GetCenterImage().getHeight()/2), 
@@ -155,7 +160,7 @@ public class SpacePanel extends JPanel
 	  }
 	  else
 	  {
-		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),DEFAULT_WINDOW_SIZE)));
+		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),DEFAULT_WINDOW_SIZE) ));
 		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
 		  this.add(center);
 	  }
