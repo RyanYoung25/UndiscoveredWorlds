@@ -75,13 +75,12 @@ public class SpacePanel extends JPanel
     locationName.setBackground(Color.WHITE);
     this.add(locationName);
     this.add(back);
-    renderScene();
     if (locations != null)
     {
+      renderScene(locations);
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
-        renderScene();
         JButton b = new JButton();
         if(currentLocation.whatAmI() == 1){
         	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
@@ -121,7 +120,7 @@ public class SpacePanel extends JPanel
       populateSpace();
     }
   }
-  public void renderScene()
+  public void renderScene(Location[] locations)
   {
   	
   }
