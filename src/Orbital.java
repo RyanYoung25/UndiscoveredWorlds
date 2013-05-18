@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
  */
 public class Orbital extends Location 
 {
-	protected static final int OFFSET = 35;
+	protected static final int OFFSET = 25;
 	protected static final int MULTI = 100;
 	
 	protected int Radius;					// Relative distance from parent, be it a star or planet.

@@ -91,6 +91,11 @@ public class Location
   {
 	  return getParent().Picture;
   }
+  
+  public BufferedImage GetBGImage()
+  {
+	  return Pics.getStarfield();
+  }
 
   public Location getParent()
   {
@@ -126,4 +131,5 @@ public class Location
   {
     return 0;
   }
+  
 }

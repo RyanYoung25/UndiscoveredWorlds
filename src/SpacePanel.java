@@ -11,9 +11,10 @@ import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
 {
+  public static final int DEFAULT_WINDOW_SIZE = 720;
   public static final int DEFAULT_SIZE = 35;
   private static final int SCALAR = 1;
-  private static final int SHIFT  = 360;
+  private static final int SHIFT  = DEFAULT_WINDOW_SIZE/2;
   private Player           player;
   private Location         currentLocation;
   private JLabel           locationName;
@@ -30,7 +31,7 @@ public class SpacePanel extends JPanel
   {
     this.removeAll();
     this.setLayout(null);
-    this.setBounds(0, 0, 720, 720);
+    this.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
@@ -122,7 +123,21 @@ public class SpacePanel extends JPanel
   }
   public void renderScene(Location[] locations)
   {
-  	
+	  if (locations[0].getParent().whatAmI() == 3)
+	  {
+		  JLabel center = new JLabel(new ImageIcon(locations[0].GetCenterImage()));
+		  center.setBounds(	SHIFT - (locations[0].GetCenterImage().getWidth()/2), 
+				  			SHIFT - (locations[0].GetCenterImage().getHeight()/2), 
+				  			locations[0].GetCenterImage().getWidth(),
+				  			locations[0].GetCenterImage().getHeight());
+		  this.add(center);
+	  }
+	  else
+	  {
+		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),DEFAULT_WINDOW_SIZE)));
+		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+		  this.add(center);
+	  }
   }
 
   private class LocationListener implements ActionListener

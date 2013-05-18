@@ -246,7 +246,7 @@ public class StarSystem extends Location
 	@Override
 	public BufferedImage GetPic()
 	{
-	    return Halo;
+	    return super.GetPic();
 	}
 	
 	public Image GetPic(int scale)
