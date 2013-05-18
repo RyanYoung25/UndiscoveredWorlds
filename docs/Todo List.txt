@@ -2,8 +2,6 @@
 = To-Do =
 =========
 
-	∙ Add star graphic to the center of the bottom level screen
-
 	∙ Add Start screen with option to load game or start new one
 
 	∙ Fix shops to have random amounts of money
@@ -12,5 +10,3 @@
 
 	∙ Fix shops having almost every item. Somewhere in between nothing
 	  and everything.
-
-	∙ Fix Option Button graphical issues

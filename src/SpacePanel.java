@@ -35,6 +35,26 @@ public class SpacePanel extends JPanel
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
+    
+    JButton optionsButton = new JButton();
+	optionsButton.setLocation(702, 0);
+	optionsButton.setSize(38, 38);
+	optionsButton.setIcon(new ImageIcon("Art" + File.separator + "OptionButton.png"));
+	optionsButton.setToolTipText("Options Menu");
+	optionsButton.addActionListener(new ActionListener(){
+		 public void actionPerformed(ActionEvent arg0)
+	      {
+			 UWOptionsPanel optionWindow = new UWOptionsPanel();
+				optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//optionWindow.setLocation(
+				//		(int) (this.getLocation().getX() + (this.getWidth() / 4)),
+				//		(int) (this.getLocation().getY() + (this.getHeight() / 3)));
+				optionWindow.setSize(400, 200);
+				optionWindow.setVisible(true);
+				optionWindow.setResizable(false);
+	      }
+	});
+    
     JButton back = new JButton();
     back.setIcon(new ImageIcon("Art" + File.separator + "BackButton.png"));
     back.setOpaque(false);
@@ -75,6 +95,7 @@ public class SpacePanel extends JPanel
     }
     locationName.setBackground(Color.WHITE);
     this.add(locationName);
+    this.add(optionsButton);
     this.add(back);
     if (locations != null)
     {

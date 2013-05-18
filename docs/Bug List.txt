@@ -22,16 +22,13 @@ Open
 Partially Completed
 ------------------------------------------------------
 
-	[P]Option disappears when navigating away from first view
-	   Only occurs once you've navigated up a level. Reappears on hover.
-
 	[P]Ports can generate without any items(Should have items or not be clickable)
-
-	[P]Bottom level generation only generates one clickable
+	   Now they generate with too many and not enough money.
 
 
 Completed
 ------------------------------------------------------
+
 	[X]Images on top level are too large
 
 	[X]Back button does nothing on first click on bottom level
@@ -45,4 +42,9 @@ Completed
 	[X]Multiple option and trading windows can be created
 
 	[X]White sidebar appears in window when navigating from first view
+
+	[X]Option disappears when navigating away from first view
+	   Only occurs once you've navigated up a level. Reappears on hover.
+
+	[X]Bottom level generation only generates one clickable
 
