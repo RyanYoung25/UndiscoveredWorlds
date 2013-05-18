@@ -80,6 +80,7 @@ public class SpacePanel extends JPanel
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
+        renderScene();
         JButton b = new JButton();
         if(currentLocation.whatAmI() == 1){
         	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
