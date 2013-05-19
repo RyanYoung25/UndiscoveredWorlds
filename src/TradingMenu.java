@@ -101,6 +101,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     playerPanel.add(topPlayerLabel, BorderLayout.NORTH);
     playerPanel.add(playerScroll, BorderLayout.CENTER);
     playerPanel.add(playerBank, BorderLayout.SOUTH);
+    //playerPanel.setBackground(Color.DARK_GRAY);
 
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new GridLayout(5, 1));
@@ -109,12 +110,14 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     buttonPanel.add(sell);
     buttonPanel.add(leave);
     buttonPanel.add(new JLabel());
+    //buttonPanel.setBackground(Color.DARK_GRAY);
 
     merchantPanel = new JPanel();
     merchantPanel.setLayout(new BorderLayout());
     merchantPanel.add(topMerchantLabel, BorderLayout.NORTH);
     merchantPanel.add(merchantScroll, BorderLayout.CENTER);
     merchantPanel.add(merchantBank, BorderLayout.SOUTH);
+    //merchantPanel.setBackground(Color.DARK_GRAY);
 
     setLayout(new GridLayout(1, 3));
     // add(playerScroll);
@@ -129,10 +132,13 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
     buy.setFocusPainted(false);
+    //buy.setIcon(defaultIcon);
     sell.addActionListener(handler);
     sell.setFocusPainted(false);
+    //sell.setIcon(defaultIcon);
     leave.addActionListener(handler);
     leave.setFocusPainted(false);
+    //leave.setIcon(defaultIcon);
   }
   /**
    * This method creates the merchant and checks if you have previously been there.
