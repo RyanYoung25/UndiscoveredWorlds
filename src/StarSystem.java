@@ -251,7 +251,7 @@ public class StarSystem extends Location
 	
 	public Image GetPic(int scale)
 	{
-		return PictureAlbum.getScaledSquareImage(Halo, scale);
+		return PictureAlbum.getScaledSquareImage(Halo, 128);
 	}
 /*	public int[][] getOrbits()
 	{
