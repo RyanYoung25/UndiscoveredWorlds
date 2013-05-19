@@ -151,6 +151,10 @@ public class SpacePanel extends JPanel
   }
   public void renderScene(Location[] locations)
   {
+	  JLabel Header = new JLabel(locations[0].getParent().toString());
+	  Header.setForeground(Color.GREEN);
+	  Header.setBounds(0,0, 400, 100);
+	  this.add(Header);
 	  for(int j = 0; j < locations.length; j++)
 	  {
 		  Location loc = locations[j];
