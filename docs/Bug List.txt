@@ -6,11 +6,10 @@
     [X]Fixed
     [M]Meet with group
     [P]Partially fixed
+    [N]Fixed but not implemented yet
 
 Open
 ------------------------------------------------------
-
-	[ ]Planets and other clickable items are semitransparent on background.
 
 	[ ]Some stars on the bottom level are clickable to open a shop
 
@@ -19,11 +18,11 @@ Open
 
 	[ ]Adjusted prices only work one way.(Store to player)
 
-	[X ]Shops restore inventory when player leaves. (If player buys all items and
+	[N]Shops restore inventory when player leaves. (If player buys all items and
 	   leaves, those items are still in the shop on return.)
 	   
-	   Tanya: I can not push for some reason (I'll work on this with Bryant on Monday), 
-	   so you can not see changes I made. 
+	   Tanya: I can not push for some reason (I'll work on this with Bryant on
+	   Monday), so you can not see changes I made. 
 
 
 Partially Completed
@@ -54,4 +53,6 @@ Completed
 	   Only occurs once you've navigated up a level. Reappears on hover.
 
 	[X]Bottom level generation only generates one clickable
+
+	[X]Planets and other clickable items are semitransparent on background.
 
