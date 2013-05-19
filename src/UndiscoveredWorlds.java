@@ -7,7 +7,7 @@ import javax.swing.UIManager.LookAndFeelInfo;
 
 public class UndiscoveredWorlds {
 	public static void main(String[] args) {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenRes = Toolkit.getDefaultToolkit().getScreenSize();
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 		        if ("Nimbus".equals(info.getName())) {
@@ -21,8 +21,8 @@ public class UndiscoveredWorlds {
 		UndiscoveredWorldsGUI app = new UndiscoveredWorldsGUI();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setSize(740, 740);
-		app.setLocation((int) ((screenSize.getWidth()/2) - (app.getWidth()/2)),
-						(int) ((screenSize.getHeight()/2) - (app.getHeight()/2)));
+		app.setLocation((int) ((screenRes.getWidth()/2) - (app.getWidth()/2)),
+						(int) ((screenRes.getHeight()/2) - (app.getHeight()/2)));
 		app.setVisible(true);
 		app.setResizable(false);
 	}
