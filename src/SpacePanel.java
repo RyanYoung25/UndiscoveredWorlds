@@ -151,14 +151,34 @@ public class SpacePanel extends JPanel
 	  for(int j = 0; j < locations.length; j++)
 	  {
 		  Location loc = locations[j];
-		  JLabel p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
-		  p.setBackground(Color.BLACK);
-		  p.setOpaque(false);
-		  int length = loc.GetPic().getWidth();
-		  p.setBounds(	(int)(loc.GetX()+SHIFT-(length/3)),
-				  		(int)(loc.GetY()+SHIFT-(length/3)),
-				  		length, length);
-		  this.add(p);
+		  JLabel p;
+		  if(loc.getClass() != Ring.class)
+		  {
+			  p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
+			  p.setBackground(Color.BLACK);
+			  p.setOpaque(false);
+			  int length = loc.GetPic().getWidth();
+			  p.setBounds(	(int)(loc.GetX()+SHIFT-(length/3)),
+					  		(int)(loc.GetY()+SHIFT-(length/3)),
+					  		length, length);
+			  this.add(p);
+		  }
+	  }
+	  for(int j = 0; j < locations.length; j++) //Rings need to be rendered after planets
+	  {
+		  Location loc = locations[j];
+		  JLabel p;
+		  if(loc.getClass() == Ring.class)
+		  {
+			  int length = 250 + (j*60);
+			  p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(loc.GetPic(),length)));
+			  p.setBackground(Color.BLACK);
+			  p.setOpaque(false);
+			  p.setBounds(	(int)(SHIFT-(length/2)),
+					  		(int)(SHIFT-(length/2)),
+					  		length, length);
+			  this.add(p);
+		  }
 	  }
 	  if (locations[0].getParent().whatAmI() == 1)
 	  {
