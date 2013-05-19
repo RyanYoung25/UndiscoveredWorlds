@@ -11,8 +11,6 @@
 Open
 ------------------------------------------------------
 
-	[ ]Some stars on the bottom level are clickable to open a shop
-
 	[ ]Clickable items are sometimes generated too close to another clickable
 	   or the edge of screen
 
@@ -55,4 +53,6 @@ Completed
 	[X]Bottom level generation only generates one clickable
 
 	[X]Planets and other clickable items are semitransparent on background.
+
+	[X]Some stars on the bottom level are clickable to open a shop
 
