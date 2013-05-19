@@ -17,8 +17,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  * This class is a frame that has some very simple trading. The Frame only needs
@@ -71,14 +69,10 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     addMerchantModel();
     addPlayerModel();
 
-    // ListListener listListener = new ListListener();
-
     playersInventory = new JList(playerList);
     playersInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    // playersInventory.addListSelectionListener(listListener);
     merchantsInventory = new JList(merchantList);
     merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    // merchantsInventory.addListSelectionListener(listListener);
 
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
@@ -251,32 +245,6 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     }
 
   }
-
-  // This breaks something and Im not sure why.
-  // The list do not update properly when this is active
-  /*
-   * private class ListListener implements ListSelectionListener{
-   * 
-   * @Override public void valueChanged(ListSelectionEvent lse) {
-   * 
-   * if(lse.getSource() == merchantsInventory){ String[] mInventory =
-   * merchantsInventory.getSelectedValue().toString().split(" "); String money =
-   * mInventory[0].substring(1); if(Integer.parseInt(money) >
-   * thePlayer.getMoney()){
-   * topPlayerLabel.setText("Player can not afford that!");
-   * buy.setEnabled(false); }else{
-   * topPlayerLabel.setText("Player can afford that!"); buy.setEnabled(true); }
-   * }if(lse.getSource() == playersInventory){ String[] pInventory =
-   * playersInventory.getSelectedValue().toString().split(" "); String money =
-   * pInventory[0].substring(1); if(Integer.parseInt(money) >
-   * theMerchant.getMoney()){
-   * topMerchantLabel.setText("Merchant can not afford that!");
-   * sell.setEnabled(false); }else{
-   * topMerchantLabel.setText("Merchant can afford that!");
-   * sell.setEnabled(true); } } }
-   * 
-   * }
-   */
 
   public void windowGainedFocus(WindowEvent arg0)
   {

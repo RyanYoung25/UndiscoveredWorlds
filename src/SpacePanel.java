@@ -47,9 +47,8 @@ public class SpacePanel extends JPanel
 	      {
 			 UWOptionsPanel optionWindow = new UWOptionsPanel();
 				optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				//optionWindow.setLocation(
-				//		(int) (this.getLocation().getX() + (this.getWidth() / 4)),
-				//		(int) (this.getLocation().getY() + (this.getHeight() / 3)));
+				optionWindow.setLocation((int) getParent().getLocationOnScreen().getX() + (getParent().getWidth())/4,
+				  		   				 (int) getParent().getLocationOnScreen().getY() + (getParent().getHeight())/4);
 				optionWindow.setSize(400, 200);
 				optionWindow.setVisible(true);
 				optionWindow.setResizable(false);
@@ -141,6 +140,8 @@ public class SpacePanel extends JPanel
       menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       menu.setResizable(false);
+      menu.setLocation((int) getParent().getLocationOnScreen().getX() + (getParent().getWidth())/16,
+    		  		   (int) getParent().getLocationOnScreen().getY() + (getParent().getHeight())/4);
       menu.setVisible(true);
       player.setLoc(currentLocation.getParent());
       populateSpace();
