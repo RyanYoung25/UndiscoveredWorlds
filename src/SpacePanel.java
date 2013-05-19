@@ -38,7 +38,7 @@ public class SpacePanel extends JPanel
     locationName.setBounds(200, 0, 200, 30);
     
     JButton optionsButton = new JButton();
-	optionsButton.setLocation(702, 0);
+	optionsButton.setLocation(DEFAULT_WINDOW_SIZE-44, 0);
 	optionsButton.setSize(38, 38);
 	optionsButton.setIcon(new ImageIcon("Art" + File.separator + "OptionButton.png"));
 	optionsButton.setToolTipText("Options Menu");
