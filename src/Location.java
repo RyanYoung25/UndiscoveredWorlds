@@ -99,7 +99,7 @@ public class Location
   
   public Image GetNavImage()
   {
-	  return PictureAlbum.getScaledSquareImage(Pics.getArrow(),12);
+	  return PictureAlbum.getScaledSquareImage(Pics.getArrow(),15);
   }
 
   public Location getParent()
