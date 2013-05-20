@@ -1,4 +1,3 @@
-
 import java.util.Vector;
 
 public class Player implements Merchant
@@ -7,9 +6,12 @@ public class Player implements Merchant
   private String            name;
   private double            bank;
   private Vector<Item>      inventory;
-  private double            fuel;
+  private int               fuel;
   private Location          currentlocation;
   private static final int  MAX_PORT_HISTORY = 15;
+  private static final int  FUEL_CONSTANT    = 25;
+  private static final int  MAX_FUEL_LEVEL   = 50;
+  private static final int FUEL_CONSUMPTION = 5;
 
   private Vector<TradePort> recentLocations;
 
@@ -22,10 +24,10 @@ public class Player implements Merchant
   {
     this.name = name;
     bank = 500;
-    fuel = 2.0;
+    fuel = 20;
     this.inventory = inventory;
     recentLocations = new Vector<TradePort>();
-    
+
   }
 
   @Override
@@ -72,7 +74,8 @@ public class Player implements Merchant
 
   public void addPort(TradePort port)
   {
-    if (recentLocations.size() < MAX_PORT_HISTORY && !recentLocations.contains(port))
+    if (recentLocations.size() < MAX_PORT_HISTORY
+        && !recentLocations.contains(port))
     {
       recentLocations.add(port);
     } else
@@ -108,7 +111,7 @@ public class Player implements Merchant
   public TradePort getPort(Location locale)
   {
     TradePort port = null;
-    for(int i = 0; i < recentLocations.size(); i++)
+    for (int i = 0; i < recentLocations.size(); i++)
     {
       if (recentLocations.get(i).getLocale().equals(locale))
       {
@@ -117,16 +120,32 @@ public class Player implements Merchant
     }
     return port;
   }
+  
+  public void useFuel()
+  {
+    fuel -= FUEL_CONSUMPTION;
+  }
 
   public void use(Item item)
   {
-    // TODO Auto-generated method stub
-    
+    if (item.getName().equals("Hydrogen Fuel"))
+    {
+      if (fuel + FUEL_CONSTANT <= MAX_FUEL_LEVEL)
+      {
+        fuel += FUEL_CONSTANT;
+      }
+      else
+      {
+        fuel = MAX_FUEL_LEVEL;
+      }
+      
+      inventory.remove(item);
+    }
+
   }
 
   public void drop(Item item)
   {
-    // TODO Auto-generated method stub
-    
+    inventory.remove(item);
   }
 }

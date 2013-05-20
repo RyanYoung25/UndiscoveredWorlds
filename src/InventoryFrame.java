@@ -75,7 +75,7 @@ public class InventoryFrame extends JFrame
       {
         if (usableItems.contains(itemName))
         {
-          thePlayer.use(item);  // TODO: not implemented in player yet
+          thePlayer.use(item);  
         } else
         {
           message.setText("You can't use this item");
@@ -83,8 +83,9 @@ public class InventoryFrame extends JFrame
       }
       else if(event.getSource().equals(drop))
       {
-        thePlayer.drop(item);  //TODO: not implemented in player yet
+        thePlayer.drop(item);  
       }
+      repaint();
 
     }
 
