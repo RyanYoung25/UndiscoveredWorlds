@@ -26,12 +26,12 @@ public class Ring extends Orbital
 	}
 	
 	@Override
-	public Image GetPic(int scale)
+	public Image GetNavImage()
 	{
 		if(this.getTradePort() == null)
 		{
-			return PictureAlbum.getScaledSquareImage(Pics.getPort(), 1); //no trade port means no image should be present; I'd set it to null if I could
+			return super.GetNavImage(); //no trade port means no image should be present; I'd set it to null if I could
 		}
-		return PictureAlbum.getScaledSquareImage(Pics.getPort(), scale);
+		return PictureAlbum.getScaledSquareImage(Pics.getPort(),50);
 	}
 }
