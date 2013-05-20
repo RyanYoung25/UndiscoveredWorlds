@@ -129,7 +129,7 @@ public class SpacePanel extends JPanel
         				+ "<BR />"
         				+ "Type: "
         				+ "<BR />"
-        				+ "Location: "+ loc.getParent().toString() 
+        				+ "Location: "+ ((!loc.toString().equals(loc.getParent().toString())) ? loc.getParent().toString() : "Galaxy") 
         				+ "</HTML>");
 
         this.add(b);
