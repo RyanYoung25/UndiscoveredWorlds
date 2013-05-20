@@ -6,12 +6,12 @@ public class OrbitalRecord
 {	
 	private char OrbitalID;			// Orbital ID; corresponds to a letter of the alphabet.
 	private String Classification; 	// contains the name of an orbital classification.
-	private byte HZRating; 			// 1 = hot zone; 2 = habitable zone; 3 = cold zone; 4 = any zone; 5 = last orbit
-	private byte Type;				// 0 = planet/moon; 1 = gas giant; 2 = ring; 3 = belt
+	private int HZRating; 			// 1 = hot zone; 2 = habitable zone; 3 = cold zone; 4 = any zone; 5 = last orbit
+	private int Type;				// 0 = planet/moon; 1 = gas giant; 2 = ring; 3 = belt
 	private boolean Planetary;		// whether or not orbital can orbit a planet.
-	private byte Hazard;			// 1 = habitable; 2 = requires domes; 3 = aerostat only; 4 = dangerous; 5 = uninhabitable
-	private byte Appearance;		// 1 = Hell; 2 = Terrestrial; 3 = Barren; 4 = Ocean; 5 = Volcanic; 6 = Slush
-	private byte[] Properties;		// values for various attributes on planet;
+	private int Hazard;			// 1 = habitable; 2 = requires domes; 3 = aerostat only; 4 = dangerous; 5 = uninhabitable
+	private int Appearance;		// 1 = Hell; 2 = Terrestrial; 3 = Barren; 4 = Ocean; 5 = Volcanic; 6 = Slush
+	private int[] Properties;		// values for various attributes on planet;
 	
 	/**
 	 * Constructor. Unless you're masochistic, it's probably better to just feed an array of Strings in the other constructor.
@@ -23,7 +23,7 @@ public class OrbitalRecord
 	 * @param haz = hazard rating
 	 * @param appearance = used for determining image information.
 	 */
-	public OrbitalRecord(char id,String Class, byte HZ, byte type, byte moony, byte haz, byte appearance)
+	public OrbitalRecord(char id,String Class, int HZ, int type, int moony, int haz, int appearance)
 	{
 		OrbitalID = id;
 		Classification = Class;
@@ -49,15 +49,15 @@ public class OrbitalRecord
 	{
 		this	(record[0].charAt(0),
 				record[1],
-				Byte.parseByte(record[2]),
-				Byte.parseByte(record[3]),
-				Byte.parseByte(record[4]),
-				Byte.parseByte(record[5]),
-				Byte.parseByte(record[6]));
-		Properties = new byte[record.length];
-		for(int x = 6; x < record.length; x++)
+				Integer.parseInt(record[2]),
+				Integer.parseInt(record[3]),
+				Integer.parseInt(record[4]),
+				Integer.parseInt(record[5]),
+				Integer.parseInt(record[6]));
+		Properties = new int[record.length-6];
+		for(int x = 7; x < record.length; x++)
 		{
-			Properties[x] = Byte.parseByte(record[x]);
+			Properties[x-7] = Integer.parseInt(record[x]);
 		}
 
 		//System.out.printf("%s\n", this);
@@ -85,7 +85,7 @@ public class OrbitalRecord
 	 * Returns habitability rating for OrbitalClass.
 	 * @return byte
 	 */
-	public byte GetHZRating()
+	public int GetHZRating()
 	{
 		return HZRating;
 	}
@@ -94,7 +94,7 @@ public class OrbitalRecord
 	 * Returns type of this Orbital. 0 = planet/moon; 1 = gas giant; 2 = ring; 3 = belt
 	 * @return byte
 	 */
-	public byte GetType()
+	public int GetType()
 	{
 		return Type;
 	}
@@ -113,7 +113,7 @@ public class OrbitalRecord
 	 * 	1 = habitable; 2 = requires domes; 3 = aerostat only; 4 = dangerous; 5 = uninhabitable
 	 * @return byte
 	 */
-	public byte GetHazard()
+	public int GetHazard()
 	{
 		return Hazard;
 	}
@@ -122,7 +122,7 @@ public class OrbitalRecord
 	 * Returns value that corresponds to an image or range of images for determining the graphical representation of an orbital
 	 * @return byte
 	 */
-	public byte GetAppearance()
+	public int GetAppearance()
 	{
 		return Appearance;
 	}
@@ -131,7 +131,7 @@ public class OrbitalRecord
 	 * Returns availability of antimatter within this orbital.
 	 * @return byte
 	 */
-	public byte GetAMRating()
+	public int GetAMRating()
 	{
 		return Properties[0];
 	}
@@ -140,7 +140,7 @@ public class OrbitalRecord
 	 * Returns availability of organic materials within this orbital.
 	 * @return byte
 	 */
-	public byte GetOrganicRating()
+	public int GetOrganicRating()
 	{
 		return Properties[1];
 	}
@@ -149,7 +149,7 @@ public class OrbitalRecord
 	 * Returns availability of common ores within this orbital.
 	 * @return byte
 	 */
-	public byte GetCommonRating()
+	public int GetCommonRating()
 	{
 		return Properties[2];
 	}
@@ -158,7 +158,7 @@ public class OrbitalRecord
 	 * Returns availability of uncommon ores within this orbital.
 	 * @return byte
 	 */
-	public byte GetUncommonRating()
+	public int GetUncommonRating()
 	{
 		return Properties[3];
 	}
@@ -167,7 +167,7 @@ public class OrbitalRecord
 	 * Returns availability of rare ores within this orbital.
 	 * @return byte
 	 */
-	public byte GetRareRating()
+	public int GetRareRating()
 	{
 		return Properties[4];
 	}
@@ -176,7 +176,7 @@ public class OrbitalRecord
 	 * Returns stability rating of this orbital.
 	 * @return byte
 	 */
-	public byte GetStabilityRating()
+	public int GetStabilityRating()
 	{
 		return Properties[5];
 	}
@@ -185,7 +185,7 @@ public class OrbitalRecord
 	 * Returns availability of silicate material within this orbital.
 	 * @return byte
 	 */
-	public byte GetSilicateRating()
+	public int GetSilicateRating()
 	{
 		return Properties[6];
 	}
@@ -194,7 +194,7 @@ public class OrbitalRecord
 	 * Returns availability of materials for use in fusion power generation within this orbital.
 	 * @return byte
 	 */
-	public byte GetFusionRating()
+	public int GetFusionRating()
 	{
 		return Properties[7];
 	}
@@ -212,7 +212,7 @@ public class OrbitalRecord
 	 * Returns availability of all materials within this orbital.
 	 * @return byte[]
 	 */
-	public byte[] GetProperties()
+	public int[] GetProperties()
 	{
 		return Properties;
 	}

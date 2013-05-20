@@ -6,7 +6,7 @@ import java.util.Vector;
  */
 public class TradePort extends Location implements Merchant
 {
-	public static final int BASE_MONEY = 1000;
+	public static final int BASE_MONEY = 2500;
 	public static final int CHANCE = 5;
 	private Vector<Item> inventory;
 	private Orbital locale;
@@ -38,7 +38,8 @@ public class TradePort extends Location implements Merchant
 	 */
 	public void genMoney()
 	{
-		money = BASE_MONEY + BASE_MONEY * (locale.getOrbitalClass().GetStabilityRating()/locale.getOrbitalClass().GetHZRating());
+		money = (int)(BASE_MONEY *  (((float)locale.getOrbitalClass().GetStabilityRating()+10+locale.getOrbitalClass().GetOrganicRating())   /
+									((float)locale.getOrbitalClass().GetHZRating())));
 	}
 	
 	/* (non-Javadoc)
