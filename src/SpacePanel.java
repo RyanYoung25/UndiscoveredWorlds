@@ -89,8 +89,10 @@ public class SpacePanel extends JPanel
       break;
     case 1:
       locationName.setText("Cluster");
-      back.setVisible(false);
       break;
+    case 0:
+    	back.setVisible(false);
+    	break;
     default:
       locationName.setText("Error");
     }
@@ -136,7 +138,6 @@ public class SpacePanel extends JPanel
       repaint();
     } else
     {
-      
       TradingMenu menu = new TradingMenu(player);
       menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -151,7 +152,7 @@ public class SpacePanel extends JPanel
   }
   public void renderScene(Location[] locations)
   {
-	  JLabel Header = new JLabel(locations[0].getParent().toString());
+	  JLabel Header = new JLabel(player.getLoc().toString());
 	  Header.setForeground(Color.GREEN);
 	  Header.setBounds(0,0, 400, 100);
 	  this.add(Header);
@@ -187,9 +188,9 @@ public class SpacePanel extends JPanel
 			  this.add(p);
 		  }
 	  }
-	  if (locations[0].getParent().whatAmI() == 1)
+	  if (player.getLoc().getClass() == Cluster.class)
 	  {
-		  JLabel singularity = new JLabel(new ImageIcon(locations[0].getParent().GetCenterImage()));
+		  JLabel singularity = new JLabel(new ImageIcon(player.getLoc().GetCenterImage()));
 		  singularity.setBounds(SHIFT - 64, SHIFT - 64,	128, 128);
 		  this.add(singularity);
 	  }
@@ -203,6 +204,12 @@ public class SpacePanel extends JPanel
 				  			locations[0].GetCenterImage().getHeight());
 		  this.add(center);
 	  }
+	  else if (player.getLoc().getClass() == Galaxy.class)
+	  {
+		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(player.getLoc().GetCenterImage(),DEFAULT_WINDOW_SIZE) ));
+		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+		  this.add(center);
+	  }
 	  else
 	  {
 		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),DEFAULT_WINDOW_SIZE) ));
@@ -210,7 +217,7 @@ public class SpacePanel extends JPanel
 		  this.add(center);
 	  }
 	  
-	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetBGImage(),DEFAULT_WINDOW_SIZE)));
+	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(player.getLoc().GetBGImage(),DEFAULT_WINDOW_SIZE)));
 	  bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
 	  this.add(bg);
   }
@@ -228,8 +235,16 @@ public class SpacePanel extends JPanel
     @Override
     public void actionPerformed(ActionEvent e)
     {
-      player.setLoc(currentLocation.getChild(index));
-      populateSpace();
+    	if(player.getLoc().getClass() == Galaxy.class)
+        {
+      	  player.getLoc().Generate(index);
+      	  player.setLoc(currentLocation.getChild(-1));
+        }
+    	else
+    	{
+    		player.setLoc(currentLocation.getChild(index));
+    	}
+    	populateSpace();
     }
 
     public int getIndex()

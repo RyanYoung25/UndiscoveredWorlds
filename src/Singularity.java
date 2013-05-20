@@ -8,5 +8,6 @@ public class Singularity extends Location
 	public Singularity()
 	{
 		super();
+		Picture = Pics.getBlackHole();
 	}
 }

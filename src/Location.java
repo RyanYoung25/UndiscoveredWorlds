@@ -104,6 +104,8 @@ public class Location
 
   public Location getParent()
   {
+	  if (parent == null)
+		  return this;
     return parent;
   }
 
@@ -135,5 +137,10 @@ public class Location
   public int whatAmI()
   {
     return 0;
+  }
+  
+  public void Generate(int index)
+  {
+	  //hollow method
   }
 }

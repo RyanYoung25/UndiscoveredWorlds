@@ -22,11 +22,11 @@ public class Galaxy extends Location
 	{
 		super();
 		Clusters = new Cluster[MAX_CLUSTERS];
-		
 		for (int x = 0; x < Clusters.length; x++)
 		{
 			Clusters[x] = new Cluster(rand.nextLong());
 		}
+		Picture = Pics.getGalaxy();
 		PlaceClusters();
 	}
 	
@@ -45,6 +45,7 @@ public class Galaxy extends Location
 		{
 			Clusters[x] = new Cluster(rand.nextLong());
 		}
+		Picture = Pics.getGalaxy();
 		PlaceClusters();
 	}
 	
@@ -249,4 +250,32 @@ public class Galaxy extends Location
 	  {
 		  return Pics.getGalaxy();
 	  }
+	
+	@Override
+	public Cluster getChild(int index)
+	{
+		if (index < 0)
+			return GetCluster();
+		return getChild()[index];
+	}
+	
+	@Override
+	public Cluster[] getChild()
+	{
+		return Clusters;
+	}
+	
+	@Override
+	public Location getParent()
+	{
+		return this;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "";
+	}
+	
+
 }
