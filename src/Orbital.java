@@ -209,4 +209,14 @@ public class Orbital extends Location
 	  {
 		  return PictureAlbum.getScaledSquareImage(Picture, x);
 	  }
+	
+	@Override
+	public Image GetNavImage()
+	{
+		if(this.getTradePort() == null)
+		{
+			return PictureAlbum.getScaledSquareImage(Pics.getPort(),1); //no trade port means no image should be present; I'd set it to null if I could
+		}
+		return PictureAlbum.getScaledSquareImage(Pics.getPort(),20);
+	}
 }
