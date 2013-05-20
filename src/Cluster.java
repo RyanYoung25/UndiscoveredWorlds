@@ -1,4 +1,5 @@
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 /**
  * The Cluster class provides the next structural tier after the Galaxy class for galaxy generation and manipulation.
@@ -57,9 +58,9 @@ public class Cluster extends Location
 	 */
 	public void Generate()
 	{
+		rand = new Random(seed);
 		Sectors = new Sector[1 + rand.nextInt(MAX_SECTORS)];
 		double spacing = 360.0 / Sectors.length;
-		int radius = 100;
 		for (int z = 0; z < Sectors.length; z++)
 		{
 			Sectors[z] = new Sector(z,this);
