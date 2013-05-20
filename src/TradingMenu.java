@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
+import java.io.File;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -71,8 +73,17 @@ public class TradingMenu extends JFrame implements WindowFocusListener
 
     playersInventory = new JList(playerList);
     playersInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    playersInventory.setBackground(Color.BLACK);
+    playersInventory.setSelectionBackground(Color.DARK_GRAY);
+    playersInventory.setSelectionForeground(Color.GREEN);
+    playersInventory.setForeground(Color.WHITE);
+    
     merchantsInventory = new JList(merchantList);
     merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    merchantsInventory.setBackground(Color.BLACK);
+    merchantsInventory.setSelectionBackground(Color.DARK_GRAY);
+    merchantsInventory.setSelectionForeground(Color.GREEN);
+    merchantsInventory.setForeground(Color.WHITE);
 
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
@@ -86,22 +97,26 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     merchantScroll
         .setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-    buy = new JButton("<-- Buy ---");
-    sell = new JButton("--- Sell -->");
-    leave = new JButton("Leave Shop");
+    buy = new JButton();
+    sell = new JButton();
+    leave = new JButton();
 
     topPlayerLabel = new JLabel("Player");
+    topPlayerLabel.setForeground(Color.GREEN);
     topMerchantLabel = new JLabel("Merchant");
+    topMerchantLabel.setForeground(Color.GREEN);
 
     playerBank = new JLabel("Player Funds: $" + player.getMoney());
+    playerBank.setForeground(Color.GREEN);
     merchantBank = new JLabel("Merchant Funds: $" + theMerchant.getMoney());
+    merchantBank.setForeground(Color.GREEN);
 
     playerPanel = new JPanel();
     playerPanel.setLayout(new BorderLayout());
     playerPanel.add(topPlayerLabel, BorderLayout.NORTH);
     playerPanel.add(playerScroll, BorderLayout.CENTER);
     playerPanel.add(playerBank, BorderLayout.SOUTH);
-    //playerPanel.setBackground(Color.DARK_GRAY);
+    playerPanel.setBackground(Color.DARK_GRAY);
 
     buttonPanel = new JPanel();
     buttonPanel.setLayout(new GridLayout(5, 1));
@@ -110,14 +125,14 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     buttonPanel.add(sell);
     buttonPanel.add(leave);
     buttonPanel.add(new JLabel());
-    //buttonPanel.setBackground(Color.DARK_GRAY);
+    buttonPanel.setBackground(Color.DARK_GRAY);
 
     merchantPanel = new JPanel();
     merchantPanel.setLayout(new BorderLayout());
     merchantPanel.add(topMerchantLabel, BorderLayout.NORTH);
     merchantPanel.add(merchantScroll, BorderLayout.CENTER);
     merchantPanel.add(merchantBank, BorderLayout.SOUTH);
-    //merchantPanel.setBackground(Color.DARK_GRAY);
+    merchantPanel.setBackground(Color.DARK_GRAY);
 
     setLayout(new GridLayout(1, 3));
     // add(playerScroll);
@@ -132,13 +147,13 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     ButtonListener handler = new ButtonListener();
     buy.addActionListener(handler);
     buy.setFocusPainted(false);
-    //buy.setIcon(defaultIcon);
+    buy.setIcon(new ImageIcon("Art" + File.separator + "BuyButton.png"));
     sell.addActionListener(handler);
     sell.setFocusPainted(false);
-    //sell.setIcon(defaultIcon);
+    sell.setIcon(new ImageIcon("Art" + File.separator + "SellButton.png"));
     leave.addActionListener(handler);
     leave.setFocusPainted(false);
-    //leave.setIcon(defaultIcon);
+    leave.setIcon(new ImageIcon("Art" + File.separator + "LeaveButton.png"));
   }
   /**
    * This method creates the merchant and checks if you have previously been there.
