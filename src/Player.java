@@ -117,4 +117,16 @@ public class Player implements Merchant
     }
     return port;
   }
+
+  public void use(Item item)
+  {
+    // TODO Auto-generated method stub
+    
+  }
+
+  public void drop(Item item)
+  {
+    // TODO Auto-generated method stub
+    
+  }
 }
