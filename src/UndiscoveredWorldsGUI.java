@@ -7,12 +7,14 @@ import javax.swing.*;
 
 public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 
-	private JButton optionsButton;
 	private JPanel startPanel;
 	private JPanel storyPanel;
 	private JLabel logoLabel;
 	private JButton newGameButton;
 	private JButton loadGameButton;
+	private JButton playButton;
+	private JTextArea storyTextArea;
+	private JScrollPane storyScrollPane;
 
 	public UndiscoveredWorldsGUI() {
 		super("Undiscovered Worlds");
@@ -42,39 +44,20 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		startPanel.setLayout(null);
 		startPanel.setSize(740, 740);
 		startPanel.setLocation(0, 0);
-		startPanel.setVisible(true);
 		startPanel.setBackground(Color.DARK_GRAY);
+		startPanel.setVisible(true);
 		
 		startPanel.add(logoLabel);
 		startPanel.add(newGameButton);
 		startPanel.add(loadGameButton);
 		
-		//add(startPanel);
-		
-		/*
-		optionsButton = new JButton();
-		optionsButton.setLocation(702, 0);
-		optionsButton.setSize(38, 38);
-		optionsButton.setIcon(new ImageIcon("Art" + File.separator + "OptionButton.png"));
-		optionsButton.setToolTipText("Options Menu");
-		optionsButton.addActionListener(this);
-		*/
+		add(startPanel);
 
-		Galaxy Andromeda = new Galaxy();
-		Player player = new Player();
-
-		Andromeda.Generate(1);
-		// Andromeda.DisplayCluster();
-
-		player.setLoc(Andromeda.randomStart());
-
-		SpacePanel test = new SpacePanel(player);
-		test.setVisible(true);
 		// test.populateSpace();
 		// test.setPreferredSize(new Dimension(740, 740));
 		// test.setLocation(0, 0);
 		//this.add(optionsButton);
-		add(test);
+		
 		// System.out.println("This was run");
 		/*
 		 * GUITest test = new GUITest(Andromeda.GetSectors());
@@ -88,7 +71,22 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-		
+		if(event.getSource() == newGameButton){
+			Galaxy Andromeda = new Galaxy();
+			Player player = new Player();
+
+			Andromeda.Generate(1);
+			// Andromeda.DisplayCluster();
+
+			player.setLoc(Andromeda.randomStart());
+
+			SpacePanel test = new SpacePanel(player);
+			test.setVisible(true);
+			startPanel.setVisible(false);
+			add(test);
+			remove(startPanel);
+			repaint();
+		}
 	}
 
 }
