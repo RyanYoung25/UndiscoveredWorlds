@@ -97,7 +97,7 @@ public class SpacePanel extends JPanel
       locationName.setText("Error");
     }
     locationName.setBackground(Color.WHITE);
-    this.add(locationName);
+    //this.add(locationName);
     this.add(optionsButton);
     this.add(back);
     if (locations != null)
@@ -106,6 +106,27 @@ public class SpacePanel extends JPanel
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
+        int whoNum = loc.whatAmI();
+        String who = "";
+        switch (whoNum)
+        {
+        case 4:
+        	who = "Orbital";
+          break;
+        case 3:
+        	who = "Star System";
+          break;
+        case 2:
+        	who = "Sector";
+          break;
+        case 1:
+        	who = "Cluster";
+          break;
+        case 0:
+        	who = "Galaxy";
+        default:
+          locationName.setText("Error");
+        }
         JButton b = new JButton();
 /*        if(currentLocation.whatAmI() == 1){
         	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
@@ -127,9 +148,9 @@ public class SpacePanel extends JPanel
         b.setToolTipText("<HTML>"
         				+ "Name: " + loc.toString() 
         				+ "<BR />"
-        				+ "Type: "
+        				+ "Type: " + who
         				+ "<BR />"
-        				+ "Location: "+ ((!loc.toString().equals(loc.getParent().toString())) ? loc.getParent().toString() : "Galaxy") 
+        				+ "Location: " + ((!loc.toString().equals(loc.getParent().toString())) ? loc.getParent().toString() : "Galaxy")
         				+ "</HTML>");
 
         this.add(b);
