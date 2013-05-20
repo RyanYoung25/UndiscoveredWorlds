@@ -150,6 +150,7 @@ public class SpacePanel extends JPanel
       populateSpace();
     }
   }
+  
   public void renderScene(Location[] locations)
   {
 	  JLabel Header = new JLabel(player.getLoc().toString());
@@ -160,7 +161,7 @@ public class SpacePanel extends JPanel
 	  {
 		  Location loc = locations[j];
 		  JLabel p;
-		  if(loc.getClass() != Ring.class)
+		  if(loc.getClass() != Ring.class && loc.getClass() != Cluster.class)
 		  {
 			  p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
 			  p.setBackground(Color.BLACK);
@@ -168,6 +169,17 @@ public class SpacePanel extends JPanel
 			  int length = loc.GetPic().getWidth();
 			  p.setBounds(	(int)(loc.GetX()+SHIFT-(length/3)),
 					  		(int)(loc.GetY()+SHIFT-(length/3)),
+					  		length, length);
+			  this.add(p);
+		  }
+		  if(loc.getClass() == Cluster.class)
+		  {
+			  int length = 100;
+			  p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(loc.GetPic(),length)));
+			  p.setBackground(Color.BLACK);
+			  p.setOpaque(false);
+			  p.setBounds(	(int)(loc.GetX()+SHIFT),
+					  		(int)(loc.GetY()+SHIFT),
 					  		length, length);
 			  this.add(p);
 		  }
