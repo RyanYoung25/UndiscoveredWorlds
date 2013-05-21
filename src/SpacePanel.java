@@ -12,10 +12,11 @@ import javax.swing.JPanel;
 
 public class SpacePanel extends JPanel
 {
-  public static final int DEFAULT_WINDOW_SIZE = 740;
-  public static final int DEFAULT_SIZE = 35;
-  private static final int SCALAR = 1;
-  private static final int SHIFT  = DEFAULT_WINDOW_SIZE/2;
+
+  public static final int  DEFAULT_WINDOW_SIZE = 740;
+  public static final int  DEFAULT_SIZE        = 35;
+  private static final int SCALAR              = 1;
+  private static final int SHIFT               = DEFAULT_WINDOW_SIZE / 2;
   private Player           player;
   private Location         currentLocation;
   private JLabel           locationName;
@@ -36,26 +37,53 @@ public class SpacePanel extends JPanel
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
-    
+
     JButton optionsButton = new JButton();
-	optionsButton.setLocation(DEFAULT_WINDOW_SIZE-44, 0);
-	optionsButton.setSize(38, 38);
-	optionsButton.setIcon(new ImageIcon("Art" + File.separator + "OptionButton.png"));
-	optionsButton.setToolTipText("Options Menu");
-	optionsButton.addActionListener(new ActionListener(){
-		 public void actionPerformed(ActionEvent arg0)
-	      {
-			 UWOptionsPanel optionWindow = new UWOptionsPanel();
-				optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				optionWindow.setSize(400, 200);
-				optionWindow.setLocation(
-					(int) getParent().getLocationOnScreen().getX() + ((getParent().getWidth())/2) - (optionWindow.getWidth()/2),
-				  	(int) getParent().getLocationOnScreen().getY() + ((getParent().getHeight())/2) - (optionWindow.getHeight()/2));
-				optionWindow.setVisible(true);
-				optionWindow.setResizable(false);
-	      }
-	});
-    
+    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - 44, 0);
+    optionsButton.setSize(38, 38);
+    optionsButton.setIcon(new ImageIcon("Art" + File.separator
+        + "OptionButton.png"));
+    optionsButton.setToolTipText("Options Menu");
+    optionsButton.addActionListener(new ActionListener()
+    {
+
+      public void actionPerformed(ActionEvent arg0)
+      {
+        UWOptionsPanel optionWindow = new UWOptionsPanel();
+        optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        optionWindow.setSize(400, 200);
+        optionWindow.setLocation(
+            (int) getParent().getLocationOnScreen().getX()
+                + ((getParent().getWidth()) / 2)
+                - (optionWindow.getWidth() / 2),
+            (int) getParent().getLocationOnScreen().getY()
+                + ((getParent().getHeight()) / 2)
+                - (optionWindow.getHeight() / 2));
+        optionWindow.setVisible(true);
+        optionWindow.setResizable(false);
+      }
+    });
+
+    JButton inventoryButton = new JButton();
+    // Someone will make art
+    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - 38,
+        DEFAULT_WINDOW_SIZE - 38);
+    inventoryButton.setSize(38, 38);
+    inventoryButton.addActionListener(new ActionListener()
+    {
+
+      @Override
+      public void actionPerformed(ActionEvent arg0)
+      {
+       InventoryFrame frame = new InventoryFrame(player);
+       frame.setSize(400, 500);
+       frame.setVisible(true);
+       frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+      }
+
+    });
+
     JButton back = new JButton();
     back.setIcon(new ImageIcon("Art" + File.separator + "BackButton.png"));
     back.setOpaque(false);
@@ -91,18 +119,19 @@ public class SpacePanel extends JPanel
       locationName.setText("Cluster");
       break;
     case 0:
-    	back.setVisible(false);
-    	break;
+      back.setVisible(false);
+      break;
     default:
       locationName.setText("Error");
     }
     locationName.setBackground(Color.WHITE);
-    //this.add(locationName);
+    // this.add(locationName);
     this.add(optionsButton);
     this.add(back);
+    this.add(inventoryButton);
     if (locations != null)
     {
-      
+
       for (int i = 0; i < locations.length; i++)
       {
         Location loc = locations[i];
@@ -111,33 +140,32 @@ public class SpacePanel extends JPanel
         switch (whoNum)
         {
         case 4:
-        	who = "Orbital";
+          who = "Orbital";
           break;
         case 3:
-        	who = "Star System";
+          who = "Star System";
           break;
         case 2:
-        	who = "Sector";
+          who = "Sector";
           break;
         case 1:
-        	who = "Cluster";
+          who = "Cluster";
           break;
         case 0:
-        	who = "Galaxy";
+          who = "Galaxy";
         default:
           locationName.setText("Error");
         }
         JButton b = new JButton();
-/*        if(currentLocation.whatAmI() == 1){
-        	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
-                    100, 100);
-        	b.setIcon(new ImageIcon(loc.GetPic(75)));
-        }else{
-        	b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
-                    50, 50);
-        	b.setIcon(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
-        }*/
-        b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT, 50, 50);
+        /*
+         * if(currentLocation.whatAmI() == 1){ b.setBounds(SCALAR * loc.GetX() +
+         * SHIFT, SCALAR * loc.GetY() + SHIFT, 100, 100); b.setIcon(new
+         * ImageIcon(loc.GetPic(75))); }else{ b.setBounds(SCALAR * loc.GetX() +
+         * SHIFT, SCALAR * loc.GetY() + SHIFT, 50, 50); b.setIcon(new
+         * ImageIcon(loc.GetPic(DEFAULT_SIZE))); }
+         */
+        b.setBounds(SCALAR * loc.GetX() + SHIFT, SCALAR * loc.GetY() + SHIFT,
+            50, 50);
         b.setIcon(new ImageIcon(loc.GetNavImage()));
         b.setBackground(Color.BLUE);
         LocationListener handler = new LocationListener(i);
@@ -146,12 +174,15 @@ public class SpacePanel extends JPanel
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
         b.setToolTipText("<HTML>"
-        				+ "Name: " + loc.toString() 
-        				+ "<BR />"
-        				+ "Type: " + who
-        				+ "<BR />"
-        				+ "Location: " + ((!loc.toString().equals(loc.getParent().toString())) ? loc.getParent().toString() : "Galaxy")
-        				+ "</HTML>");
+            + "Name: "
+            + loc.toString()
+            + "<BR />"
+            + "Type: "
+            + who
+            + "<BR />"
+            + "Location: "
+            + ((!loc.toString().equals(loc.getParent().toString())) ? loc
+                .getParent().toString() : "Galaxy") + "</HTML>");
 
         this.add(b);
       }
@@ -164,95 +195,101 @@ public class SpacePanel extends JPanel
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       menu.setResizable(false);
       menu.setLocation(
-    		  (int) getParent().getLocationOnScreen().getX() + ((getParent().getWidth())/2) - (menu.getWidth()/2),
-    		  (int) getParent().getLocationOnScreen().getY() + ((getParent().getHeight())/2) - (menu.getHeight()/2));
+          (int) getParent().getLocationOnScreen().getX()
+              + ((getParent().getWidth()) / 2) - (menu.getWidth() / 2),
+          (int) getParent().getLocationOnScreen().getY()
+              + ((getParent().getHeight()) / 2) - (menu.getHeight() / 2));
       menu.setVisible(true);
       player.setLoc(currentLocation.getParent());
       populateSpace();
     }
   }
-  
+
   public void renderScene(Location[] locations)
   {
-	  JLabel Header = new JLabel(player.getLoc().toString());
-	  Header.setForeground(Color.GREEN);
-	  Header.setBounds(0,0, 400, 100);
-	  this.add(Header);
-	  for(int j = 0; j < locations.length; j++)
-	  {
-		  Location loc = locations[j];
-		  JLabel p;
-		  if(loc.getClass() != Ring.class && loc.getClass() != Cluster.class)
-		  {
-			  p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
-			  p.setBackground(Color.BLACK);
-			  p.setOpaque(false);
-			  int length = loc.GetPic().getWidth();
-			  p.setBounds(	(int)(loc.GetX()+SHIFT-(length/3)),
-					  		(int)(loc.GetY()+SHIFT-(length/3)),
-					  		length, length);
-			  this.add(p);
-		  }
-		  if(loc.getClass() == Cluster.class)
-		  {
-			  int length = 100;
-			  p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(loc.GetPic(),length)));
-			  p.setBackground(Color.BLACK);
-			  p.setOpaque(false);
-			  p.setBounds(	(int)(loc.GetX()+SHIFT),
-					  		(int)(loc.GetY()+SHIFT),
-					  		length, length);
-			  this.add(p);
-		  }
-	  }
-	  for(int j = 0; j < locations.length; j++) //Rings need to be rendered after planets
-	  {
-		  Location loc = locations[j];
-		  JLabel p;
-		  if(loc.getClass() == Ring.class)
-		  {
-			  int length = 250 + (j*60);
-			  p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(loc.GetPic(),length)));
-			  p.setBackground(Color.BLACK);
-			  p.setOpaque(false);
-			  p.setBounds(	(int)(SHIFT-(length/2)),
-					  		(int)(SHIFT-(length/2)),
-					  		length, length);
-			  this.add(p);
-		  }
-	  }
-	  if (player.getLoc().getClass() == Cluster.class)
-	  {
-		  JLabel singularity = new JLabel(new ImageIcon(player.getLoc().GetCenterImage()));
-		  singularity.setBounds(SHIFT - 64, SHIFT - 64,	128, 128);
-		  this.add(singularity);
-	  }
-	  if (locations[0].getParent().whatAmI() == 3)
-	  {
-		  
-		  JLabel center = new JLabel(new ImageIcon(locations[0].GetCenterImage()));
-		  center.setBounds(	SHIFT - (locations[0].GetCenterImage().getWidth()/2), 
-				  			SHIFT - (locations[0].GetCenterImage().getHeight()/2), 
-				  			locations[0].GetCenterImage().getWidth(),
-				  			locations[0].GetCenterImage().getHeight());
-		  this.add(center);
-	  }
-	  else if (player.getLoc().getClass() == Galaxy.class)
-	  {
-		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(player.getLoc().GetCenterImage(),DEFAULT_WINDOW_SIZE) ));
-		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
-		  this.add(center);
-	  }
-	  else
-	  {
-		  JLabel center = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),DEFAULT_WINDOW_SIZE) ));
-		  center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
-		  this.add(center);
-	  }
-	  
-	  JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(player.getLoc().GetBGImage(),DEFAULT_WINDOW_SIZE)));
-	  bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
-	  this.add(bg);
+    JLabel Header = new JLabel(player.getLoc().toString());
+    Header.setForeground(Color.GREEN);
+    Header.setBounds(0, 0, 400, 100);
+    this.add(Header);
+    for (int j = 0; j < locations.length; j++)
+    {
+      Location loc = locations[j];
+      JLabel p;
+      if (loc.getClass() != Ring.class && loc.getClass() != Cluster.class)
+      {
+        p = new JLabel(new ImageIcon(loc.GetPic(DEFAULT_SIZE)));
+        p.setBackground(Color.BLACK);
+        p.setOpaque(false);
+        int length = loc.GetPic().getWidth();
+        p.setBounds((int) (loc.GetX() + SHIFT - (length / 3)),
+            (int) (loc.GetY() + SHIFT - (length / 3)), length, length);
+        this.add(p);
+      }
+      if (loc.getClass() == Cluster.class)
+      {
+        int length = 100;
+        p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(
+            loc.GetPic(), length)));
+        p.setBackground(Color.BLACK);
+        p.setOpaque(false);
+        p.setBounds((int) (loc.GetX() + SHIFT), (int) (loc.GetY() + SHIFT),
+            length, length);
+        this.add(p);
+      }
+    }
+    for (int j = 0; j < locations.length; j++) // Rings need to be rendered
+                                               // after planets
+    {
+      Location loc = locations[j];
+      JLabel p;
+      if (loc.getClass() == Ring.class)
+      {
+        int length = 250 + (j * 60);
+        p = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(
+            loc.GetPic(), length)));
+        p.setBackground(Color.BLACK);
+        p.setOpaque(false);
+        p.setBounds((int) (SHIFT - (length / 2)), (int) (SHIFT - (length / 2)),
+            length, length);
+        this.add(p);
+      }
+    }
+    if (player.getLoc().getClass() == Cluster.class)
+    {
+      JLabel singularity = new JLabel(new ImageIcon(player.getLoc()
+          .GetCenterImage()));
+      singularity.setBounds(SHIFT - 64, SHIFT - 64, 128, 128);
+      this.add(singularity);
+    }
+    if (locations[0].getParent().whatAmI() == 3)
+    {
+
+      JLabel center = new JLabel(new ImageIcon(locations[0].GetCenterImage()));
+      center.setBounds(SHIFT - (locations[0].GetCenterImage().getWidth() / 2),
+          SHIFT - (locations[0].GetCenterImage().getHeight() / 2), locations[0]
+              .GetCenterImage().getWidth(), locations[0].GetCenterImage()
+              .getHeight());
+      this.add(center);
+    } else if (player.getLoc().getClass() == Galaxy.class)
+    {
+      JLabel center = new JLabel(new ImageIcon(
+          PictureAlbum.getScaledSquareImage(player.getLoc().GetCenterImage(),
+              DEFAULT_WINDOW_SIZE)));
+      center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+      this.add(center);
+    } else
+    {
+      JLabel center = new JLabel(new ImageIcon(
+          PictureAlbum.getScaledSquareImage(locations[0].GetCenterImage(),
+              DEFAULT_WINDOW_SIZE)));
+      center.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+      this.add(center);
+    }
+
+    JLabel bg = new JLabel(new ImageIcon(PictureAlbum.getScaledSquareImage(
+        player.getLoc().GetBGImage(), DEFAULT_WINDOW_SIZE)));
+    bg.setBounds(0, 0, DEFAULT_WINDOW_SIZE, DEFAULT_WINDOW_SIZE);
+    this.add(bg);
   }
 
   private class LocationListener implements ActionListener
@@ -268,16 +305,15 @@ public class SpacePanel extends JPanel
     @Override
     public void actionPerformed(ActionEvent e)
     {
-    	if(player.getLoc().getClass() == Galaxy.class)
-        {
-      	  player.getLoc().Generate(index);
-      	  player.setLoc(currentLocation.getChild(-1));
-        }
-    	else
-    	{
-    		player.setLoc(currentLocation.getChild(index));
-    	}
-    	populateSpace();
+      if (player.getLoc().getClass() == Galaxy.class)
+      {
+        player.getLoc().Generate(index);
+        player.setLoc(currentLocation.getChild(-1));
+      } else
+      {
+        player.setLoc(currentLocation.getChild(index));
+      }
+      populateSpace();
     }
 
     public int getIndex()

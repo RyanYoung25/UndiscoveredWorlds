@@ -128,7 +128,7 @@ public class Player implements Merchant
 
   public void use(Item item)
   {
-    if (item.getName().equals("Hydrogen Fuel"))
+    if (item.getIDNumber() == 4)
     {
       if (fuel + FUEL_CONSTANT <= MAX_FUEL_LEVEL)
       {
@@ -141,7 +141,15 @@ public class Player implements Merchant
       
       inventory.remove(item);
     }
-    if(item.getName().equals("Diamonds"))
+    if(item.getIDNumber() == 32)
+    {
+      System.out.println("Bryant is madt");
+    }
+    if(item.getIDNumber() == 31)
+    {
+      System.out.println("Bryant is madt");
+    }
+    if(item.getIDNumber() == 30)
     {
       System.out.println("Bryant is madt");
     }
