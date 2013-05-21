@@ -55,6 +55,7 @@ public class InventoryFrame extends JFrame
 
     descriptionArea = new JTextArea();
     descriptionArea.setPreferredSize(new Dimension(200, 200));
+    descriptionArea.setWrapStyleWord(true);
     descriptionArea.setLineWrap(true);
     descriptionArea.setEditable(false);
 
