@@ -160,4 +160,10 @@ public class Player implements Merchant
   {
     inventory.remove(item);
   }
+
+  public int getFuelLevel()
+  {
+    // TODO Auto-generated method stub
+    return fuel;
+  }
 }

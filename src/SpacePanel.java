@@ -76,7 +76,7 @@ public class SpacePanel extends JPanel
       public void actionPerformed(ActionEvent arg0)
       {
        InventoryFrame frame = new InventoryFrame(player);
-       frame.setSize(400, 500);
+       frame.setSize(400, 300);
        frame.setVisible(true);
        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
