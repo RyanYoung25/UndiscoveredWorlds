@@ -17,13 +17,13 @@ public class UWOptionsPanel extends JFrame implements ActionListener, WindowFocu
 	
 	private JButton saveButton;
 	private JButton loadButton;
+	private JButton menuButton;
 	private JButton returnButton;
 	
 	public UWOptionsPanel(){
 		super("Options");
-		setLayout(new GridLayout(3,1));
-		setPreferredSize(new Dimension(370, 370));
-		setBackground(Color.LIGHT_GRAY);
+		setLayout(new GridLayout(4,1));
+		setBackground(Color.DARK_GRAY);
 		requestFocus();
 		addWindowFocusListener(this);
 	
@@ -35,12 +35,17 @@ public class UWOptionsPanel extends JFrame implements ActionListener, WindowFocu
 		loadButton.addActionListener(this);
 		loadButton.setFocusPainted(false);
 		
+		menuButton = new JButton("Main Menu");
+		menuButton.addActionListener(this);
+		menuButton.setFocusPainted(false);
+		
 		returnButton = new JButton("Return to Game");
 		returnButton.addActionListener(this);
 		returnButton.setFocusPainted(false);
 		
 		add(saveButton);
 		add(loadButton);
+		add(menuButton);
 		add(returnButton);
 		
 	}

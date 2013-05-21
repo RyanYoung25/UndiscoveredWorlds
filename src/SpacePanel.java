@@ -39,8 +39,8 @@ public class SpacePanel extends JPanel
     locationName.setBounds(200, 0, 200, 30);
 
     JButton optionsButton = new JButton();
-    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - 44, 0);
     optionsButton.setSize(38, 38);
+    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth(), 0);
     optionsButton.setIcon(new ImageIcon("Art" + File.separator
         + "OptionButton.png"));
     optionsButton.setToolTipText("Options Menu");
@@ -51,7 +51,7 @@ public class SpacePanel extends JPanel
       {
         UWOptionsPanel optionWindow = new UWOptionsPanel();
         optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        optionWindow.setSize(400, 200);
+        optionWindow.setSize(400, 300);
         optionWindow.setLocation(
             (int) getParent().getLocationOnScreen().getX()
                 + ((getParent().getWidth()) / 2)
@@ -66,22 +66,23 @@ public class SpacePanel extends JPanel
 
     JButton inventoryButton = new JButton();
     // Someone will make art
-    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - 38,
-        DEFAULT_WINDOW_SIZE - 38);
     inventoryButton.setSize(38, 38);
+    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - inventoryButton.getWidth(),
+    							DEFAULT_WINDOW_SIZE - inventoryButton.getHeight() -20);
     inventoryButton.addActionListener(new ActionListener()
     {
-
       @Override
       public void actionPerformed(ActionEvent arg0)
-      {
-       InventoryFrame frame = new InventoryFrame(player);
-       frame.setSize(400, 300);
-       frame.setVisible(true);
-       frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+      {        
+       InventoryFrame inventoryFrame = new InventoryFrame(player);
+       inventoryFrame.setSize(400, 300);
+       inventoryFrame.setLocation((int) getParent().getLocationOnScreen().getX()
+               + ((getParent().getWidth()) / 2) - (inventoryFrame.getWidth() / 2),
+               (int) getParent().getLocationOnScreen().getY()
+                   + ((getParent().getHeight()) / 2) - (inventoryFrame.getHeight() / 2));
+       inventoryFrame.setVisible(true);
+       inventoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
       }
-
     });
 
     JButton back = new JButton();
@@ -177,8 +178,7 @@ public class SpacePanel extends JPanel
             + "Name: "
             + loc.toString()
             + "<BR />"
-            + "Type: "
-            + who
+            + "Type: " + who
             + "<BR />"
             + "Location: "
             + ((!loc.toString().equals(loc.getParent().toString())) ? loc
