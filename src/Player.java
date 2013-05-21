@@ -141,6 +141,10 @@ public class Player implements Merchant
       
       inventory.remove(item);
     }
+    if(item.getName().equals("Diamonds"))
+    {
+      System.out.println("Bryant is madt");
+    }
 
   }
 
