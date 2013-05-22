@@ -44,6 +44,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		newGameButton.setLocation((int) (370 - (newGameButton.getWidth() / 2)),
 				(int) ((370 - (newGameButton.getHeight() / 2) + 50)));
 		newGameButton.addActionListener(this);
+		newGameButton.setToolTipText("Start a new game");
 		newGameButton.setIcon(new ImageIcon("Art" + File.separator + "MainNewGameButton.png"));
 		newGameButton.setOpaque(false);
 		newGameButton.setBorderPainted(false);
@@ -54,6 +55,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		loadGameButton.setLocation((int) (newGameButton.getLocation().getX()),
 				(int) ((newGameButton.getLocation().getY() + 120)));
 		loadGameButton.addActionListener(this);
+		loadGameButton.setToolTipText("Load a previous game save");
 		loadGameButton.setIcon(new ImageIcon("Art" + File.separator + "MainLoadGameButton.png"));
 		loadGameButton.setOpaque(false);
 		loadGameButton.setBorderPainted(false);
@@ -93,6 +95,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		playButton.setSize(340, 100);
 		playButton.setLocation(380, 600);
 		playButton.addActionListener(this);
+		playButton.setToolTipText("Play Undiscovered Worlds");
 		playButton.setIcon(new ImageIcon("Art" + File.separator + "StoryPlayButton.png"));
 		playButton.setOpaque(false);
 		playButton.setBorderPainted(false);
@@ -102,6 +105,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		backButton.setSize(340, 100);
 		backButton.setLocation(20, 600);
 		backButton.addActionListener(this);
+		backButton.setToolTipText("Return to the main menu");
 		backButton.setIcon(new ImageIcon("Art" + File.separator + "StoryBackButton.png"));
 		backButton.setOpaque(false);
 		backButton.setBorderPainted(false);

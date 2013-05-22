@@ -17,6 +17,7 @@ public class SpacePanel extends JPanel
   public static final int  DEFAULT_SIZE        = 35;
   private static final int SCALAR              = 1;
   private static final int SHIFT               = DEFAULT_WINDOW_SIZE / 2;
+  private static final int BUTTONSIZE		   = 40;
   private Player           player;
   private Location         currentLocation;
   private JLabel           locationName;
@@ -39,10 +40,10 @@ public class SpacePanel extends JPanel
     locationName.setBounds(200, 0, 200, 30);
 
     JButton optionsButton = new JButton();
-    optionsButton.setSize(38, 38);
+    optionsButton.setSize(BUTTONSIZE, BUTTONSIZE);
     optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth(), 0);
     optionsButton.setIcon(new ImageIcon("Art" + File.separator
-        + "OptionButton.png"));
+        + "SettingsButton.png"));
     optionsButton.setToolTipText("Options Menu");
     optionsButton.addActionListener(new ActionListener()
     {
@@ -66,9 +67,11 @@ public class SpacePanel extends JPanel
 
     JButton inventoryButton = new JButton();
     // Someone will make art
-    inventoryButton.setSize(38, 38);
-    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - inventoryButton.getWidth(),
-    							DEFAULT_WINDOW_SIZE - inventoryButton.getHeight() -20);
+    inventoryButton.setSize(BUTTONSIZE, BUTTONSIZE);
+    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth() - inventoryButton.getWidth() - 5, 0);
+    inventoryButton.setIcon(new ImageIcon("Art" + File.separator
+            + "InventoryButton.png"));
+    inventoryButton.setToolTipText("Inventory");
     inventoryButton.addActionListener(new ActionListener()
     {
       @Override
@@ -103,7 +106,7 @@ public class SpacePanel extends JPanel
 
     });
     back.setLocation(0, 0);
-    back.setSize(38, 38);
+    back.setSize(BUTTONSIZE, BUTTONSIZE);
     back.setVisible(true);
     switch (currentLocation.whatAmI())
     {
