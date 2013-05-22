@@ -28,17 +28,25 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		logoLabel.setSize(700, 200);
 		logoLabel.setLocation((int) (370 - (logoLabel.getWidth() / 2)),
 				(int) (70));
-		newGameButton = new JButton("New Game");
+		newGameButton = new JButton();
 		newGameButton.setSize(400, 100);
 		newGameButton.setLocation((int) (370 - (newGameButton.getWidth() / 2)),
 				(int) ((370 - (newGameButton.getHeight() / 2) + 50)));
 		newGameButton.addActionListener(this);
+		newGameButton.setIcon(new ImageIcon("Art" + File.separator + "MainNewGameButton.png"));
+		newGameButton.setOpaque(false);
+		newGameButton.setBorderPainted(false);
+		newGameButton.setContentAreaFilled(false);
 
-		loadGameButton = new JButton("Load Game");
+		loadGameButton = new JButton();
 		loadGameButton.setSize(400, 100);
 		loadGameButton.setLocation((int) (newGameButton.getLocation().getX()),
 				(int) ((newGameButton.getLocation().getY() + 120)));
 		loadGameButton.addActionListener(this);
+		loadGameButton.setIcon(new ImageIcon("Art" + File.separator + "MainLoadGameButton.png"));
+		loadGameButton.setOpaque(false);
+		loadGameButton.setBorderPainted(false);
+		loadGameButton.setContentAreaFilled(false);
 
 		startPanel = new JPanel();
 		startPanel.setLayout(null);
@@ -66,6 +74,8 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 						"This is where the text for the storyline will go! ");
 		storyTextArea.setBackground(Color.BLACK);
 		storyTextArea.setForeground(Color.GREEN);
+		storyTextArea.setSelectionColor(Color.BLACK);
+		storyTextArea.setSelectedTextColor(Color.GREEN);
 		storyTextArea.setEditable(false);
 		storyTextArea.setWrapStyleWord(true);
 		storyTextArea.setLineWrap(true);
@@ -75,15 +85,23 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		storyScrollPane.setLocation(
 				(int) (370 - (storyScrollPane.getWidth() / 2)), (int) (70));
 
-		playButton = new JButton("Play Game");
+		playButton = new JButton();
 		playButton.setSize(340, 100);
 		playButton.setLocation(380, 600);
 		playButton.addActionListener(this);
+		playButton.setIcon(new ImageIcon("Art" + File.separator + "StoryPlayButton.png"));
+		playButton.setOpaque(false);
+		playButton.setBorderPainted(false);
+		playButton.setContentAreaFilled(false);
 
-		backButton = new JButton("Back to Main Menu");
+		backButton = new JButton();
 		backButton.setSize(340, 100);
 		backButton.setLocation(20, 600);
 		backButton.addActionListener(this);
+		backButton.setIcon(new ImageIcon("Art" + File.separator + "StoryBackButton.png"));
+		backButton.setOpaque(false);
+		backButton.setBorderPainted(false);
+		backButton.setContentAreaFilled(false);
 
 		storyPanel = new JPanel();
 		storyPanel.setLayout(null);
