@@ -16,6 +16,14 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * This class is the frame for the inventory that will show up.
+ * 
+ * I would like to expand it to show more and look cool like have a picture of a space ship and status 
+ * towards fixing the drive. 
+ * @author Ryan
+ *
+ */
 public class InventoryFrame extends JFrame
 {
 
@@ -24,6 +32,7 @@ public class InventoryFrame extends JFrame
   private JButton          drop;
   private JButton          back;
   private JList            inventory;
+  private JLabel           bank;
   private JTextArea        descriptionArea;
   private DefaultListModel inventoryList;
   private JScrollPane      scroll;
@@ -41,6 +50,8 @@ public class InventoryFrame extends JFrame
     drop = new JButton("Drop");
     back = new JButton("Back");
     buttons = new JPanel();
+    
+    bank = new JLabel("" + thePlayer.getMoney());
 
     ButtonListener handler = new ButtonListener();
     use.addActionListener(handler);
@@ -50,6 +61,7 @@ public class InventoryFrame extends JFrame
     buttons.add(use);
     buttons.add(drop);
     buttons.add(back);
+    buttons.add(bank);
 
     itemPanel = new JPanel();
 
@@ -57,6 +69,7 @@ public class InventoryFrame extends JFrame
     descriptionArea.setPreferredSize(new Dimension(200, 200));
     descriptionArea.setLineWrap(true);
     descriptionArea.setEditable(false);
+    descriptionArea.setWrapStyleWord(true);
 
     usableItems = new Vector<Integer>();
     fillUsuable();
@@ -123,8 +136,13 @@ public class InventoryFrame extends JFrame
     @Override
     public void actionPerformed(ActionEvent event)
     {
+      if(!event.getSource().equals(back))
+      {
+        
+      
       Item item = (Item) inventory.getSelectedValue();
       int itemNumber = item.getIDNumber();
+      
 
       if (event.getSource().equals(use))
       {
@@ -141,10 +159,13 @@ public class InventoryFrame extends JFrame
       {
         thePlayer.drop(item);
       }
-      
       repaint();  //not working I think it has something to do with the list selection listener. 
       
-      
+      }
+      else
+      {
+        dispose();
+      }
 
     }
 
