@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,8 +51,10 @@ public class InventoryFrame extends JFrame
     drop = new JButton("Drop");
     back = new JButton("Back");
     buttons = new JPanel();
+    buttons.setBackground(Color.DARK_GRAY);
     
-    bank = new JLabel("" + thePlayer.getMoney());
+    bank = new JLabel("Money: $" + thePlayer.getMoney());
+    bank.setForeground(Color.GREEN);
 
     ButtonListener handler = new ButtonListener();
     use.addActionListener(handler);
@@ -64,9 +67,12 @@ public class InventoryFrame extends JFrame
     buttons.add(bank);
 
     itemPanel = new JPanel();
+    itemPanel.setBackground(Color.DARK_GRAY);
 
     descriptionArea = new JTextArea();
     descriptionArea.setPreferredSize(new Dimension(200, 200));
+    descriptionArea.setBackground(Color.BLACK);
+    descriptionArea.setForeground(Color.GREEN);
     descriptionArea.setWrapStyleWord(true);
     descriptionArea.setLineWrap(true);
     descriptionArea.setEditable(false);
@@ -76,10 +82,14 @@ public class InventoryFrame extends JFrame
     fillUsuable();
 
     message = new JLabel();
+    message.setForeground(Color.GREEN);
 
     makeInventory();
     inventory = new JList(inventoryList);
     inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    inventory.setBackground(Color.BLACK);
+    inventory.setForeground(Color.GREEN);
+    inventory.setSelectionBackground(Color.DARK_GRAY);
 
     inventory.addListSelectionListener(new ListSelectionListener()
     {
@@ -99,6 +109,7 @@ public class InventoryFrame extends JFrame
 
     itemPanel.add(scroll);
     itemPanel.add(descriptionArea);
+    itemPanel.setBackground(Color.DARK_GRAY);
 
     this.setLayout(new BorderLayout());
     this.add(itemPanel, BorderLayout.CENTER);
