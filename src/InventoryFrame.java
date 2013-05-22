@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
@@ -25,7 +27,7 @@ import javax.swing.event.ListSelectionListener;
  * @author Ryan
  *
  */
-public class InventoryFrame extends JFrame
+public class InventoryFrame extends JFrame implements WindowFocusListener
 {
 
   private Player           thePlayer;
@@ -45,6 +47,7 @@ public class InventoryFrame extends JFrame
   public InventoryFrame(Player player)
   {
     super("Inventory");
+    addWindowFocusListener(this);
 
     thePlayer = player;
     use = new JButton("Use");
@@ -141,6 +144,14 @@ public class InventoryFrame extends JFrame
       inventoryList.addElement(item);
     }
   }
+  
+  public void windowGainedFocus(WindowEvent arg0) {
+	}
+
+
+	public void windowLostFocus(WindowEvent arg0) {
+  	dispose();
+	}
 
   private class ButtonListener implements ActionListener
   {
