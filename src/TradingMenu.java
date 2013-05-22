@@ -53,6 +53,11 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   private TradePort        theMerchant;
   private DefaultListModel merchantList;
   private DefaultListModel playerList;
+  
+  // selection variables for JLists 
+  private int startSel = 0;
+  private int endSel = 0;
+
 
   /**
    * Constructor needs a player. Has no default constructor because you need a
@@ -84,7 +89,10 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     merchantsInventory.setSelectionBackground(Color.DARK_GRAY);
     merchantsInventory.setSelectionForeground(Color.GREEN);
     merchantsInventory.setForeground(Color.WHITE);
-
+    
+    // select first item in merchantsInventory
+    merchantsInventory.setSelectionInterval(startSel, endSel);
+    
     playerScroll = new JScrollPane(playersInventory);
     playerScroll
         .setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -210,7 +218,22 @@ public class TradingMenu extends JFrame implements WindowFocusListener
         if (event.getSource() == buy)
         {
           Item item = (Item) merchantsInventory.getSelectedValue();
+          
+          // select item in merchantsInventory JList
+          startSel = merchantsInventory.getSelectedIndex(); 
+          endSel = startSel; 
+          int nitems = merchantsInventory.getModel().getSize(); 
+          if (startSel == nitems - 1) 
+          {	
+        	  merchantsInventory.setSelectionInterval(startSel - 1, endSel - 1); 
+          } 
+          else 
+          { 
+        	  merchantsInventory.setSelectionInterval(startSel + 1, endSel + 1); 
+          } 
+          
           int money = item.getModifiedPrice();
+          
           if (money > thePlayer.getMoney())
           {
             topPlayerLabel.setText("Player can not afford that!");  // as far as
@@ -244,6 +267,22 @@ public class TradingMenu extends JFrame implements WindowFocusListener
           } else
           {
             topMerchantLabel.setText("Merchant");
+            
+            
+            // select top item in playerInventory JList
+            startSel = playersInventory.getSelectedIndex(); 
+            endSel = startSel; 
+            int nitems = playersInventory.getModel().getSize(); 
+            if (startSel == nitems - 1) 
+            { 
+            	playersInventory.setSelectionInterval(startSel - 1, endSel - 1); 
+            } 
+            else 
+            { 
+            	playersInventory.setSelectionInterval(startSel + 1, endSel + 1); 
+            } 
+             
+            
             playerList.removeElement(item);
             merchantList.addElement(item);
             thePlayer.sale((double) item.getModifiedPrice(), item);
