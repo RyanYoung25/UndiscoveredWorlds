@@ -91,8 +91,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
     inventory = new JList(inventoryList);
     inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     inventory.setBackground(Color.BLACK);
-    inventory.setForeground(Color.GREEN);
+    inventory.setForeground(Color.WHITE);
     inventory.setSelectionBackground(Color.DARK_GRAY);
+    inventory.setSelectionForeground(Color.GREEN);
 
     inventory.addListSelectionListener(new ListSelectionListener()
     {
