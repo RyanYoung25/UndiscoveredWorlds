@@ -21,6 +21,17 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		super("Undiscovered Worlds");
 		setBackground(Color.BLACK);
 		setLayout(null);
+		
+		String story = "The year is 2132. You are the commander of GSC-235. " 
+					 + "General Systems Cruisers are notorious for faulty warp drive and your ship was no exception. " 
+					 + "While on your mission of galactic mapping, your cruiser fell victim to the fault while touring a star system. " 
+					 + "It is now your duty as commander to navigate though the galaxy and acquire materials by trading to rebuild your warp drive. " 
+					 + "You begin the game with what Central Command left you. You have $500 and whatever supplies you have on board. " 
+					 + "You will need to analyze the local economies and determine where to buy and where to sell your goods.";
+		String directions = "Controls\n"
+						  + "========\n"
+						  + "To navigate throughout the galaxy, click on navigation markers or the back button"
+						  + "to return to the parent level.";
 
 		// Start Panel
 		logoLabel = new JLabel(new ImageIcon("Art" + File.separator
@@ -64,14 +75,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		// Story Panel
 
 		storyTextArea = new JTextArea();
-		storyTextArea
-				.setText("This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! " +
-						"This is where the text for the storyline will go! ");
+		storyTextArea.setText(story + "\n\n\n" + directions);
 		storyTextArea.setBackground(Color.BLACK);
 		storyTextArea.setForeground(Color.GREEN);
 		storyTextArea.setSelectionColor(Color.BLACK);
