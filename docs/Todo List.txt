@@ -2,11 +2,15 @@
 = To-Do =
 =========
 
-	∙ Add Start screen with option to load game or start new one
-
-	∙ Fix shops to have random amounts of money
-
-	∙ Fix sector generation (Too close to edge occasionally)
-
 	∙ Fix shops having almost every item. Somewhere in between nothing
 	  and everything.
+
+	∙ Implement saving and loading functions
+
+	∙ Improve main menu graphics
+
+	∙ Improve Inventory graphics
+
+	∙ Set player starting inventory to have items likely for a stranded ship.
+
+	

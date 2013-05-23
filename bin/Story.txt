@@ -1,7 +1,3 @@
-The year is 2132. You are the commander of GSC-235. General Systems Cruisers are notorious for faulty warp drive and your ship was no exception. While on your mission of galactic mapping, your cruiser fell victim to the fault while touring a star system. It is now your duty as commander to navigate though the galaxy and acquire materials by trading to rebuild your warp drive. You begin the game with what Central Command left you. You have $500 and whatever supplies you have on board. You will need to analyze the local economies and determine where to buy and where to sell your goods.
+The year is 2132. You are the commander of GSC-235. General Systems Cruisers are notorious for having faulty warp drives and your ship was no exception. While on your mission of galactic mapping, your cruiser fell victim to the fault while touring a new star system. It is now your duty as commander to navigate though the galaxy and acquire materials needed to rebuild your warp drive. You begin the game with what Central Command left you. You have $500 and whatever supplies you have on board. In order to get the required materials you will need to analyze the local economies and determine where to buy and sell your goods. Buy low, sell high. You'll need to increase your bank by trading cheap items at first and increase your money to be able to trade with more valuable items.
 
-
-
-Controls
-========
-To navigate throughout the galaxy, click on navigation markers or the back button.
+Be sure to keep an eye on your fuel too. Traveling distances this large isn't cheap. You'll have to purchase fuel occasionally in order to keep traveling to new systems. Run out of fuel and its game over. You'll drift around in space until you run out of supplies or the cold abyss freezes your ship.
