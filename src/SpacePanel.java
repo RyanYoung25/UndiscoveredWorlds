@@ -44,6 +44,8 @@ public class SpacePanel extends JPanel
     optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth(), 0);
     optionsButton.setIcon(new ImageIcon("Art" + File.separator
         + "SettingsButton.png"));
+    optionsButton.setSelectedIcon(new ImageIcon("Art" + File.separator
+        + "SettingsButtonPressed.png"));
     optionsButton.setToolTipText("Options Menu");
     optionsButton.addActionListener(new ActionListener()
     {
@@ -71,6 +73,8 @@ public class SpacePanel extends JPanel
     inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth() - inventoryButton.getWidth() - 5, 0);
     inventoryButton.setIcon(new ImageIcon("Art" + File.separator
             + "InventoryButton.png"));
+    inventoryButton.setSelectedIcon(new ImageIcon("Art" + File.separator
+            + "InventoryButtonPressed.png"));
     inventoryButton.setToolTipText("Inventory");
     inventoryButton.addActionListener(new ActionListener()
     {
@@ -90,6 +94,7 @@ public class SpacePanel extends JPanel
 
     JButton back = new JButton();
     back.setIcon(new ImageIcon("Art" + File.separator + "BackButton.png"));
+    back.setSelectedIcon(new ImageIcon("Art" + File.separator + "BackButtonPressed.png"));
     back.setOpaque(false);
     back.setBorderPainted(false);
     back.setContentAreaFilled(false);

@@ -156,12 +156,15 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     buy.addActionListener(handler);
     buy.setFocusPainted(false);
     buy.setIcon(new ImageIcon("Art" + File.separator + "BuyButton.png"));
+    buy.setSelectedIcon(new ImageIcon("Art" + File.separator + "BuyButtonPressed.png"));
     sell.addActionListener(handler);
     sell.setFocusPainted(false);
     sell.setIcon(new ImageIcon("Art" + File.separator + "SellButton.png"));
+    sell.setSelectedIcon(new ImageIcon("Art" + File.separator + "SellButtonPressed.png"));
     leave.addActionListener(handler);
     leave.setFocusPainted(false);
     leave.setIcon(new ImageIcon("Art" + File.separator + "LeaveButton.png"));
+    leave.setSelectedIcon(new ImageIcon("Art" + File.separator + "LeaveButtonPressed.png"));
   }
   /**
    * This method creates the merchant and checks if you have previously been there.
