@@ -64,6 +64,7 @@ public class Galaxy extends Location
 	 */
 	public void PlaceClusters()
 	{
+		Ops.SectorRandomizer(0);
 		double spacing = 360.0 / Clusters.length;
 		for (int z = 0; z < Clusters.length; z++)
 		{
