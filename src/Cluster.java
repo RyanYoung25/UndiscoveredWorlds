@@ -60,10 +60,11 @@ public class Cluster extends Location
 	{
 		rand = new Random(seed);
 		Sectors = new Sector[1 + rand.nextInt(MAX_SECTORS)];
+		int offset = rand.nextInt(100-Sectors.length);
 		double spacing = 360.0 / Sectors.length;
 		for (int z = 0; z < Sectors.length; z++)
 		{
-			Sectors[z] = new Sector(z,this);
+			Sectors[z] = new Sector(offset + z,this);
 			Sectors[z].SetX((int)(((MIN_ORBIT + rand.nextInt(MULTI)) * Math.cos(Math.toRadians(spacing*z))))-HALF_LENGTH);
 			Sectors[z].SetY((int)(((MIN_ORBIT + rand.nextInt(MULTI)) * Math.sin(Math.toRadians(spacing*z))))-HALF_LENGTH);
 		}
