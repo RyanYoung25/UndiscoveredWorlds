@@ -3,3 +3,4 @@
 *.project
 *.pxm
 .DS_Store
+.zargo~
