@@ -198,7 +198,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     Vector<Item> v = theMerchant.getInventory();
     for (Item item : v)
     {
-      item.modify();
+      item.modify(theMerchant.getLocale());
       merchantList.addElement(item);
     }
 

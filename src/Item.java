@@ -87,8 +87,9 @@ public class Item implements Serializable
    * Use to modify the price. Will be implemented at a later date.
    * 
    */
-  public void modify()
+  public void modify(Orbital locale)
   {
+	/*  
     double number = generator.nextDouble() * 1.5;
     if (number > volatility)
     {
@@ -100,6 +101,35 @@ public class Item implements Serializable
     {
       modifiedPrice = basePrice;
     }
+    */
+	  
+	  double max = basePrice * modifier;
+	  double min = basePrice / modifier;
+	  double rel = max - min;
+	  if (volatility == 0)
+	  {
+		  modifiedPrice = (int) (1 + generator.nextInt((int) Math.round(rel)));
+		  
+	  }
+	  else
+	  {
+		  if(volatility > 1)
+		  {
+			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*(volatility-1));
+			  if (locale.getOrbitalClass().GetProperties()[classification] > 0)
+			  {
+				  modifiedPrice = (int) (max - modifiedPrice);
+			  }
+			  else
+			  {
+				  modifiedPrice = (int) (min + modifiedPrice);
+			  }
+		  }
+		  else
+		  {
+			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility);
+		  }
+	  }
   }
   
   public void unModify()
