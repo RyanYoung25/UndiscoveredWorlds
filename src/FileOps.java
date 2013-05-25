@@ -160,6 +160,7 @@ public class FileOps
 			System.err.println("Cannot read from file.");
 		}		
 		closeFile();
+		Item.initItems(Items);
 	}
 	
 	public int getStarFreqCeiling()

@@ -20,7 +20,7 @@ public class TradePort extends Location implements Merchant
 	{
 		locale = (Orbital) loc;
 		genMoney();
-    inventory = genInventory();
+		genInventory();
 	}
 	
 	/**
@@ -50,18 +50,34 @@ public class TradePort extends Location implements Merchant
 		return money;
 	}
 	
-	public Vector<Item> genInventory()
+	public void genInventory()
 	{
-		Vector<Item> temp = new Vector<Item>();
+		for (int x = 0; x < locale.getOrbitalClass().GetProperties().length-1; x++)
+		{
+			if(inventory == null)
+			{
+				inventory = new Vector<Item>();
+			}
+			for(int y = 0; y < locale.getOrbitalClass().GetProperties()[x]+1; y++)
+			{
+				inventory.add(Item.getRandomItem(x));
+			}
+		}
+		
+/*
 		for ( Item x : Ops.GetItems())
 		{
 			if (locale.getOrbitalClass().GetProperties()[x.getClassification()] <= 6)  //I changed from > to < now there are more items
 			{
-				temp.add(x);
+				if(inventory == null)
+				{
+					inventory = new Vector<Item>();
+				}
+				inventory.add(x);
 			}
 		}
-		return temp;
-	}//Why are we returning a vector instead of just putting it on the inventory vector?? RY
+*/	
+	}
 	
 	/* (non-Javadoc)
 	 * @see Merchant#getInventory()

@@ -22,7 +22,7 @@ Gas Cylinders	Metal cylinders specifically designed for storing gasses.	20	4	2	1
 Containment Cylinders	Specialized metal cylinders used for storing volatile materials. Utilize climate controls to maintain stability.	21	10	2	1	2
 Superconductors	A metallic alloy that maintains a superconductive state at room temperature.	22	500	3	1.5	4
 Optical Components	Used for the manufacture of computer systems.	23	750	2	2	6
-Rubber Duckies	The original rubber ducky was found on a planet with a long-dead civilization. It's duplication and proliferation throughout the galaxy have caused some authorities to outlaw their sale and production. This makes them highly sought after by many of the elite.	24	100	1.5	2	8
+Rubber Duckies	The original rubber ducky was found on a planet with a long-dead civilization. It's duplication and proliferation throughout the galaxy have caused some authorities to outlaw their sale and production. This makes them highly sought after by many of the elite.	24	100	1.5	2	0
 Luxury Items	High quality items ranging from jewelry to a posh top hat. Users may feel pretentious.	25	10000	2.5	1.5	6
 Nanites	Machines that coordinate to interact and adapt objects for specific purpose. Resistance is futile.	26	10000	1.1	2	5
 Textiles	Materials used in clothes, bedding and some diapers.	27	200	4	0.2	1

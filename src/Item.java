@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Item implements Serializable
@@ -12,7 +13,9 @@ public class Item implements Serializable
   private double volatility;
   private int    classification;
   private int    modifiedPrice; // for future use
+  private static int highestClassification;
   private static Random generator= new Random();     
+  private static ArrayList<ArrayList<Item>> Items = new ArrayList<ArrayList<Item>>();
 
   public Item()
   {
@@ -31,11 +34,33 @@ public class Item implements Serializable
     setClassification(classification);
   }
 
-  public Item(String[] rec)
+  public Item(String[] rec) //this constructor should only be called when reading items from a file
   {
     this(rec[0], rec[1], Integer.parseInt(rec[2]), Integer.parseInt(rec[3]),
         Double.parseDouble(rec[4]), Double.parseDouble(rec[5]), Integer
             .parseInt(rec[6]));
+    if(this.getClassification()>highestClassification)
+    {
+    	highestClassification=this.getClassification();
+    }
+  }
+  
+  public static void initItems(ArrayList<Item> loaded)
+  {
+	  for(int x = 0; x <= highestClassification; x++)
+	  {
+		  Items.add(new ArrayList<Item>());
+	  }
+	  
+	  for(Item x : loaded)
+	  {
+		  Items.get(x.getClassification()).add(x);
+	  }
+  }
+  
+  public static Item getRandomItem(int c)
+  {
+	  return Items.get(c).get(generator.nextInt(Items.get(c).size()));
   }
 
   public String getName()
