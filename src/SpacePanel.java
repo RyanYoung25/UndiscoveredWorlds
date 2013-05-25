@@ -41,7 +41,7 @@ public class SpacePanel extends JPanel
 
     JButton optionsButton = new JButton();
     optionsButton.setSize(BUTTONSIZE, BUTTONSIZE);
-    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth(), 0);
+    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth()-5, 0);
     optionsButton.setIcon(new ImageIcon("Art" + File.separator
         + "SettingsButton.png"));
     optionsButton.setSelectedIcon(new ImageIcon("Art" + File.separator
@@ -70,7 +70,7 @@ public class SpacePanel extends JPanel
     JButton inventoryButton = new JButton();
     // Someone will make art
     inventoryButton.setSize(BUTTONSIZE, BUTTONSIZE);
-    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth() - inventoryButton.getWidth() - 5, 0);
+    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth() - inventoryButton.getWidth() - 10, 0);
     inventoryButton.setIcon(new ImageIcon("Art" + File.separator
             + "InventoryButton.png"));
     inventoryButton.setSelectedIcon(new ImageIcon("Art" + File.separator
