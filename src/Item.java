@@ -12,7 +12,7 @@ public class Item implements Serializable
   private double volatility;
   private int    classification;
   private int    modifiedPrice; // for future use
-  private Random generator;     
+  private static Random generator= new Random();     
 
   public Item()
   {
@@ -29,7 +29,6 @@ public class Item implements Serializable
     setModifier(modifier);
     setVolatility(volatility);
     setClassification(classification);
-    generator = new Random();
   }
 
   public Item(String[] rec)
