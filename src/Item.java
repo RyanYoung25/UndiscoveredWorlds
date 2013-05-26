@@ -132,6 +132,17 @@ public class Item implements Serializable
 	  }
   }
   
+  public static void modifyAll(Orbital locale)
+  {
+	  for(int x = 0; x < Items.size(); x++)
+	  {
+		  for(Item cur : Items.get(x))
+		  {
+			  cur.modify(locale);
+		  }
+	  }
+  }
+  
   public void unModify()
   {
     modifiedPrice = basePrice;

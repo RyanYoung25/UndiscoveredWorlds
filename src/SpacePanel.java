@@ -216,6 +216,8 @@ public class SpacePanel extends JPanel
       repaint();
     } else
     {
+    	// modify all prices here
+      Item.modifyAll((Orbital)currentLocation);
       TradingMenu menu = new TradingMenu(player);
       menu.setSize(650, 230);
       menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
