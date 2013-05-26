@@ -6,12 +6,13 @@ public class Player implements Merchant
   private String            name;
   private double            bank;
   private Vector<Item>      inventory;
+  private Vector<Item>      brokenDrive;
   private int               fuel;
   private Location          currentlocation;
   private static final int  MAX_PORT_HISTORY = 15;
   private static final int  FUEL_CONSTANT    = 25;
   private static final int  MAX_FUEL_LEVEL   = 50;
-  private static final int FUEL_CONSUMPTION = 5;
+  private static final int  FUEL_CONSUMPTION = 5;
 
   private Vector<TradePort> recentLocations;
 
@@ -27,20 +28,19 @@ public class Player implements Merchant
     fuel = 20;
     this.inventory = inventory;
     recentLocations = new Vector<TradePort>();
+    brokenDrive = new Vector<Item>();
 
   }
 
   @Override
   public double getMoney()
   {
-    // TODO Auto-generated method stub
     return bank;
   }
 
   @Override
   public Vector<Item> getInventory()
   {
-    // TODO Auto-generated method stub
     return inventory;
   }
 
@@ -120,40 +120,66 @@ public class Player implements Merchant
     }
     return port;
   }
-  
+
   public void useFuel()
   {
     fuel -= FUEL_CONSUMPTION;
   }
 
-  public void use(Item item)
+  public String use(Item item)
   {
     if (item.getIDNumber() == 4)
     {
       if (fuel + FUEL_CONSTANT <= MAX_FUEL_LEVEL)
       {
         fuel += FUEL_CONSTANT;
-      }
-      else
+      } else
       {
         fuel = MAX_FUEL_LEVEL;
       }
-      
       inventory.remove(item);
-    }
-    if(item.getIDNumber() == 32)
-    {
-      System.out.println("Bryant is madt");
-    }
-    if(item.getIDNumber() == 31)
-    {
-      System.out.println("Bryant is madt");
-    }
-    if(item.getIDNumber() == 30)
-    {
-      System.out.println("Bryant is madt");
-    }
 
+      return String.format("Fuel Level was increased to: %d", getFuelLevel());
+    }
+    if (item.getIDNumber() == 32 && !brokenDrive.contains(item))
+    {
+      brokenDrive.add(item);
+      System.out.println("Bryant is madt");
+      inventory.remove(item);
+
+      return String.format("You added %s to your broken drive", item.getName());
+    }
+    if (item.getIDNumber() == 31 && !brokenDrive.contains(item))
+    {
+      brokenDrive.add(item);
+      System.out.println("Bryant is madt");
+      inventory.remove(item);
+
+      return String.format("You added %s to your broken drive", item.getName());
+    }
+    if (item.getIDNumber() == 30 && !brokenDrive.contains(item))
+    {
+      brokenDrive.add(item);
+      System.out.println("Bryant is madt");
+      inventory.remove(item);
+
+      return String.format("You added %s to your broken drive", item.getName());
+    }
+    inventory.remove(item);
+    tryToWin();
+    return "You used an item you can't use... How?";
+  }
+
+  public boolean tryToWin()
+  {
+    if (brokenDrive.size() == 3)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
   public void drop(Item item)

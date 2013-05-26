@@ -22,10 +22,11 @@ import javax.swing.event.ListSelectionListener;
 /**
  * This class is the frame for the inventory that will show up.
  * 
- * I would like to expand it to show more and look cool like have a picture of a space ship and status 
- * towards fixing the drive. 
+ * I would like to expand it to show more and look cool like have a picture of a
+ * space ship and status towards fixing the drive.
+ * 
  * @author Ryan
- *
+ * 
  */
 public class InventoryFrame extends JFrame implements WindowFocusListener
 {
@@ -55,8 +56,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
     back = new JButton("Back");
     buttons = new JPanel();
     buttons.setBackground(Color.DARK_GRAY);
-    
-    bank = new JLabel("Money: $" + thePlayer.getMoney());
+
+    bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: "
+        + thePlayer.getFuelLevel());
     bank.setForeground(Color.GREEN);
 
     ButtonListener handler = new ButtonListener();
@@ -101,8 +103,14 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
       @Override
       public void valueChanged(ListSelectionEvent arg0)
       {
-        descriptionArea.setText(((Item) inventory.getSelectedValue())
-            .getDescription());
+        try
+        {
+          descriptionArea.setText(((Item) inventory.getSelectedValue())
+              .getDescription());
+        } catch (NullPointerException e)
+        {
+          descriptionArea.setText("");
+        }
       }
 
     });
@@ -145,14 +153,15 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
       inventoryList.addElement(item);
     }
   }
-  
-  public void windowGainedFocus(WindowEvent arg0) {
-	}
 
+  public void windowGainedFocus(WindowEvent arg0)
+  {
+  }
 
-	public void windowLostFocus(WindowEvent arg0) {
-  	dispose();
-	}
+  public void windowLostFocus(WindowEvent arg0)
+  {
+    dispose();
+  }
 
   private class ButtonListener implements ActionListener
   {
@@ -160,38 +169,47 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
     @Override
     public void actionPerformed(ActionEvent event)
     {
-      if(!event.getSource().equals(back))
+      if (!event.getSource().equals(back))
       {
-        
-      
-      Item item = (Item) inventory.getSelectedValue();
-      int itemNumber = item.getIDNumber();
-      
 
-      if (event.getSource().equals(use))
-      {
-        if (usableItems.contains(itemNumber))
+        Item item = (Item) inventory.getSelectedValue();
+        int indexNumber = inventory.getSelectedIndex();
+        int itemNumber = item.getIDNumber();
+
+        try
         {
-          thePlayer.use(item);
-          message.setText("Fuel increased to: " + thePlayer.getFuelLevel());
-          
-        } else
+          if (event.getSource().equals(use))
+          {
+            if (usableItems.contains(itemNumber))
+            {
+
+              message.setText(thePlayer.use(item));
+              bank.setText("Money: $" + thePlayer.getMoney() + " Fuel: "
+                  + thePlayer.getFuelLevel());
+              inventoryList.removeElement(item);
+              inventory.setSelectedIndex(indexNumber);
+
+            } else
+            {
+              message.setText("You can't use this item");
+            }
+          } else if (event.getSource().equals(drop))
+          {
+
+            thePlayer.drop(item);
+            inventoryList.removeElement(item);
+            inventory.setSelectedIndex(indexNumber);
+          }
+          repaint();
+        } catch (Exception e)
         {
-          message.setText("You can't use this item");
+
         }
-      } else if (event.getSource().equals(drop))
-      {
-        thePlayer.drop(item);
-      }
-      repaint();  //not working I think it has something to do with the list selection listener. 
-      
-      }
-      else
+      } else
       {
         dispose();
       }
 
     }
-
   }
 }

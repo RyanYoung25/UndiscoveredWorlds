@@ -239,15 +239,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
           
           if (money > thePlayer.getMoney())
           {
-            topPlayerLabel.setText("Player can not afford that!");  // as far as
-                                                                   // aesthetics
-                                                                   // this looks
-                                                                   // fine,
-                                                                   // saying
-                                                                   // they can't
-                                                                   // afford and
-                                                                   // then
-                                                                   // nothing
+            topPlayerLabel.setText("Player can not afford that!");  
           } else
           {
             topPlayerLabel.setText("Player");
@@ -256,14 +248,14 @@ public class TradingMenu extends JFrame implements WindowFocusListener
             theMerchant.sale((double) item.getModifiedPrice(), item);
             thePlayer.purchase((double) item.getModifiedPrice(), item);
             updateBanks();
-            item.unModify();
+            //item.unModify();  
             repaint();
           }
 
         } else if (event.getSource() == sell)
         {
-          Item item = (Item) playersInventory.getSelectedValue(); //I think this is easier
-          int money = item.getModifiedPrice();  //Just a little easier to read
+          Item item = (Item) playersInventory.getSelectedValue(); 
+          int money = item.getModifiedPrice();  
           if(money > theMerchant.getMoney())
           {
             topMerchantLabel.setText("Merchant can not afford that!");

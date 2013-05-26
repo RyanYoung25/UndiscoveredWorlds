@@ -17,7 +17,7 @@ public class SpacePanel extends JPanel
   public static final int  DEFAULT_SIZE        = 35;
   private static final int SCALAR              = 1;
   private static final int SHIFT               = DEFAULT_WINDOW_SIZE / 2;
-  private static final int BUTTONSIZE		   = 40;
+  private static final int BUTTONSIZE          = 40;
   private Player           player;
   private Location         currentLocation;
   private JLabel           locationName;
@@ -41,7 +41,8 @@ public class SpacePanel extends JPanel
 
     JButton optionsButton = new JButton();
     optionsButton.setSize(BUTTONSIZE, BUTTONSIZE);
-    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth()-5, 0);
+    optionsButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth()
+        - 5, 0);
     optionsButton.setIcon(new ImageIcon("Art" + File.separator
         + "SettingsButton.png"));
     optionsButton.setSelectedIcon(new ImageIcon("Art" + File.separator
@@ -70,31 +71,37 @@ public class SpacePanel extends JPanel
     JButton inventoryButton = new JButton();
     // Someone will make art
     inventoryButton.setSize(BUTTONSIZE, BUTTONSIZE);
-    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth() - inventoryButton.getWidth() - 10, 0);
+    inventoryButton.setLocation(DEFAULT_WINDOW_SIZE - optionsButton.getWidth()
+        - inventoryButton.getWidth() - 10, 0);
     inventoryButton.setIcon(new ImageIcon("Art" + File.separator
-            + "InventoryButton.png"));
+        + "InventoryButton.png"));
     inventoryButton.setSelectedIcon(new ImageIcon("Art" + File.separator
-            + "InventoryButtonPressed.png"));
+        + "InventoryButtonPressed.png"));
     inventoryButton.setToolTipText("Inventory");
     inventoryButton.addActionListener(new ActionListener()
     {
+
       @Override
       public void actionPerformed(ActionEvent arg0)
-      {        
-       InventoryFrame inventoryFrame = new InventoryFrame(player);
-       inventoryFrame.setSize(400, 300);
-       inventoryFrame.setLocation((int) getParent().getLocationOnScreen().getX()
-               + ((getParent().getWidth()) / 2) - (inventoryFrame.getWidth() / 2),
-               (int) getParent().getLocationOnScreen().getY()
-                   + ((getParent().getHeight()) / 2) - (inventoryFrame.getHeight() / 2));
-       inventoryFrame.setVisible(true);
-       inventoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+      {
+        InventoryFrame inventoryFrame = new InventoryFrame(player);
+        inventoryFrame.setSize(400, 300);
+        inventoryFrame.setLocation(
+            (int) getParent().getLocationOnScreen().getX()
+                + ((getParent().getWidth()) / 2)
+                - (inventoryFrame.getWidth() / 2), (int) getParent()
+                .getLocationOnScreen().getY()
+                + ((getParent().getHeight()) / 2)
+                - (inventoryFrame.getHeight() / 2));
+        inventoryFrame.setVisible(true);
+        inventoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
       }
     });
 
     JButton back = new JButton();
     back.setIcon(new ImageIcon("Art" + File.separator + "BackButton.png"));
-    back.setSelectedIcon(new ImageIcon("Art" + File.separator + "BackButtonPressed.png"));
+    back.setSelectedIcon(new ImageIcon("Art" + File.separator
+        + "BackButtonPressed.png"));
     back.setOpaque(false);
     back.setBorderPainted(false);
     back.setContentAreaFilled(false);
@@ -106,6 +113,8 @@ public class SpacePanel extends JPanel
       public void actionPerformed(ActionEvent arg0)
       {
         player.setLoc(currentLocation.getParent());
+        player.useFuel();
+        checkGameOver();
         populateSpace();
       }
 
@@ -186,7 +195,8 @@ public class SpacePanel extends JPanel
             + "Name: "
             + loc.toString()
             + "<BR />"
-            + "Type: " + who
+            + "Type: "
+            + who
             + "<BR />"
             + "Location: "
             + ((!loc.toString().equals(loc.getParent().toString())) ? loc
@@ -211,6 +221,24 @@ public class SpacePanel extends JPanel
       player.setLoc(currentLocation.getParent());
       populateSpace();
     }
+  }
+
+  public void checkGameOver()
+  {
+
+    if (player.getFuelLevel() == 0)
+    {
+      //End the game with a loss
+      this.setBackground(Color.GREEN);  //for test
+      //Needs to close all windows and give jpanel focus.
+      System.out.println("You lost");
+    }
+
+    if (player.tryToWin())
+    {
+      //End the game with a win
+    }
+
   }
 
   public void renderScene(Location[] locations)
@@ -322,6 +350,8 @@ public class SpacePanel extends JPanel
         player.setLoc(currentLocation.getChild(index));
       }
       populateSpace();
+      player.useFuel();
+      checkGameOver();
     }
 
     public int getIndex()

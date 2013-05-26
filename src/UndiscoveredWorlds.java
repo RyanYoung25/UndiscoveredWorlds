@@ -26,4 +26,5 @@ public class UndiscoveredWorlds {
 		app.setVisible(true);
 		app.setResizable(false);
 	}
+	
 }
