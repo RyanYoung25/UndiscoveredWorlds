@@ -182,7 +182,8 @@ public class SpacePanel extends JPanel
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
-        b.setToolTipText("<HTML>"
+        b.setToolTipText(
+        	"<HTML><BODY BGCOLOR=#000 STYLE=padding:5px;><FONT COLOR=#00FF00>"
             + "Name: "
             + loc.toString()
             + "<BR />"
@@ -190,7 +191,8 @@ public class SpacePanel extends JPanel
             + "<BR />"
             + "Location: "
             + ((!loc.toString().equals(loc.getParent().toString())) ? loc
-                .getParent().toString() : "Galaxy") + "</HTML>");
+                .getParent().toString() : "Galaxy") 
+            + "</FONT></BODY></HTML>");
 
         this.add(b);
       }
