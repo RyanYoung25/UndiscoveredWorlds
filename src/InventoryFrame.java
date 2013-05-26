@@ -147,6 +147,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 
   private void makeInventory()
   {
+	  Item.unModifyAll();
     inventoryList = new DefaultListModel();
     Vector<Item> v = thePlayer.getInventory();
     for (Item item : v)
