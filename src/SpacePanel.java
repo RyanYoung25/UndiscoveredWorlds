@@ -21,12 +21,14 @@ public class SpacePanel extends JPanel
   private Player           player;
   private Location         currentLocation;
   private JLabel           locationName;
+  private JLabel		   fuelLabel;
 
   public SpacePanel(Player player)
   {
     this.player = player;
     this.setBackground(Color.BLACK);
     locationName = new JLabel("");
+    fuelLabel = new JLabel("Ship Fuel: " + player.getFuelLevel());
     populateSpace();
   }
 
@@ -38,6 +40,9 @@ public class SpacePanel extends JPanel
     currentLocation = player.getLoc();
     Location[] locations = currentLocation.getChild();
     locationName.setBounds(200, 0, 200, 30);
+    fuelLabel.setBounds(0, 50, 200, 30);
+    fuelLabel.setForeground(Color.GREEN);
+    this.add(fuelLabel);
 
     JButton optionsButton = new JButton();
     optionsButton.setSize(BUTTONSIZE, BUTTONSIZE);
@@ -85,7 +90,7 @@ public class SpacePanel extends JPanel
       public void actionPerformed(ActionEvent arg0)
       {
         InventoryFrame inventoryFrame = new InventoryFrame(player);
-        inventoryFrame.setSize(400, 300);
+        inventoryFrame.setSize(500, 300);
         inventoryFrame.setLocation(
             (int) getParent().getLocationOnScreen().getX()
                 + ((getParent().getWidth()) / 2)
@@ -122,6 +127,7 @@ public class SpacePanel extends JPanel
     back.setLocation(0, 0);
     back.setSize(BUTTONSIZE, BUTTONSIZE);
     back.setVisible(true);
+    fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
     switch (currentLocation.whatAmI())
     {
     case 4:
@@ -231,7 +237,7 @@ public class SpacePanel extends JPanel
     if (player.getFuelLevel() == 0)
     {
       //End the game with a loss
-      this.setBackground(Color.GREEN);  //for test
+      this.setBackground(Color.RED);  //for test
       //Needs to close all windows and give jpanel focus.
       System.out.println("You lost");
     }
@@ -353,6 +359,7 @@ public class SpacePanel extends JPanel
       }
       populateSpace();
       player.useFuel();
+      fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
       checkGameOver();
     }
 

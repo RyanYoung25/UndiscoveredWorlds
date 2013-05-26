@@ -116,6 +116,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
     });
 
     scroll = new JScrollPane(inventory);
+    scroll.setPreferredSize(new Dimension(200,200));
     scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
