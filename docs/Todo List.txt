@@ -2,15 +2,8 @@
 = To-Do =
 =========
 
-	∙ Fix shops having almost every item. Somewhere in between nothing
-	  and everything.
+	∙ Implement loading and saving or remove buttons
 
-	∙ Implement saving and loading functions
+	∙ Fix Inventory frame
 
-	∙ Improve main menu graphics
-
-	∙ Improve Inventory graphics
-
-	∙ Set player starting inventory to have items likely for a stranded ship.
-
-	
+	∙ Add end game scenario

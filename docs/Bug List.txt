@@ -19,9 +19,6 @@ Open
 Partially Completed
 ------------------------------------------------------
 
-	[P]Ports can generate without any items(Should have items or not be clickable)
-	   Now they generate with too many and not enough money.
-
 
 Completed
 ------------------------------------------------------
@@ -54,4 +51,7 @@ Completed
 
 	[X]Shops restore inventory when player leaves. (If player buys all items and
 	   leaves, those items are still in the shop on return.)
+	
+	[X]Ports can generate without any items(Should have items or not be clickable)
+	   Now they generate with too many and not enough money.
 
