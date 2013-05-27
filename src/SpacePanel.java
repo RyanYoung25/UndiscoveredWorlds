@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -241,6 +242,15 @@ public class SpacePanel extends JPanel {
 		if (player.hasFuel() == false) {
 			// End the game with a loss
 			this.setBackground(Color.RED);
+			JLabel empty = new JLabel("OUT OF FUEL");
+			int xsize = 400;
+			int ysize = 80;
+			empty.setFont(new Font(empty.getFont().getFontName(), Font.BOLD, 24));
+			empty.setBounds(SHIFT - (xsize/2), 20, xsize, ysize);
+			empty.setForeground(Color.WHITE);
+			empty.setHorizontalAlignment(JLabel.CENTER);
+			empty.setVerticalAlignment(JLabel.TOP);
+			add(empty);
 		} 
 		else 
 		{
