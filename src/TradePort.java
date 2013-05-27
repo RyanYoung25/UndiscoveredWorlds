@@ -52,6 +52,7 @@ public class TradePort extends Location implements Merchant
 	
 	public void genInventory()
 	{
+		Item.modifyAll(locale);
 		for (int x = 0; x < locale.getOrbitalClass().GetProperties().length-1; x++)
 		{
 			if(inventory == null)
