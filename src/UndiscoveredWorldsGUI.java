@@ -29,7 +29,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		player = new Player();
 		Andromeda.Generate(1);
 		player.setLoc(Andromeda.randomStart());
-		test = new SpacePanel(player);
+		test = new SpacePanel(player, this);
 		
 		String story = "The year is 2132. " +
 				"You are the commander of GSC-235. " +
@@ -158,8 +158,11 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 			repaint();
 		} else if (event.getSource() == playButton) {
 
+			Andromeda = new Galaxy();
+			player = new Player();
 			Andromeda.Generate(1);
 			player.setLoc(Andromeda.randomStart());
+			test = new SpacePanel(player, this);
 			test.setVisible(true);
 			storyPanel.setVisible(false);
 			add(test);
@@ -175,7 +178,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 		remove(test);
 		add(startPanel);
 		startPanel.setVisible(true);
-		System.out.println("reset called");
+		repaint();
 	}
 	
 

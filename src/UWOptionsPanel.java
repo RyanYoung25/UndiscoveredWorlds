@@ -15,13 +15,17 @@ import javax.swing.JPanel;
 public class UWOptionsPanel extends JFrame implements ActionListener,
 		WindowFocusListener {
 
+	private UndiscoveredWorldsGUI uw;
 	private JButton saveButton;
 	private JButton loadButton;
 	private JButton menuButton;
 	private JButton returnButton;
 
-	public UWOptionsPanel() {
+	public UWOptionsPanel(UndiscoveredWorldsGUI uw) {
 		super("Options");
+		
+		this.uw = uw;
+		
 		setLayout(new GridLayout(4, 1));
 		setBackground(Color.DARK_GRAY);
 		requestFocus();
@@ -57,7 +61,8 @@ public class UWOptionsPanel extends JFrame implements ActionListener,
 			System.out.print("laod");
 		
 		}else if(e.getSource() == menuButton){
-			System.out.print("pressed");
+			this.dispose();
+			uw.resetGame();
 		}
 		else if(e.getSource() == returnButton){
 			dispose();

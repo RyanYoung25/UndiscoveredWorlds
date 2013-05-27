@@ -18,12 +18,14 @@ public class SpacePanel extends JPanel {
 	private static final int SCALAR = 1;
 	private static final int SHIFT = DEFAULT_WINDOW_SIZE / 2;
 	private static final int BUTTONSIZE = 40;
+	private UndiscoveredWorldsGUI uw;
 	private Player player;
 	private Location currentLocation;
 	private JLabel locationName;
 	private JLabel fuelLabel;
 
-	public SpacePanel(Player player) {
+	public SpacePanel(Player player, UndiscoveredWorldsGUI uw) {
+		this.uw = uw;
 		this.player = player;
 		this.setBackground(Color.BLACK);
 		locationName = new JLabel("");
@@ -54,7 +56,7 @@ public class SpacePanel extends JPanel {
 		optionsButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				UWOptionsPanel optionWindow = new UWOptionsPanel();
+				UWOptionsPanel optionWindow = new UWOptionsPanel(uw);
 				optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				optionWindow.setSize(400, 300);
 				optionWindow.setLocation(
@@ -251,6 +253,7 @@ public class SpacePanel extends JPanel {
 			empty.setHorizontalAlignment(JLabel.CENTER);
 			empty.setVerticalAlignment(JLabel.TOP);
 			add(empty);
+			uw.resetGame(); //resets the game(obviously).
 		} 
 		else 
 		{
