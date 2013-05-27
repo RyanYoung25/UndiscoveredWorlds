@@ -61,7 +61,17 @@ public class TradePort extends Location implements Merchant
 			}
 			for(int y = 0; y < locale.getOrbitalClass().GetProperties()[x]+1; y++)
 			{
-				inventory.add(Item.getRandomItem(x));
+				if (y == 0)
+				{
+					if (rand.nextInt(10) < 3)
+					{
+						inventory.add(Item.getRandomItem(x));
+					}
+				}
+				else
+				{
+					inventory.add(Item.getRandomItem(x));
+				}
 			}
 		}
 		
