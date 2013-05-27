@@ -84,7 +84,7 @@ public class Item implements Serializable
   }
 
   /**
-   * Use to modify the price. Will be implemented at a later date.
+   * Use to modify the price. 
    * 
    */
   public void modify(Orbital locale)
@@ -139,17 +139,6 @@ public class Item implements Serializable
 		  for(Item cur : Items.get(x))
 		  {
 			  cur.modify(locale);
-		  }
-	  }
-  }
-  
-  public static void unModifyAll()
-  {
-	  for(int x = 0; x < Items.size(); x++)
-	  {
-		  for(Item cur : Items.get(x))
-		  {
-			  cur.unModify();
 		  }
 	  }
   }

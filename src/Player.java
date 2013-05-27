@@ -192,4 +192,12 @@ public class Player implements Merchant
     // TODO Auto-generated method stub
     return fuel;
   }
+  
+  public void revertPrices()
+  {
+	  for(int x = 0; x < inventory.size(); x++)
+	  {
+		  inventory.get(x).unModify();
+	  }
+  }
 }

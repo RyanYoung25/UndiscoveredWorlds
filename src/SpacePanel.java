@@ -83,6 +83,7 @@ public class SpacePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				player.revertPrices();
 				InventoryFrame inventoryFrame = createIF();
 				inventoryFrame.setSize(500, 300);
 				inventoryFrame.setLocation(
