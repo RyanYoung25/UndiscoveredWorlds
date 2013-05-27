@@ -202,11 +202,13 @@ public class Player implements Merchant
    * Ryan: I really think that this is a bad way of returning the fuel level
    * The max fuel level is easily passable and it opens the problem of using some fuel,
    * selling it, then getting it back like new.
+   * 
+   * 
    */
   public int getFuelLevel()
   {
-	  int extraFuel = 0;
-	  for(Item x : inventory)
+	  //int extraFuel = 0;
+	  /*for(Item x : inventory)
 	  {
 		  if(x.getIDNumber()==4)
 		  {
@@ -216,12 +218,12 @@ public class Player implements Merchant
 		  {
 			  extraFuel += MAX_FUEL_LEVEL;
 		  }
-	  }
-    return fuel + extraFuel;
+	  }*/
+    return fuel;// + extraFuel;
   }
   
   /*
-   * Ryan: shouldn't need to go through inventory
+   * Checks fuel then uses fuel in inventory if needed.
    */
   public boolean hasFuel()
   {
