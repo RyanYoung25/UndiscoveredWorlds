@@ -118,16 +118,38 @@ public class Item implements Serializable
 			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*(volatility-1));
 			  if (locale.getOrbitalClass().GetProperties()[classification] > 0)
 			  {
-				  modifiedPrice = (int) (max - modifiedPrice);
+				  modifiedPrice = (int) (max - modifiedPrice)+1;
 			  }
 			  else
 			  {
-				  modifiedPrice = (int) (min + modifiedPrice);
+				  modifiedPrice = (int) (min + modifiedPrice)+1;
 			  }
 		  }
 		  else
 		  {
-			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility);
+			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility)+1;
+		  }
+	  }
+  }
+  
+  public static void modifyAll(Orbital locale)
+  {
+	  for(int x = 0; x < Items.size(); x++)
+	  {
+		  for(Item cur : Items.get(x))
+		  {
+			  cur.modify(locale);
+		  }
+	  }
+  }
+  
+  public static void unModifyAll()
+  {
+	  for(int x = 0; x < Items.size(); x++)
+	  {
+		  for(Item cur : Items.get(x))
+		  {
+			  cur.unModify();
 		  }
 	  }
   }
