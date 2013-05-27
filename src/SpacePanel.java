@@ -342,17 +342,25 @@ public class SpacePanel extends JPanel {
 		}
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (player.getLoc().getClass() == Galaxy.class) {
-				player.getLoc().Generate(index);
-				player.setLoc(currentLocation.getChild(-1));
-			} else {
-				player.setLoc(currentLocation.getChild(index));
+		public void actionPerformed(ActionEvent e) 
+		{
+			if(player.getFuelLevel() > 0)
+			{
+				if (player.getLoc().getClass() == Galaxy.class) 
+				{
+					player.getLoc().Generate(index);
+					player.setLoc(currentLocation.getChild(-1));
+				} 
+				else 
+				{
+					player.setLoc(currentLocation.getChild(index));
+				}
+				populateSpace();
+				player.useFuel();
+				fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
+				checkGameOver();
 			}
-			populateSpace();
-			player.useFuel();
-			fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
-			checkGameOver();
+			
 		}
 
 		public int getIndex() {
