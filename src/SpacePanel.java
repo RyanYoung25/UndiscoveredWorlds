@@ -243,6 +243,7 @@ public class SpacePanel extends JPanel {
 	public void playerStatusChanged() {
 		if (player.hasFuel() == false) {
 			// End the game with a loss
+			
 			this.setBackground(Color.RED);
 			JLabel empty = new JLabel("OUT OF FUEL");
 			int xsize = 400;
@@ -252,8 +253,18 @@ public class SpacePanel extends JPanel {
 			empty.setForeground(Color.WHITE);
 			empty.setHorizontalAlignment(JLabel.CENTER);
 			empty.setVerticalAlignment(JLabel.TOP);
+			
+			JButton quit = new JButton("Quit Game");
+			quit.setBounds(SHIFT - (xsize/2), 50, xsize, ysize);
+			quit.addActionListener(new ActionListener() {
+
+				public void actionPerformed(ActionEvent arg0) {
+				uw.resetGame(); //resets the game(obviously).
+				}
+			});
+			
 			add(empty);
-			uw.resetGame(); //resets the game(obviously).
+			add(quit);
 		} 
 		else 
 		{
