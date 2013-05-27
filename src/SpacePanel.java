@@ -23,6 +23,8 @@ public class SpacePanel extends JPanel {
 	private Location currentLocation;
 	private JLabel locationName;
 	private JLabel fuelLabel;
+	private JLabel empty = new JLabel("OUT OF FUEL");
+	private JButton quit = new JButton("Quit Game");
 
 	public SpacePanel(Player player, UndiscoveredWorldsGUI uw) {
 		this.uw = uw;
@@ -245,7 +247,6 @@ public class SpacePanel extends JPanel {
 			// End the game with a loss
 			
 			this.setBackground(Color.RED);
-			JLabel empty = new JLabel("OUT OF FUEL");
 			int xsize = 400;
 			int ysize = 80;
 			empty.setFont(new Font(empty.getFont().getFontName(), Font.BOLD, 24));
@@ -253,9 +254,10 @@ public class SpacePanel extends JPanel {
 			empty.setForeground(Color.WHITE);
 			empty.setHorizontalAlignment(JLabel.CENTER);
 			empty.setVerticalAlignment(JLabel.TOP);
+			empty.setVisible(true);
 			
-			JButton quit = new JButton("Quit Game");
 			quit.setBounds(SHIFT - (xsize/2), 50, xsize, ysize);
+			quit.setVisible(true);
 			quit.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent arg0) {
@@ -268,6 +270,8 @@ public class SpacePanel extends JPanel {
 		} 
 		else 
 		{
+			empty.setVisible(false);
+			quit.setVisible(false);
 			this.setBackground(Color.BLACK);
 		}
 		fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
