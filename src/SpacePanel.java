@@ -86,10 +86,11 @@ public class SpacePanel extends JPanel
     inventoryButton.addActionListener(new ActionListener()
     {
 
+    	
       @Override
       public void actionPerformed(ActionEvent arg0)
       {
-        InventoryFrame inventoryFrame = new InventoryFrame(player);
+    	  InventoryFrame inventoryFrame = createIF(); 
         inventoryFrame.setSize(500, 300);
         inventoryFrame.setLocation(
             (int) getParent().getLocationOnScreen().getX()
@@ -231,6 +232,12 @@ public class SpacePanel extends JPanel
     }
   }
 
+  public InventoryFrame createIF() 
+  { 
+  return new InventoryFrame(player,this); 
+  } 
+
+  
   public void checkGameOver()
   {
 
@@ -249,6 +256,22 @@ public class SpacePanel extends JPanel
 
   }
 
+  public void playerStatusChanged() 
+  { 
+  if (player.getFuelLevel() == 0) 
+  { 
+  //End the game with a loss 
+  this.setBackground(Color.RED); 
+  } 
+  else 
+  { 
+  this.setBackground(Color.BLACK); 
+  } 
+
+  fuelLabel.setText("Ship Fuel: " + player.getFuelLevel()); 
+
+  } 
+  
   public void renderScene(Location[] locations)
   {
     JLabel Header = new JLabel(player.getLoc().toString());

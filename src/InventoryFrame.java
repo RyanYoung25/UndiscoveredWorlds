@@ -28,189 +28,253 @@ import javax.swing.event.ListSelectionListener;
  * @author Ryan
  * 
  */
-public class InventoryFrame extends JFrame implements WindowFocusListener
-{
+public class InventoryFrame extends JFrame implements WindowFocusListener {
 
-  private Player           thePlayer;
-  private JButton          use;
-  private JButton          drop;
-  private JButton          back;
-  private JList            inventory;
-  private JLabel           bank;
-  private JTextArea        descriptionArea;
-  private DefaultListModel inventoryList;
-  private JScrollPane      scroll;
-  private JPanel           buttons;
-  private JPanel           itemPanel;
-  private JLabel           message;
-  private Vector<Integer>  usableItems;    // Let Bryant decide what is usable
+	private Player thePlayer;
+	private JButton use;
+	private JButton drop;
+	private JButton back;
+	private JList inventory;
+	private JLabel bank;
+	private JTextArea descriptionArea;
+	private DefaultListModel inventoryList;
+	private JScrollPane scroll;
+	private JPanel buttons;
+	private JPanel itemPanel;
+	private JLabel message;
+	private Vector<Integer> usableItems; // Let Bryant decide what is usable
+	private SpacePanel thepanel;
 
-  public InventoryFrame(Player player)
-  {
-    super("Inventory");
-    addWindowFocusListener(this);
+	public InventoryFrame(Player player) {
+		super("Inventory");
+		addWindowFocusListener(this);
 
-    thePlayer = player;
-    use = new JButton("Use");
-    drop = new JButton("Drop");
-    back = new JButton("Back");
-    buttons = new JPanel();
-    buttons.setBackground(Color.DARK_GRAY);
+		thePlayer = player;
+		use = new JButton("Use");
+		drop = new JButton("Drop");
+		back = new JButton("Back");
+		buttons = new JPanel();
+		buttons.setBackground(Color.DARK_GRAY);
 
-    bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: "
-        + thePlayer.getFuelLevel());
-    bank.setForeground(Color.GREEN);
+		bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: "
+				+ thePlayer.getFuelLevel());
+		bank.setForeground(Color.GREEN);
 
-    ButtonListener handler = new ButtonListener();
-    use.addActionListener(handler);
-    drop.addActionListener(handler);
-    back.addActionListener(handler);
+		ButtonListener handler = new ButtonListener();
+		use.addActionListener(handler);
+		drop.addActionListener(handler);
+		back.addActionListener(handler);
 
-    buttons.add(use);
-    buttons.add(drop);
-    buttons.add(back);
-    buttons.add(bank);
+		buttons.add(use);
+		buttons.add(drop);
+		buttons.add(back);
+		buttons.add(bank);
 
-    itemPanel = new JPanel();
-    itemPanel.setBackground(Color.DARK_GRAY);
+		itemPanel = new JPanel();
+		itemPanel.setBackground(Color.DARK_GRAY);
 
-    descriptionArea = new JTextArea();
-    descriptionArea.setPreferredSize(new Dimension(200, 200));
-    descriptionArea.setBackground(Color.BLACK);
-    descriptionArea.setForeground(Color.GREEN);
-    descriptionArea.setWrapStyleWord(true);
-    descriptionArea.setLineWrap(true);
-    descriptionArea.setEditable(false);
-    descriptionArea.setWrapStyleWord(true);
+		descriptionArea = new JTextArea();
+		descriptionArea.setPreferredSize(new Dimension(200, 200));
+		descriptionArea.setBackground(Color.BLACK);
+		descriptionArea.setForeground(Color.GREEN);
+		descriptionArea.setWrapStyleWord(true);
+		descriptionArea.setLineWrap(true);
+		descriptionArea.setEditable(false);
+		descriptionArea.setWrapStyleWord(true);
 
-    usableItems = new Vector<Integer>();
-    fillUsuable();
+		usableItems = new Vector<Integer>();
+		fillUsuable();
 
-    message = new JLabel();
-    message.setForeground(Color.GREEN);
+		message = new JLabel();
+		message.setForeground(Color.GREEN);
 
-    makeInventory();
-    inventory = new JList(inventoryList);
-    inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    inventory.setBackground(Color.BLACK);
-    inventory.setForeground(Color.WHITE);
-    inventory.setSelectionBackground(Color.DARK_GRAY);
-    inventory.setSelectionForeground(Color.GREEN);
+		makeInventory();
+		inventory = new JList(inventoryList);
+		inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		inventory.setBackground(Color.BLACK);
+		inventory.setForeground(Color.WHITE);
+		inventory.setSelectionBackground(Color.DARK_GRAY);
+		inventory.setSelectionForeground(Color.GREEN);
 
-    inventory.addListSelectionListener(new ListSelectionListener()
-    {
+		inventory.addListSelectionListener(new ListSelectionListener() {
 
-      @Override
-      public void valueChanged(ListSelectionEvent arg0)
-      {
-        try
-        {
-          descriptionArea.setText(((Item) inventory.getSelectedValue())
-              .getDescription());
-        } catch (NullPointerException e)
-        {
-          descriptionArea.setText("");
-        }
-      }
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				try {
+					descriptionArea.setText(((Item) inventory
+							.getSelectedValue()).getDescription());
+				} catch (NullPointerException e) {
+					descriptionArea.setText("");
+				}
+			}
 
-    });
+		});
 
-    scroll = new JScrollPane(inventory);
-    scroll.setPreferredSize(new Dimension(200,200));
-    scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scroll = new JScrollPane(inventory);
+		scroll.setPreferredSize(new Dimension(200, 200));
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-    itemPanel.add(scroll);
-    itemPanel.add(descriptionArea);
-    itemPanel.setBackground(Color.DARK_GRAY);
+		itemPanel.add(scroll);
+		itemPanel.add(descriptionArea);
+		itemPanel.setBackground(Color.DARK_GRAY);
 
-    this.setLayout(new BorderLayout());
-    this.add(itemPanel, BorderLayout.CENTER);
-    this.add(buttons, BorderLayout.SOUTH);
-    this.add(message, BorderLayout.NORTH);
-  }
+		this.setLayout(new BorderLayout());
+		this.add(itemPanel, BorderLayout.CENTER);
+		this.add(buttons, BorderLayout.SOUTH);
+		this.add(message, BorderLayout.NORTH);
+	}
 
-  /**
-   * Use this method to fill the array of Items that can be used. If the name of
-   * the item is not added to this array it won't be able to be used.!!!! Use
-   * the number that is assigned to each Item
-   * 
-   */
-  private void fillUsuable()
-  {
-    usableItems.add(4);
-    usableItems.add(32);
-    usableItems.add(31);
-    usableItems.add(30);
+	public InventoryFrame(Player player, SpacePanel sp) {
+		super("Inventory");
+		addWindowFocusListener(this);
 
-  }
+		thePlayer = player;
+		thepanel = sp;
+		use = new JButton("Use");
+		drop = new JButton("Drop");
+		back = new JButton("Back");
+		buttons = new JPanel();
+		buttons.setBackground(Color.DARK_GRAY);
 
-  private void makeInventory()
-  {
-    inventoryList = new DefaultListModel();
-    Vector<Item> v = thePlayer.getInventory();
-    for (Item item : v)
-    {
-      inventoryList.addElement(item);
-    }
-  }
+		bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: "
+				+ thePlayer.getFuelLevel());
+		bank.setForeground(Color.GREEN);
 
-  public void windowGainedFocus(WindowEvent arg0)
-  {
-  }
+		ButtonListener handler = new ButtonListener();
+		use.addActionListener(handler);
+		drop.addActionListener(handler);
+		back.addActionListener(handler);
 
-  public void windowLostFocus(WindowEvent arg0)
-  {
-    dispose();
-  }
+		buttons.add(use);
+		buttons.add(drop);
+		buttons.add(back);
+		buttons.add(bank);
 
-  private class ButtonListener implements ActionListener
-  {
+		itemPanel = new JPanel();
+		itemPanel.setBackground(Color.DARK_GRAY);
 
-    @Override
-    public void actionPerformed(ActionEvent event)
-    {
-      if (!event.getSource().equals(back))
-      {
+		descriptionArea = new JTextArea();
+		descriptionArea.setPreferredSize(new Dimension(200, 200));
+		descriptionArea.setBackground(Color.BLACK);
+		descriptionArea.setForeground(Color.GREEN);
+		descriptionArea.setWrapStyleWord(true);
+		descriptionArea.setLineWrap(true);
+		descriptionArea.setEditable(false);
+		descriptionArea.setWrapStyleWord(true);
 
-        Item item = (Item) inventory.getSelectedValue();
-        int indexNumber = inventory.getSelectedIndex();
-        int itemNumber = item.getIDNumber();
+		usableItems = new Vector<Integer>();
+		fillUsuable();
 
-        try
-        {
-          if (event.getSource().equals(use))
-          {
-            if (usableItems.contains(itemNumber))
-            {
+		message = new JLabel();
+		message.setForeground(Color.GREEN);
 
-              message.setText(thePlayer.use(item));
-              bank.setText("Money: $" + thePlayer.getMoney() + " Fuel: "
-                  + thePlayer.getFuelLevel());
-              inventoryList.removeElement(item);
-              inventory.setSelectedIndex(indexNumber);
+		makeInventory();
+		inventory = new JList(inventoryList);
+		inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		inventory.setBackground(Color.BLACK);
+		inventory.setForeground(Color.WHITE);
+		inventory.setSelectionBackground(Color.DARK_GRAY);
+		inventory.setSelectionForeground(Color.GREEN);
 
-            } else
-            {
-              message.setText("You can't use this item");
-            }
-          } else if (event.getSource().equals(drop))
-          {
+		inventory.addListSelectionListener(new ListSelectionListener() {
 
-            thePlayer.drop(item);
-            inventoryList.removeElement(item);
-            inventory.setSelectedIndex(indexNumber);
-          }
-          repaint();
-        } catch (Exception e)
-        {
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				try {
+					descriptionArea.setText(((Item) inventory
+							.getSelectedValue()).getDescription());
+				} catch (NullPointerException e) {
+					descriptionArea.setText("");
+				}
+			}
 
-        }
-      } else
-      {
-        dispose();
-      }
+		});
 
-    }
-  }
+		scroll = new JScrollPane(inventory);
+		scroll.setPreferredSize(new Dimension(200, 200));
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+		itemPanel.add(scroll);
+		itemPanel.add(descriptionArea);
+		itemPanel.setBackground(Color.DARK_GRAY);
+
+		this.setLayout(new BorderLayout());
+		this.add(itemPanel, BorderLayout.CENTER);
+		this.add(buttons, BorderLayout.SOUTH);
+		this.add(message, BorderLayout.NORTH);
+	}
+
+	/**
+	 * Use this method to fill the array of Items that can be used. If the name
+	 * of the item is not added to this array it won't be able to be used.!!!!
+	 * Use the number that is assigned to each Item
+	 * 
+	 */
+	private void fillUsuable() {
+		usableItems.add(4);
+		usableItems.add(32);
+		usableItems.add(31);
+		usableItems.add(30);
+
+	}
+
+	private void makeInventory() {
+		inventoryList = new DefaultListModel();
+		Vector<Item> v = thePlayer.getInventory();
+		for (Item item : v) {
+			inventoryList.addElement(item);
+		}
+	}
+
+	public void windowGainedFocus(WindowEvent arg0) {
+	}
+
+	public void windowLostFocus(WindowEvent arg0) {
+		dispose();
+	}
+
+	private class ButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			if (!event.getSource().equals(back)) {
+
+				Item item = (Item) inventory.getSelectedValue();
+				int indexNumber = inventory.getSelectedIndex();
+				int itemNumber = item.getIDNumber();
+
+				try {
+					if (event.getSource().equals(use)) {
+						if (usableItems.contains(itemNumber)) {
+
+							message.setText(thePlayer.use(item));
+							if (thepanel != null) {
+								thepanel.playerStatusChanged();
+							}
+							bank.setText("Money: $" + thePlayer.getMoney()
+									+ " Fuel: " + thePlayer.getFuelLevel());
+							inventoryList.removeElement(item);
+							inventory.setSelectedIndex(indexNumber);
+
+						} else {
+							message.setText("You can't use this item");
+						}
+					} else if (event.getSource().equals(drop)) {
+
+						thePlayer.drop(item);
+						inventoryList.removeElement(item);
+						inventory.setSelectedIndex(indexNumber);
+					}
+					repaint();
+				} catch (Exception e) {
+
+				}
+			} else {
+				dispose();
+			}
+
+		}
+	}
 }
