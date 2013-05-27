@@ -199,11 +199,11 @@ public class Player implements Merchant
 	  int extraFuel = 0;
 	  for(Item x : inventory)
 	  {
-		  if(x.getIDNumber()==4) // use hydrogen before antimatter
+		  if(x.getIDNumber()==4)
 		  {
 			  extraFuel += FUEL_CONSTANT;
 		  }
-		  if(x.getIDNumber()==28) // use antimatter if there is no hydrogen
+		  if(x.getIDNumber()==28) 
 		  {
 			  extraFuel += MAX_FUEL_LEVEL;
 		  }
