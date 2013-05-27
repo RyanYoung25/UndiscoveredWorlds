@@ -150,30 +150,35 @@ public class Player implements Merchant
     if (item.getIDNumber() == 32 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is mad");
       inventory.remove(item);
-
+      if(tryToWin())
+      {
+        return "You have rebuilt your drive click the back button in the main panel to win the game!!";
+      }
       return String.format("You added %s to your broken drive", item.getName());
     }
     if (item.getIDNumber() == 31 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is mad");
       inventory.remove(item);
-
+      if(tryToWin())
+      {
+        return "You have rebuilt your drive click the back button in the main panel to win the game!!";
+      }
       return String.format("You added %s to your broken drive", item.getName());
     }
     if (item.getIDNumber() == 30 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is mad");
       inventory.remove(item);
-
+      if(tryToWin())
+      {
+        return "You have rebuilt your drive click the back button in the main panel to win the game!!";
+      }
       return String.format("You added %s to your broken drive", item.getName());
     }
-    inventory.remove(item);
-    tryToWin();
-    return "You used an item you can't use... How?";
+    
+    return "You already have that in your drive";
   }
 
   public boolean tryToWin()
@@ -193,9 +198,13 @@ public class Player implements Merchant
     inventory.remove(item);
   }
 
+  /*
+   * Ryan: I really think that this is a bad way of returning the fuel level
+   * The max fuel level is easily passable and it opens the problem of using some fuel,
+   * selling it, then getting it back like new.
+   */
   public int getFuelLevel()
   {
-    // TODO Auto-generated method stub
 	  int extraFuel = 0;
 	  for(Item x : inventory)
 	  {
@@ -211,6 +220,9 @@ public class Player implements Merchant
     return fuel + extraFuel;
   }
   
+  /*
+   * Ryan: shouldn't need to go through inventory
+   */
   public boolean hasFuel()
   {
 	  if (fuel>0)
