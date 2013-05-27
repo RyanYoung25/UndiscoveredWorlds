@@ -1,5 +1,6 @@
-<h1>UndiscoveredWorlds</h1>
-<h2>SE103 Freshman Video Game Design - <em>Drexel University</em></h2>
+<h1>UndiscoveredWorlds
+<br />SE103 Freshman Video Game Design 
+<br /><em>Drexel University</em></h1>
 <h3>System Requirements</h3>
 <ul>
 <li>Java 6.x or greater</li>
