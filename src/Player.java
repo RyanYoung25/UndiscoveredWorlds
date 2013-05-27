@@ -205,19 +205,16 @@ public class Player implements Merchant
    */
   public int getFuelLevel()
   {
-	  int extraFuel = 0;
+/*	  int extraFuel = 0;
 	  for(Item x : inventory)
 	  {
 		  if(x.getIDNumber()==4)
 		  {
 			  extraFuel += FUEL_CONSTANT;
 		  }
-		  if(x.getIDNumber()==28) 
-		  {
-			  extraFuel += MAX_FUEL_LEVEL;
-		  }
 	  }
-    return fuel + extraFuel;
+	*/  
+    return fuel;
   }
   
   /*
@@ -231,7 +228,7 @@ public class Player implements Merchant
 	  }
 	  for(Item x : inventory)
 	  {
-		  if(x.getIDNumber() == 4 || x.getIDNumber() == 28)
+		  if(x.getIDNumber() == 4)
 		  {
 			  this.use(x);
 			  return true;
