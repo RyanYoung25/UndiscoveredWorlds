@@ -141,10 +141,16 @@ public class Player implements Merchant
 
       return String.format("Fuel Level was increased to: %d", getFuelLevel());
     }
+    if (item.getIDNumber() == 28) // Antimatter fully refuels the ship
+    {
+    	fuel = MAX_FUEL_LEVEL;
+    	inventory.remove(item);
+    	return String.format("Fuel Level was increased to: %d", getFuelLevel());
+    }
     if (item.getIDNumber() == 32 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is madt");
+      System.out.println("Bryant is mad");
       inventory.remove(item);
 
       return String.format("You added %s to your broken drive", item.getName());
@@ -152,7 +158,7 @@ public class Player implements Merchant
     if (item.getIDNumber() == 31 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is madt");
+      System.out.println("Bryant is mad");
       inventory.remove(item);
 
       return String.format("You added %s to your broken drive", item.getName());
@@ -160,7 +166,7 @@ public class Player implements Merchant
     if (item.getIDNumber() == 30 && !brokenDrive.contains(item))
     {
       brokenDrive.add(item);
-      System.out.println("Bryant is madt");
+      System.out.println("Bryant is mad");
       inventory.remove(item);
 
       return String.format("You added %s to your broken drive", item.getName());
@@ -190,7 +196,36 @@ public class Player implements Merchant
   public int getFuelLevel()
   {
     // TODO Auto-generated method stub
-    return fuel;
+	  int extraFuel = 0;
+	  for(Item x : inventory)
+	  {
+		  if(x.getIDNumber()==4) // use hydrogen before antimatter
+		  {
+			  extraFuel += FUEL_CONSTANT;
+		  }
+		  if(x.getIDNumber()==28) // use antimatter if there is no hydrogen
+		  {
+			  extraFuel += MAX_FUEL_LEVEL;
+		  }
+	  }
+    return fuel + extraFuel;
+  }
+  
+  public boolean hasFuel()
+  {
+	  if (fuel>0)
+	  {
+		  return true;
+	  }
+	  for(Item x : inventory)
+	  {
+		  if(x.getIDNumber() == 4 || x.getIDNumber() == 28)
+		  {
+			  this.use(x);
+			  return true;
+		  }
+	  }
+	  return false;
   }
   
   public void revertPrices()
@@ -200,4 +235,5 @@ public class Player implements Merchant
 		  inventory.get(x).unModify();
 	  }
   }
+  
 }

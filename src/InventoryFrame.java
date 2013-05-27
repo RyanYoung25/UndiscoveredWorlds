@@ -227,6 +227,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	private void fillUsuable() 
 	{ 
 		usableItems.add(4); 
+		usableItems.add(28);
 		usableItems.add(32); 
 		usableItems.add(31); 
 		usableItems.add(30); 
@@ -271,7 +272,6 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 					{ 
 						if (usableItems.contains(itemNumber)) 
 						{ 
-
 							message.setText(thePlayer.use(item)); 
 							if (thepanel!=null) 
 							{ 

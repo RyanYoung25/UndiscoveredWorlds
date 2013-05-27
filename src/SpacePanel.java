@@ -204,7 +204,9 @@ public class SpacePanel extends JPanel {
 			}
 			renderScene(locations);
 			repaint();
-		} else {
+		} 
+		else 
+		{
 			TradingMenu menu = new TradingMenu(player);
 			menu.setSize(650, 230);
 			menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -227,13 +229,7 @@ public class SpacePanel extends JPanel {
 	}
 
 	public void checkGameOver() {
-
-		if (player.getFuelLevel() == 0) {
-			// End the game with a loss
-			this.setBackground(Color.RED); // for test
-			// Needs to close all windows and give jpanel focus.
-			System.out.println("You lost");
-		}
+		playerStatusChanged();
 
 		if (player.tryToWin()) {
 			// End the game with a win
@@ -242,15 +238,15 @@ public class SpacePanel extends JPanel {
 	}
 
 	public void playerStatusChanged() {
-		if (player.getFuelLevel() == 0) {
+		if (player.hasFuel() == false) {
 			// End the game with a loss
 			this.setBackground(Color.RED);
-		} else {
+		} 
+		else 
+		{
 			this.setBackground(Color.BLACK);
 		}
-
 		fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
-
 	}
 
 	public void renderScene(Location[] locations) {
@@ -345,7 +341,7 @@ public class SpacePanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			if(player.getFuelLevel() > 0)
+			if(player.hasFuel())
 			{
 				if (player.getLoc().getClass() == Galaxy.class) 
 				{
@@ -361,7 +357,6 @@ public class SpacePanel extends JPanel {
 				fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
 				checkGameOver();
 			}
-			
 		}
 
 		public int getIndex() {
