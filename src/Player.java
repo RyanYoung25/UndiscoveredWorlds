@@ -10,6 +10,7 @@ public class Player implements Merchant
   private Vector<Item>      brokenDrive;
   private int               fuel;
   private Location          currentlocation;
+  private static final int MAX_INVENTORY_NUMBER = 50;
   private static final int  MAX_PORT_HISTORY = 15;
   private static final int  FUEL_CONSTANT    = 25;
   private static final int  MAX_FUEL_LEVEL   = 100;
@@ -66,6 +67,16 @@ public class Player implements Merchant
   {
     bank = bank - price;
     inventory.add(item);
+  }
+  
+  public boolean canFitAnotherItem()
+  {
+    if(inventory.size() + 1 >= MAX_INVENTORY_NUMBER)
+    {
+      return false;
+    }
+    
+    return true;
   }
 
   @Override
@@ -201,32 +212,12 @@ public class Player implements Merchant
   }
 
   /*
-   * Ryan: I really think that this is a bad way of returning the fuel level
-   * The max fuel level is easily passable and it opens the problem of using some fuel,
-   * selling it, then getting it back like new.
-   * 
    * 
    */
   public int getFuelLevel()
   {
 
-	  //int extraFuel = 0;
-	  /*for(Item x : inventory)
-/*	  int extraFuel = 0;
-	  for(Item x : inventory)
->>>>>>> b85bd1b093f7de0183df259eaf9820fadd55cf09
-	  {
-		  if(x.getIDNumber()==4)
-		  {
-			  extraFuel += FUEL_CONSTANT;
-		  }
-<<<<<<< HEAD
-		  if(x.getIDNumber()==28) 
-		  {
-			  extraFuel += MAX_FUEL_LEVEL;
-		  }
-	  }*/
-    //return fuel;// + extraFuel;
+
 	  
     return fuel;
   }

@@ -244,6 +244,8 @@ public class TradingMenu extends JFrame implements WindowFocusListener
             topPlayerLabel.setText("Player can not afford that!");  
           } else
           {
+            if(thePlayer.canFitAnotherItem())
+            {
             topPlayerLabel.setText("Player");
             merchantList.removeElement(item);
             playerList.addElement(item);
@@ -252,6 +254,11 @@ public class TradingMenu extends JFrame implements WindowFocusListener
             updateBanks();
             //item.unModify();  
             repaint();
+            }
+            else
+            {
+              topPlayerLabel.setText("Player can not fit any more items!");
+            }
           }
 
         } else if (event.getSource() == sell)
