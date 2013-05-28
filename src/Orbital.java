@@ -188,7 +188,14 @@ public class Orbital extends Location
 		  {
 			  if(getParent().getChild(i) == this)
 			  {
-				  return getParent() + " " + FileOps.RomanNum(i+1);
+				  if(this.getTradePort() == null)
+				  {
+					  return getParent() + " " + FileOps.RomanNum(i+1) + " Pirate Base";
+				  }
+				  else
+				  {
+					  return getParent() + " " + FileOps.RomanNum(i+1);
+				  }
 			  }
 		  }
 		  return getParent().toString();
@@ -215,7 +222,7 @@ public class Orbital extends Location
 	{
 		if(this.getTradePort() == null)
 		{
-			return PictureAlbum.getScaledSquareImage(Pics.getPort(),1); //no trade port means no image should be present; I'd set it to null if I could
+			return PictureAlbum.getScaledSquareImage(Pics.getPort(),1); //pirate or smuggler bases are not visible on the NAV display
 		}
 		return PictureAlbum.getScaledSquareImage(Pics.getPort(),20);
 	}
