@@ -143,4 +143,9 @@ public class Location
   {
 	  //hollow method
   }
+  
+  public String GetDetails()
+  {
+	  return "Type: ";
+  }
 }

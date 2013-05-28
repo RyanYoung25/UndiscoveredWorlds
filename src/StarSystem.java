@@ -164,10 +164,10 @@ public class StarSystem extends Location
 	public String GetDetails()
 	{
 		int subclass = (Math.abs(x) % 10);
-		return String.format("Class: %s%d - %s Star\n" +
-							 "Mass: %.2f solar masses\n" +
-							 "Radius: %.2f solar radii\n" +
-							 "Temp: %d K\n" +
+		return String.format("Class: %s%d - %s Star<BR />" +
+							 "Mass: %.2f solar masses<BR />" +
+							 "Radius: %.2f solar radii<BR />" +
+							 "Temp: %d K<BR />" +
 							 "Luminosity: %.2f",
 							 StarClass.getClassification(), GetSubClass(subclass), StarClass.getColor(),
 							 StarClass.getMinMass() + ((StarClass.getMaxMass() - StarClass.getMinMass())/(subclass+1)),

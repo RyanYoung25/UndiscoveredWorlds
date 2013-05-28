@@ -197,8 +197,7 @@ public class SpacePanel extends JPanel {
 						+ "Name: "
 						+ loc.toString()
 						+ "<BR />"
-						+ "Type: "
-						+ who
+						+ loc.GetDetails()
 						+ "<BR />"
 						+ "Location: "
 						+ ((!loc.toString().equals(loc.getParent().toString())) ? loc

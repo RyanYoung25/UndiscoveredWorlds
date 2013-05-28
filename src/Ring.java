@@ -30,7 +30,7 @@ public class Ring extends Orbital
 	{
 		if(this.getTradePort() == null)
 		{
-			return super.GetNavImage(); //no trade port means no image should be present; I'd set it to null if I could
+			return super.GetNavImage(); // no image will be visible, pirate base
 		}
 		return PictureAlbum.getScaledSquareImage(Pics.getPort(),50);
 	}

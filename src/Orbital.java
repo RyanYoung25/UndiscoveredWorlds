@@ -104,17 +104,9 @@ public class Orbital extends Location
 	 */
 	public String GetDetails() 
 	{
-		String details = String.format("Class: %s - %s %s",
+		return String.format("Class: %s - %s %s",
 				OrbitalClass.GetID(), OrbitalClass.GetClassification(),
 				getOrbital());
-		if (port == null) 
-		{
-			return details;
-		} 
-		else 
-		{
-			return details + " - Trade Port";
-		}
 	}
 	
 	/**
