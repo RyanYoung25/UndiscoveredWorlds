@@ -20,8 +20,8 @@ public class TradePort extends Location implements Merchant
 	public TradePort(Location loc)
 	{
 		locale = (Orbital) loc;
-		genMoney();
 		genInventory();
+		genMoney();
 	}
 	
 	/**
@@ -39,8 +39,9 @@ public class TradePort extends Location implements Merchant
 	 */
 	public void genMoney()
 	{
-		money = (int)(BASE_MONEY *  (((float)locale.getOrbitalClass().GetStabilityRating()+10+locale.getOrbitalClass().GetOrganicRating())   /
-									((float)locale.getOrbitalClass().GetHZRating()))) + (this.hashCode()%1000);
+	//	money = (int)(BASE_MONEY *  (((float)locale.getOrbitalClass().GetStabilityRating()+10+locale.getOrbitalClass().GetOrganicRating())   /
+	// 								((float)locale.getOrbitalClass().GetHZRating()))) + (this.hashCode()%1000);
+		money = Collections.max(inventory).getModifiedPrice();
 	}
 	
 	/* (non-Javadoc)
