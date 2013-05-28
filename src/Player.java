@@ -11,7 +11,7 @@ public class Player implements Merchant
   private Location          currentlocation;
   private static final int  MAX_PORT_HISTORY = 15;
   private static final int  FUEL_CONSTANT    = 25;
-  private static final int  MAX_FUEL_LEVEL   = 50;
+  private static final int  MAX_FUEL_LEVEL   = 100;
   private static final int  FUEL_CONSUMPTION = 5;
 
   private Vector<TradePort> recentLocations;

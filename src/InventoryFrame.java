@@ -262,12 +262,15 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 			if (!event.getSource().equals(back)) 
 			{ 
 
-				Item item = (Item) inventory.getSelectedValue(); 
-				int indexNumber = inventory.getSelectedIndex(); 
-				int itemNumber = item.getIDNumber(); 
+			
 
 				try 
 				{ 
+				  
+				  Item item = (Item) inventory.getSelectedValue(); 
+	        int indexNumber = inventory.getSelectedIndex(); 
+	        int itemNumber = item.getIDNumber(); 
+	        
 					if (event.getSource().equals(use)) 
 					{ 
 						if (usableItems.contains(itemNumber)) 
