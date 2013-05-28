@@ -104,17 +104,9 @@ public class Orbital extends Location
 	 */
 	public String GetDetails() 
 	{
-		String details = String.format("Class: %s - %s %s",
+		return String.format("Class: %s - %s %s",
 				OrbitalClass.GetID(), OrbitalClass.GetClassification(),
 				getOrbital());
-		if (port == null) 
-		{
-			return details;
-		} 
-		else 
-		{
-			return details + " - Trade Port";
-		}
 	}
 	
 	/**
@@ -215,7 +207,7 @@ public class Orbital extends Location
 	{
 		if(this.getTradePort() == null)
 		{
-			return PictureAlbum.getScaledSquareImage(Pics.getPort(),1); //no trade port means no image should be present; I'd set it to null if I could
+			return PictureAlbum.getScaledSquareImage(Pics.getPort(),1); 
 		}
 		return PictureAlbum.getScaledSquareImage(Pics.getPort(),20);
 	}

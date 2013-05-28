@@ -91,7 +91,7 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 
 		startPanel.add(logoLabel);
 		startPanel.add(newGameButton);
-		startPanel.add(loadGameButton);
+		//startPanel.add(loadGameButton);
 
 		add(startPanel);
 

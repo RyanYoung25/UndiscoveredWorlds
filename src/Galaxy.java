@@ -278,5 +278,9 @@ public class Galaxy extends Location
 		return "";
 	}
 	
-
+	@Override
+	public String GetDetails()
+	{
+		  return super.GetDetails() + "Galaxy";
+	}
 }

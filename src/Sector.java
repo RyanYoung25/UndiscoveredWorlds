@@ -126,4 +126,10 @@ public class Sector extends Location
 	  {
 		  return super.GetCenterImage();
 	  }
+	
+	@Override
+	public String GetDetails()
+	{
+		  return super.GetDetails() + "Sector";
+	}
 }

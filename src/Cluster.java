@@ -178,4 +178,10 @@ public class Cluster extends Location
 	{
 	  return 1;
 	}
+	
+	@Override
+	public String GetDetails()
+	{
+		  return super.GetDetails() + "Cluster";
+	}
 }
