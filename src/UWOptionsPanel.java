@@ -26,7 +26,7 @@ public class UWOptionsPanel extends JFrame implements ActionListener,
 		
 		this.uw = uw;
 		
-		setLayout(new GridLayout(4, 1));
+		setLayout(new GridLayout(2, 1));
 		setBackground(Color.DARK_GRAY);
 		requestFocus();
 		addWindowFocusListener(this);
@@ -47,8 +47,8 @@ public class UWOptionsPanel extends JFrame implements ActionListener,
 		returnButton.addActionListener(this);
 		returnButton.setFocusPainted(false);
 
-		add(saveButton);
-		add(loadButton);
+		//add(saveButton);
+		//add(loadButton);
 		add(menuButton);
 		add(returnButton);
 

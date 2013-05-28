@@ -60,7 +60,7 @@ public class SpacePanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				UWOptionsPanel optionWindow = new UWOptionsPanel(uw);
 				optionWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				optionWindow.setSize(400, 300);
+				optionWindow.setSize(400, 150);
 				optionWindow.setLocation(
 						(int) getParent().getLocationOnScreen().getX()
 								+ ((getParent().getWidth()) / 2)
