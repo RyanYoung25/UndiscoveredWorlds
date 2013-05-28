@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -73,6 +74,7 @@ public class TradePort extends Location implements Merchant
 					inventory.add(Item.getRandomItem(x));
 				}
 			}
+			
 		}
 		
 /*
@@ -95,6 +97,7 @@ public class TradePort extends Location implements Merchant
 	 */
 	public Vector<Item> getInventory()
 	{
+	  
 		return inventory;
 	}
 	

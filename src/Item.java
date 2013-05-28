@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Item implements Serializable
+public class Item implements Serializable, Comparable<Item>
 {
 
   private String name;
@@ -206,5 +206,12 @@ public class Item implements Serializable
   public String toString()
   {
     return "$" + getModifiedPrice() + " " + name;
+  }
+
+  @Override
+  public int compareTo(Item comparedItem)
+  {
+    
+    return getModifiedPrice() - comparedItem.getModifiedPrice();
   }
 }

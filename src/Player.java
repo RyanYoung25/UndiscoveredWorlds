@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Vector;
 
 public class Player implements Merchant
@@ -27,6 +28,7 @@ public class Player implements Merchant
     bank = 500;
     fuel = 20;
     this.inventory = inventory;
+    Collections.sort(this.inventory);
     recentLocations = new Vector<TradePort>();
     brokenDrive = new Vector<Item>();
 

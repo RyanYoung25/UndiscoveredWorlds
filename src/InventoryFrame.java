@@ -43,7 +43,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	private JPanel buttons; 
 	private JPanel itemPanel; 
 	private JLabel message; 
-	private Vector<Integer> usableItems; // Let Bryant decide what is usable 
+	private Vector<Integer> usableItems; 
 	private SpacePanel thepanel; 
 
 	public InventoryFrame(Player player) 

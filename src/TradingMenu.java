@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.io.File;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
@@ -185,9 +186,9 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   {
     playerList = new DefaultListModel();
     Vector<Item> v = thePlayer.getInventory();
+    Collections.sort(v);
     for (Item item : v)
     {
-      // item.modify();
       playerList.addElement(item);
     }
   }
@@ -196,6 +197,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
   {
     merchantList = new DefaultListModel();
     Vector<Item> v = theMerchant.getInventory();
+    Collections.sort(v);
     for (Item item : v)
     {
       item.modify(theMerchant.getLocale());
