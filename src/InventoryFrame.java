@@ -1,13 +1,16 @@
 import java.awt.BorderLayout; 
 import java.awt.Color; 
 import java.awt.Dimension; 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener; 
 import java.awt.event.WindowEvent; 
 import java.awt.event.WindowFocusListener; 
+import java.io.File;
 import java.util.Vector; 
 
 import javax.swing.DefaultListModel; 
+import javax.swing.ImageIcon;
 import javax.swing.JButton; 
 import javax.swing.JFrame; 
 import javax.swing.JLabel; 
@@ -16,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane; 
 import javax.swing.JTextArea; 
 import javax.swing.ListSelectionModel; 
+import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent; 
 import javax.swing.event.ListSelectionListener; 
 
@@ -55,9 +59,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 		addWindowFocusListener(this); 
 
 		thePlayer = player; 
-		use = new JButton("Use"); 
-		drop = new JButton("Drop"); 
-		back = new JButton("Back"); 
+		use = new JButton(); 
+		drop = new JButton(); 
+		back = new JButton(); 
 		buttons = new JPanel(); 
 		buttons.setBackground(Color.DARK_GRAY); 
 
@@ -143,25 +147,55 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 
 		thePlayer = player; 
 		thepanel=sp; 
-		use = new JButton("Use"); 
-		drop = new JButton("Drop"); 
-		back = new JButton("Back"); 
+		use = new JButton();
+		use.setIcon(new ImageIcon("Art" + File.separator + "UseButton.png"));
+		use.setSelectedIcon(new ImageIcon("Art" + File.separator + "UseButtonPressed.png"));
+		use.setOpaque(false);
+		use.setContentAreaFilled(false);
+		use.setBorderPainted(false);
+		
+		drop = new JButton(); 
+		drop.setIcon(new ImageIcon("Art" + File.separator + "DropButton.png"));
+		drop.setSelectedIcon(new ImageIcon("Art" + File.separator + "DropButtonPressed.png"));
+		drop.setOpaque(false);
+		drop.setContentAreaFilled(false);
+		drop.setBorderPainted(false);
+		
+		back = new JButton();
+		back.setIcon(new ImageIcon("Art" + File.separator + "BackIButton.png"));
+		back.setSelectedIcon(new ImageIcon("Art" + File.separator + "BackIButtonPressed.png"));
+		back.setOpaque(false);
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
+		
 		buttons = new JPanel(); 
+		buttons.setLayout(new GridLayout(2,1));
 		buttons.setBackground(Color.DARK_GRAY); 
+		
+		JPanel bankPanel = new JPanel();
+		bankPanel.setLayout(new GridLayout(1,1));
+		bankPanel.setBackground(Color.DARK_GRAY);
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(1,3));
+		buttonPanel.setBackground(Color.DARK_GRAY);
 
 		bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: " 
 				+ thePlayer.getFuelLevel()); 
 		bank.setForeground(Color.GREEN); 
+		bank.setHorizontalAlignment(SwingConstants.CENTER);
 
 		ButtonListener handler = new ButtonListener(); 
 		use.addActionListener(handler); 
 		drop.addActionListener(handler); 
 		back.addActionListener(handler); 
 
-		buttons.add(use); 
-		buttons.add(drop); 
-		buttons.add(back); 
-		buttons.add(bank); 
+		bankPanel.add(bank);
+		buttonPanel.add(use); 
+		buttonPanel.add(drop); 
+		buttonPanel.add(back);  
+		buttons.add(bankPanel);
+		buttons.add(buttonPanel);
 
 		itemPanel = new JPanel(); 
 		itemPanel.setBackground(Color.DARK_GRAY); 
@@ -179,9 +213,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 		fillUsuable(); 
 
 		message = new JLabel(); 
-    message.setForeground(Color.GREEN); 
-    message.setBackground(Color.DARK_GRAY);
-    message.setText(" ");
+		message.setForeground(Color.GREEN); 
+		message.setBackground(Color.DARK_GRAY);
+		message.setText(" ");
 
 
 		makeInventory(); 
@@ -202,6 +236,8 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 				{ 
 					descriptionArea.setText(((Item) inventory.getSelectedValue()) 
 							.getDescription()); 
+					System.out.println(use.getWidth());
+					System.out.println(use.getHeight());
 				} catch (NullPointerException e) 
 				{ 
 					descriptionArea.setText(""); 
@@ -219,7 +255,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 		itemPanel.add(descriptionArea); 
 		itemPanel.setBackground(Color.DARK_GRAY); 
 
-		this.setLayout(new BorderLayout()); 
+		this.setLayout(new BorderLayout());
 		this.add(itemPanel, BorderLayout.CENTER); 
 		this.add(buttons, BorderLayout.SOUTH); 
 		this.add(message, BorderLayout.NORTH); 
