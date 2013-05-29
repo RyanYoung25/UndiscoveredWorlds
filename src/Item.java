@@ -5,17 +5,17 @@ import java.util.Random;
 public class Item implements Serializable, Comparable<Item>
 {
 
-  private String name;
-  private String description;
-  private int    IDNumber;
-  private int    basePrice;
-  private double modifier;
-  private double volatility;
-  private int    classification;
-  private int    modifiedPrice; 
-  private static int highestClassification;
-  private static Random generator= new Random();     
-  private static ArrayList<ArrayList<Item>> Items = new ArrayList<ArrayList<Item>>();
+  private String                            name;
+  private String                            description;
+  private int                               IDNumber;
+  private int                               basePrice;
+  private double                            modifier;
+  private double                            volatility;
+  private int                               classification;
+  private int                               modifiedPrice;
+  private static int                        highestClassification;
+  private static Random                     generator = new Random();
+  private static ArrayList<ArrayList<Item>> Items     = new ArrayList<ArrayList<Item>>();
 
   public Item()
   {
@@ -34,33 +34,34 @@ public class Item implements Serializable, Comparable<Item>
     setClassification(classification);
   }
 
-  public Item(String[] rec) //this constructor should only be called when reading items from a file
+  public Item(String[] rec) // this constructor should only be called when
+                            // reading items from a file
   {
     this(rec[0], rec[1], Integer.parseInt(rec[2]), Integer.parseInt(rec[3]),
         Double.parseDouble(rec[4]), Double.parseDouble(rec[5]), Integer
             .parseInt(rec[6]));
-    if(this.getClassification()>highestClassification)
+    if (this.getClassification() > highestClassification)
     {
-    	highestClassification=this.getClassification();
+      highestClassification = this.getClassification();
     }
   }
-  
+
   public static void initItems(ArrayList<Item> loaded)
   {
-	  for(int x = 0; x <= highestClassification; x++)
-	  {
-		  Items.add(new ArrayList<Item>());
-	  }
-	  
-	  for(Item x : loaded)
-	  {
-		  Items.get(x.getClassification()).add(x);
-	  }
+    for (int x = 0; x <= highestClassification; x++)
+    {
+      Items.add(new ArrayList<Item>());
+    }
+
+    for (Item x : loaded)
+    {
+      Items.get(x.getClassification()).add(x);
+    }
   }
-  
+
   public static Item getRandomItem(int c)
   {
-	  return Items.get(c).get(generator.nextInt(Items.get(c).size()));
+    return Items.get(c).get(generator.nextInt(Items.get(c).size()));
   }
 
   public String getName()
@@ -84,87 +85,88 @@ public class Item implements Serializable, Comparable<Item>
   }
 
   /**
-   * Use to modify the price. 
+   * Use to modify the price.
    * 
    */
   public void modify(Orbital locale)
   {
-	/*  
-    double number = generator.nextDouble() * 1.5;
-    if (number > volatility)
+    if (locale == null)
     {
-      modifiedPrice = (int) (basePrice / modifier);
-    } else if (number < volatility)
-    {
-      modifiedPrice = (int) (basePrice * modifier);
+      double number = generator.nextDouble() * 1.5;
+      if (number > volatility)
+      {
+        modifiedPrice = (int) (basePrice / ((number) *modifier + 1));
+      } else if (number < volatility)
+      {
+        modifiedPrice = (int) (basePrice * ((number) *modifier + 1));
+      } else
+      {
+        modifiedPrice = basePrice;
+      }
     } else
     {
-      modifiedPrice = basePrice;
+
+      double max = basePrice * modifier;
+      double min = basePrice / modifier;
+      double rel = max - min;
+      if (volatility == 0)
+      {
+        modifiedPrice = (int) (1 + generator.nextInt((int) Math.round(rel)));
+
+      } else
+      {
+        if (volatility > 1)
+        {
+          modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel))) * (volatility - 1));
+          if (locale.getOrbitalClass().GetProperties()[classification] > 0)
+          {
+            modifiedPrice = (int) (max - modifiedPrice) + 1;
+          } else
+          {
+            modifiedPrice = (int) (min + modifiedPrice) + 1;
+          }
+        } else
+        {
+          modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel))) * volatility) + 1;
+        }
+      }
+      if (locale.getTradePort() == null) // if the orbital does not have a space
+                                         // dock
+      {
+        if (locale.getClass() == Ring.class) // Pirate bases get special
+                                             // treatment
+        {
+          switch (this.getIDNumber())
+          {
+          case 12: // Explosives
+          case 13: // Small Arms
+          case 16: // Spice
+          case 29: // Artifacts
+            modifiedPrice = (int) (.5 * modifiedPrice);
+            break;
+          default: // Anything else
+            modifiedPrice = (int) (5 * modifiedPrice);
+            break;
+          }
+        } else
+        {
+          modifiedPrice = (int) (1.25 * modifiedPrice);
+        }
+      }
     }
-    */
-	  
-	  double max = basePrice * modifier;
-	  double min = basePrice / modifier;
-	  double rel = max - min;
-	  if (volatility == 0)
-	  {
-		  modifiedPrice = (int) (1 + generator.nextInt((int) Math.round(rel)));
-		  
-	  }
-	  else
-	  {
-		  if(volatility > 1)
-		  {
-			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*(volatility-1));
-			  if (locale.getOrbitalClass().GetProperties()[classification] > 0)
-			  {
-				  modifiedPrice = (int) (max - modifiedPrice)+1;
-			  }
-			  else
-			  {
-				  modifiedPrice = (int) (min + modifiedPrice)+1;
-			  }
-		  }
-		  else
-		  {
-			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility)+1;
-		  }
-	  }
-	  if (locale.getTradePort()== null) // if the orbital does not have a space dock
-	  {
-		  if (locale.getClass()==Ring.class) // Pirate bases get special treatment
-		  {
-			  switch (this.getIDNumber())
-			  {
-			  	case 12: // Explosives
-			  	case 13: // Small Arms
-			  	case 16: // Spice
-			  	case 29: // Artifacts
-			  		modifiedPrice = (int)(.5 * modifiedPrice);
-			  		break;
-			  	default: // Anything else
-			  		modifiedPrice = (int)(5 * modifiedPrice);
-			  		break;
-			  }
-		  }
-		  else
-		  {
-			  modifiedPrice = (int)(1.25 * modifiedPrice);
-		  }
-	  }
   }
-  
+
   public static void modifyAll(Orbital locale)
   {
-	  for(int x = 0; x < Items.size(); x++)
-	  {
-		  for(Item cur : Items.get(x))
-		  {
-			  cur.modify(locale);
-		  }
-	  }
+    for (int x = 0; x < Items.size(); x++)
+    {
+      for (Item cur : Items.get(x))
+      {
+        cur.modify(locale);
+      }
+    }
   }
-  
+
   public void unModify()
   {
     modifiedPrice = basePrice;
@@ -184,7 +186,7 @@ public class Item implements Serializable, Comparable<Item>
   {
     return modifier;
   }
-  
+
   public int getModifiedPrice()
   {
     return modifiedPrice;
@@ -233,7 +235,7 @@ public class Item implements Serializable, Comparable<Item>
   @Override
   public int compareTo(Item comparedItem)
   {
-    
+
     return getModifiedPrice() - comparedItem.getModifiedPrice();
   }
 }

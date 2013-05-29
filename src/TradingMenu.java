@@ -190,6 +190,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     Collections.sort(v);
     for (Item item : v)
     {
+      item.modify(null);
       playerList.addElement(item);
     }
   }
