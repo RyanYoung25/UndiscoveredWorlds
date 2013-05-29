@@ -40,8 +40,11 @@ public class UndiscoveredWorldsGUI extends JFrame implements ActionListener {
 				"You have $500 and whatever supplies you have on board. " +
 				"In order to get the required materials you will need to analyze the local economies and " +
 				"determine where to buy and sell your goods. Buy low, sell high. " +
+				"There are secret pirate bases hidden in some star systems that will buy items for a higher price than normal." +
+				"These bases also sell certain items much cheaper than other ports." +
 				"You'll need to increase your bank by trading cheap items at first and increase your money to " +
-				"be able to trade with more valuable items. \n\n"+
+				"be able to trade with more valuable items.\n\n"+
+				"In order to win you will need to acquire UNOBTAINIUM, DIAMONDS and PHLEBOTINUM.\n\n" +
 				"Be sure to keep an eye on your fuel too. " +
 				"Traveling distances this large isn't cheap. " +
 				"You'll have to purchase fuel occasionally in order to keep traveling to new systems. " +
