@@ -25,7 +25,7 @@ public class SpacePanel extends JPanel {
 	private JLabel locationName;
 	private JLabel fuelLabel;
 	private JLabel empty = new JLabel("OUT OF FUEL");
-	private JButton quit = new JButton("Quit Game");
+	private JButton quit = new JButton();
 
 	public SpacePanel(Player player, UndiscoveredWorldsGUI uw) {
 		this.uw = uw;
@@ -119,13 +119,13 @@ public class SpacePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (player.tryToWin()) {
-					Object[] options = { "Yes, please", "Not yet" };
+					Object[] options = { "Quit to Main Menu"};
 					int n = JOptionPane
 							.showOptionDialog(
 									getParent(),
 									"You have assembled your drive and won the game."
-											+ "\nWould you like to return to the main menu?",
-									"Game Won!", JOptionPane.YES_NO_OPTION,
+									+ "\nYou left with $" + player.getMoney(),
+									"Game Won!", JOptionPane.YES_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null,
 									options, options[0]);
 
@@ -253,6 +253,7 @@ public class SpacePanel extends JPanel {
 			// End the game with a loss
 
 			this.setBackground(Color.RED);
+			this.removeAll();
 			int xsize = 400;
 			int ysize = 80;
 			empty.setFont(new Font(empty.getFont().getFontName(), Font.BOLD, 24));
@@ -263,6 +264,11 @@ public class SpacePanel extends JPanel {
 			empty.setVisible(true);
 
 			quit.setBounds(SHIFT - (xsize / 2), 50, xsize, ysize);
+			quit.setIcon(new ImageIcon("Art" + File.separator + "SellButton.png"));
+			quit.setSelectedIcon(new ImageIcon("Art" + File.separator + "SellButtonPressed.png"));
+			quit.setOpaque(false);
+			quit.setContentAreaFilled(false);
+			quit.setBorderPainted(false);
 			quit.setVisible(true);
 			quit.addActionListener(new ActionListener() {
 
