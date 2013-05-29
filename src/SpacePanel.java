@@ -252,7 +252,7 @@ public class SpacePanel extends JPanel {
 		if (player.hasFuel() == false) {
 			// End the game with a loss
 
-			this.setBackground(Color.RED);
+			this.setBackground(Color.DARK_GRAY);
 			this.removeAll();
 			int xsize = 400;
 			int ysize = 80;
@@ -263,9 +263,9 @@ public class SpacePanel extends JPanel {
 			empty.setVerticalAlignment(JLabel.TOP);
 			empty.setVisible(true);
 
-			quit.setBounds(SHIFT - (xsize / 2), 50, xsize, ysize);
-			quit.setIcon(new ImageIcon("Art" + File.separator + "SellButton.png"));
-			quit.setSelectedIcon(new ImageIcon("Art" + File.separator + "SellButtonPressed.png"));
+			quit.setBounds(SHIFT - (xsize / 2), 100, xsize, ysize);
+			quit.setIcon(new ImageIcon("Art" + File.separator + "LostButton.png"));
+			quit.setSelectedIcon(new ImageIcon("Art" + File.separator + "LostButtonPressed.png"));
 			quit.setOpaque(false);
 			quit.setContentAreaFilled(false);
 			quit.setBorderPainted(false);
