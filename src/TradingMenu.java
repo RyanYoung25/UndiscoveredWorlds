@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -20,7 +21,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
-
+import java.awt.event.*; 
 /**
  * This class is a frame that has some very simple trading. The Frame only needs
  * a player. If this frame is brought up and passed a player that does not have
@@ -83,6 +84,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     playersInventory.setSelectionBackground(Color.DARK_GRAY);
     playersInventory.setSelectionForeground(Color.GREEN);
     playersInventory.setForeground(Color.WHITE);
+    playersInventory.addMouseListener(new ListMouseListener(this, 1));
     
     merchantsInventory = new JList(merchantList);
     merchantsInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -90,6 +92,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     merchantsInventory.setSelectionBackground(Color.DARK_GRAY);
     merchantsInventory.setSelectionForeground(Color.GREEN);
     merchantsInventory.setForeground(Color.WHITE);
+    merchantsInventory.addMouseListener(new ListMouseListener(this, 2));
     
     // select first item in merchantsInventory
     merchantsInventory.setSelectionInterval(startSel, endSel);
@@ -310,6 +313,116 @@ public class TradingMenu extends JFrame implements WindowFocusListener
       }
     }
 
+  }
+
+  public class ListMouseListener extends MouseAdapter {
+		private TradingMenu theTm;
+		int listindex;
+
+		// index: 1 player list, 2 merchant list
+		public ListMouseListener(TradingMenu tm, int index) {
+			super();
+			listindex = index;
+			theTm = tm;
+		}
+
+		public void mouseClicked(MouseEvent mouseEvent) {
+
+			if (mouseEvent.getClickCount() == 2) {
+
+				theTm.reactonDoubleClick(listindex);
+			}
+		}
+	}
+  
+  public void reactonDoubleClick(int listindex) 
+  { 
+  if (listindex==1) 
+  // player sell 
+  { 
+  this.sell();	
+  } 
+  else if (listindex==2) 
+  { 
+  this.buy(); 
+  } 
+  } 
+
+  private void sell() 
+  { 
+  Item item = (Item) playersInventory.getSelectedValue(); 
+  int money = item.getModifiedPrice(); 
+  if(money > theMerchant.getMoney()) 
+  { 
+  topMerchantLabel.setText("Merchant can not afford that!"); 
+  } else 
+  { 
+  topMerchantLabel.setText("Merchant"); 
+
+
+  // select top item in playerInventory JList 
+  startSel = playersInventory.getSelectedIndex(); 
+  endSel = startSel; 
+  int nitems = playersInventory.getModel().getSize(); 
+  if (startSel == nitems - 1) 
+  { 
+  playersInventory.setSelectionInterval(startSel - 1, endSel - 1); 
+  } 
+  else 
+  { 
+  playersInventory.setSelectionInterval(startSel + 1, endSel + 1); 
+  } 
+
+
+  playerList.removeElement(item); 
+  merchantList.addElement(item); 
+  thePlayer.sale((double) item.getModifiedPrice(), item); 
+  theMerchant.purchase((double) item.getModifiedPrice(), item); 
+  updateBanks(); 
+  repaint(); 
+  } 
+  }
+  private void buy() 
+  { 
+
+  Item item = (Item) merchantsInventory.getSelectedValue(); 
+
+  // select item in merchantsInventory JList 
+  startSel = merchantsInventory.getSelectedIndex(); 
+  endSel = startSel; 
+  int nitems = merchantsInventory.getModel().getSize(); 
+  if (startSel == nitems - 1) 
+  { 
+  merchantsInventory.setSelectionInterval(startSel - 1, endSel - 1); 
+  } 
+  else 
+  { 
+  merchantsInventory.setSelectionInterval(startSel + 1, endSel + 1); 
+  } 
+
+  int money = item.getModifiedPrice(); 
+
+  if (money > thePlayer.getMoney()) 
+  { 
+  topPlayerLabel.setText("Player can not afford that!"); 
+  } else 
+  { 
+  if(thePlayer.canFitAnotherItem()) 
+  { 
+  topPlayerLabel.setText("Player"); 
+  merchantList.removeElement(item); 
+  playerList.addElement(item); 
+  theMerchant.sale((double) item.getModifiedPrice(), item); 
+  thePlayer.purchase((double) item.getModifiedPrice(), item); 
+  updateBanks(); 
+  //item.unModify(); 
+  repaint(); 
+  } 
+  else 
+  { 
+  topPlayerLabel.setText("Player can not fit any more items!"); 
+  } 
+  } 
   }
 
   public void windowGainedFocus(WindowEvent arg0)
