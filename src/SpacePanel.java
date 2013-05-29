@@ -125,8 +125,8 @@ public class SpacePanel extends JPanel {
         {
           player.setLoc(currentLocation.getParent());
           player.useFuel();
-          checkGameOver();
           populateSpace();
+          playerStatusChanged();
         }
 			}
 
@@ -240,14 +240,6 @@ public class SpacePanel extends JPanel {
 		return new InventoryFrame(player, this);
 	}
 
-	public void checkGameOver() {
-		playerStatusChanged();
-
-		if (player.tryToWin()) {
-			// End the game with a win
-		}
-
-	}
 
 	public void playerStatusChanged() {
 		if (player.hasFuel() == false) {
@@ -390,7 +382,7 @@ public class SpacePanel extends JPanel {
 				populateSpace();
 				player.useFuel();
 				fuelLabel.setText("Ship Fuel: " + player.getFuelLevel());
-				checkGameOver();
+				playerStatusChanged();
 			}
 		}
 

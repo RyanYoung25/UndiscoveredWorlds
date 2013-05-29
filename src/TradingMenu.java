@@ -167,6 +167,7 @@ public class TradingMenu extends JFrame implements WindowFocusListener
     leave.setIcon(new ImageIcon("Art" + File.separator + "LeaveButton.png"));
     leave.setSelectedIcon(new ImageIcon("Art" + File.separator + "LeaveButtonPressed.png"));
   }
+  
   /**
    * This method creates the merchant and checks if you have previously been there.
    */

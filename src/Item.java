@@ -12,7 +12,7 @@ public class Item implements Serializable, Comparable<Item>
   private double modifier;
   private double volatility;
   private int    classification;
-  private int    modifiedPrice; // for future use
+  private int    modifiedPrice; 
   private static int highestClassification;
   private static Random generator= new Random();     
   private static ArrayList<ArrayList<Item>> Items = new ArrayList<ArrayList<Item>>();
