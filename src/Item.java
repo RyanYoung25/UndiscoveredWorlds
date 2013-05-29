@@ -130,21 +130,27 @@ public class Item implements Serializable, Comparable<Item>
 			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility)+1;
 		  }
 	  }
-	  if (locale.getTradePort()== null && locale.getClass()==Ring.class) // Pirate bases get special treatment
+	  if (locale.getTradePort()== null) // if the orbital does not have a space dock
 	  {
-		  switch (this.getIDNumber())
+		  if (locale.getClass()==Ring.class) // Pirate bases get special treatment
 		  {
-		  	case 12: // Explosives
-		  	case 13: // Small Arms
-		  	case 16: // Spice
-		  	case 29: // Artifacts
-		  		modifiedPrice = (int)(.5 * modifiedPrice);
-		  		break;
-		  	default: // Anything else
-		  		modifiedPrice = (int)(5 * modifiedPrice);
-		  		break;
+			  switch (this.getIDNumber())
+			  {
+			  	case 12: // Explosives
+			  	case 13: // Small Arms
+			  	case 16: // Spice
+			  	case 29: // Artifacts
+			  		modifiedPrice = (int)(.5 * modifiedPrice);
+			  		break;
+			  	default: // Anything else
+			  		modifiedPrice = (int)(5 * modifiedPrice);
+			  		break;
+			  }
 		  }
-		  
+		  else
+		  {
+			  modifiedPrice = (int)(1.25 * modifiedPrice);
+		  }
 	  }
   }
   
