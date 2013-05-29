@@ -249,5 +249,11 @@ public class Player implements Merchant
 		  inventory.get(x).unModify();
 	  }
   }
+
+  public boolean canUseThisPart(Item item)
+  {
+    
+    return !brokenDrive.contains(item);
+  }
   
 }

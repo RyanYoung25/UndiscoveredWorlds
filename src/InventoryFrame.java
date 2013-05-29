@@ -46,6 +46,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	private Vector<Integer> usableItems; 
 	private SpacePanel thepanel; 
 
+	/*
+	 * Is this constructor called and when did a new one show up?
+	 */
 	public InventoryFrame(Player player) 
 	{ 
 		super("Inventory"); 
@@ -89,6 +92,8 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 
 		message = new JLabel(); 
 		message.setForeground(Color.GREEN); 
+		message.setBackground(Color.DARK_GRAY);
+		message.setText(" ");
 
 		makeInventory(); 
 		inventory = new JList(inventoryList); 
@@ -174,7 +179,10 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 		fillUsuable(); 
 
 		message = new JLabel(); 
-		message.setForeground(Color.GREEN); 
+    message.setForeground(Color.GREEN); 
+    message.setBackground(Color.DARK_GRAY);
+    message.setText(" ");
+
 
 		makeInventory(); 
 		inventory = new JList(inventoryList); 
@@ -273,7 +281,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	        
 					if (event.getSource().equals(use)) 
 					{ 
-						if (usableItems.contains(itemNumber)) 
+						if (usableItems.contains(itemNumber) && thePlayer.canUseThisPart(item)) 
 						{ 
 							message.setText(thePlayer.use(item)); 
 							if (thepanel!=null) 

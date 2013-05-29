@@ -24,7 +24,7 @@ import javax.swing.ListSelectionModel;
 /**
  * This class is a frame that has some very simple trading. The Frame only needs
  * a player. If this frame is brought up and passed a player that does not have
- * a trade port location unknown things will happen. NEED TO TEST MORE
+ * a trade port location unknown things will happen.
  * 
  * @author Ryan
  * 
