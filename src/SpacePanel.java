@@ -119,13 +119,13 @@ public class SpacePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (player.tryToWin()) {
-					Object[] options = { "Yes, please", "Not yet" };
+					Object[] options = { "Quit to Main Menu"};
 					int n = JOptionPane
 							.showOptionDialog(
 									getParent(),
 									"You have assembled your drive and won the game."
-											+ "\nWould you like to return to the main menu?",
-									"Game Won!", JOptionPane.YES_NO_OPTION,
+									+ "\nYou left with $" + player.getMoney(),
+									"Game Won!", JOptionPane.YES_OPTION,
 									JOptionPane.QUESTION_MESSAGE, null,
 									options, options[0]);
 
