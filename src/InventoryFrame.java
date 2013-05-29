@@ -295,7 +295,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 
 						} else 
 						{ 
-							message.setText("You can't use this item"); 
+							message.setText("You can't use this item");
 						} 
 					} else if (event.getSource().equals(drop)) 
 					{ 

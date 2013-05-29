@@ -9,9 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-
 
 public class SpacePanel extends JPanel {
 
@@ -118,16 +117,26 @@ public class SpacePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-        if (player.tryToWin())
-        {
-          // TODO: JON PUT THE STUFF FOR WINNING HERE
-        } else
-        {
-          player.setLoc(currentLocation.getParent());
-          player.useFuel();
-          populateSpace();
-          playerStatusChanged();
-        }
+				if (player.tryToWin()) {
+					Object[] options = { "Yes, please", "Not yet" };
+					int n = JOptionPane
+							.showOptionDialog(
+									getParent(),
+									"You have assembled your drive and won the game."
+											+ "\nWould you like to return to the main menu?",
+									"Game Won!", JOptionPane.YES_NO_OPTION,
+									JOptionPane.QUESTION_MESSAGE, null,
+									options, options[0]);
+
+					if (n == JOptionPane.YES_OPTION) {
+						uw.resetGame();
+					}
+				} else {
+					player.setLoc(currentLocation.getParent());
+					player.useFuel();
+					populateSpace();
+					playerStatusChanged();
+				}
 			}
 
 		});
@@ -216,9 +225,7 @@ public class SpacePanel extends JPanel {
 			}
 			renderScene(locations);
 			repaint();
-		} 
-		else 
-		{
+		} else {
 			TradingMenu menu = new TradingMenu(player);
 			menu.setSize(650, 230);
 			menu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -240,35 +247,32 @@ public class SpacePanel extends JPanel {
 		return new InventoryFrame(player, this);
 	}
 
-
 	public void playerStatusChanged() {
 		if (player.hasFuel() == false) {
 			// End the game with a loss
-			
+
 			this.setBackground(Color.RED);
 			int xsize = 400;
 			int ysize = 80;
 			empty.setFont(new Font(empty.getFont().getFontName(), Font.BOLD, 24));
-			empty.setBounds(SHIFT - (xsize/2), 20, xsize, ysize);
+			empty.setBounds(SHIFT - (xsize / 2), 20, xsize, ysize);
 			empty.setForeground(Color.WHITE);
 			empty.setHorizontalAlignment(JLabel.CENTER);
 			empty.setVerticalAlignment(JLabel.TOP);
 			empty.setVisible(true);
-			
-			quit.setBounds(SHIFT - (xsize/2), 50, xsize, ysize);
+
+			quit.setBounds(SHIFT - (xsize / 2), 50, xsize, ysize);
 			quit.setVisible(true);
 			quit.addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent arg0) {
-				uw.resetGame(); //resets the game(obviously).
+					uw.resetGame(); // resets the game(obviously).
 				}
 			});
-			
+
 			add(empty);
 			add(quit);
-		} 
-		else 
-		{
+		} else {
 			empty.setVisible(false);
 			quit.setVisible(false);
 			this.setBackground(Color.BLACK);
@@ -366,17 +370,12 @@ public class SpacePanel extends JPanel {
 		}
 
 		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-			if(player.hasFuel())
-			{
-				if (player.getLoc().getClass() == Galaxy.class) 
-				{
+		public void actionPerformed(ActionEvent e) {
+			if (player.hasFuel()) {
+				if (player.getLoc().getClass() == Galaxy.class) {
 					player.getLoc().Generate(index);
 					player.setLoc(currentLocation.getChild(-1));
-				} 
-				else 
-				{
+				} else {
 					player.setLoc(currentLocation.getChild(index));
 				}
 				populateSpace();
