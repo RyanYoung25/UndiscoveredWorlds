@@ -50,99 +50,10 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	private Vector<Integer> usableItems; 
 	private SpacePanel thepanel; 
 
-	/*
-	 * Is this constructor called and when did a new one show up?
-	 */
-	public InventoryFrame(Player player) 
-	{ 
-		super("Inventory"); 
-		addWindowFocusListener(this); 
-
-		thePlayer = player; 
-		use = new JButton(); 
-		drop = new JButton(); 
-		back = new JButton(); 
-		buttons = new JPanel(); 
-		buttons.setBackground(Color.DARK_GRAY); 
-
-		bank = new JLabel("Money: $" + thePlayer.getMoney() + " Fuel: " 
-				+ thePlayer.getFuelLevel()); 
-		bank.setForeground(Color.GREEN); 
-
-		ButtonListener handler = new ButtonListener(); 
-		use.addActionListener(handler); 
-		drop.addActionListener(handler); 
-		back.addActionListener(handler); 
-
-		buttons.add(use); 
-		buttons.add(drop); 
-		buttons.add(back); 
-		buttons.add(bank); 
-
-		itemPanel = new JPanel(); 
-		itemPanel.setBackground(Color.DARK_GRAY); 
-
-		descriptionArea = new JTextArea(); 
-		descriptionArea.setPreferredSize(new Dimension(200, 200)); 
-		descriptionArea.setBackground(Color.BLACK); 
-		descriptionArea.setForeground(Color.GREEN); 
-		descriptionArea.setWrapStyleWord(true); 
-		descriptionArea.setLineWrap(true); 
-		descriptionArea.setEditable(false); 
-		descriptionArea.setWrapStyleWord(true); 
-
-		usableItems = new Vector<Integer>(); 
-		fillUsuable(); 
-
-		message = new JLabel(); 
-		message.setForeground(Color.GREEN); 
-		message.setBackground(Color.DARK_GRAY);
-		message.setText(" ");
-
-		makeInventory(); 
-		inventory = new JList(inventoryList); 
-		inventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); 
-		inventory.setBackground(Color.BLACK); 
-		inventory.setForeground(Color.WHITE); 
-		inventory.setSelectionBackground(Color.DARK_GRAY); 
-		inventory.setSelectionForeground(Color.GREEN); 
-
-		inventory.addListSelectionListener(new ListSelectionListener() 
-		{ 
-
-			@Override 
-			public void valueChanged(ListSelectionEvent arg0) 
-			{ 
-				try 
-				{ 
-					descriptionArea.setText(((Item) inventory.getSelectedValue()) 
-							.getDescription()); 
-				} catch (NullPointerException e) 
-				{ 
-					descriptionArea.setText(""); 
-				} 
-			} 
-
-		}); 
-
-		scroll = new JScrollPane(inventory); 
-		scroll.setPreferredSize(new Dimension(200,200)); 
-		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-
-		itemPanel.add(scroll); 
-		itemPanel.add(descriptionArea); 
-		itemPanel.setBackground(Color.DARK_GRAY); 
-
-		this.setLayout(new BorderLayout()); 
-		this.add(itemPanel, BorderLayout.CENTER); 
-		this.add(buttons, BorderLayout.SOUTH); 
-		this.add(message, BorderLayout.NORTH); 
-	} 
-
 	public InventoryFrame(Player player,SpacePanel sp) 
-	{ 
-		super("Inventory"); 
+	{  
+		super("Inventory");
+		thepanel=sp;
 		addWindowFocusListener(this); 
 
 		thePlayer = player; 
