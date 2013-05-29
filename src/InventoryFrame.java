@@ -124,9 +124,10 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 		fillUsuable(); 
 
 		message = new JLabel(); 
-		message.setForeground(Color.GREEN); 
-		message.setBackground(Color.DARK_GRAY);
 		message.setText(" ");
+		message.setOpaque(true);
+		message.setBackground(Color.DARK_GRAY);
+		message.setForeground(Color.GREEN);
 
 
 		makeInventory(); 
@@ -249,7 +250,7 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 						inventoryList.removeElement(item); 
 						inventory.setSelectedIndex(indexNumber); 
 					} 
-					repaint(); 
+					repaint();
 				} catch (Exception e) 
 				{ 
 
