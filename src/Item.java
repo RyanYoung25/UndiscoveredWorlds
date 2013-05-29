@@ -130,6 +130,10 @@ public class Item implements Serializable, Comparable<Item>
 			  modifiedPrice = (int) ((1 + generator.nextInt((int) Math.round(rel)))*volatility)+1;
 		  }
 	  }
+	  if (locale.getTradePort()== null && locale.getClass()==Ring.class)
+	  {
+		  modifiedPrice = (int)(5 * modifiedPrice);
+	  }
   }
   
   public static void modifyAll(Orbital locale)
