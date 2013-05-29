@@ -1,4 +1,4 @@
-import java.awt.Color;
+/*import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.File;
@@ -22,4 +22,4 @@ public class UWPanel extends JPanel{
 		label.setIcon(new ImageIcon("Art" + File.separator + "Barren01.png"));
 		add(label);
 	}
-}
+}*/

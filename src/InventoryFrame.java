@@ -236,8 +236,6 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 				{ 
 					descriptionArea.setText(((Item) inventory.getSelectedValue()) 
 							.getDescription()); 
-					System.out.println(use.getWidth());
-					System.out.println(use.getHeight());
 				} catch (NullPointerException e) 
 				{ 
 					descriptionArea.setText(""); 
