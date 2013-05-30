@@ -11,10 +11,6 @@
 Open
 ------------------------------------------------------
 
-	[ ]Adjusted prices only work one way.(Store to player)
-
-	[ ]Buttons on inventory frame can throw exceptions
-
 
 Partially Completed
 ------------------------------------------------------
@@ -54,4 +50,8 @@ Completed
 	
 	[X]Ports can generate without any items(Should have items or not be clickable)
 	   Now they generate with too many and not enough money.
+
+	[X]Adjusted prices only work one way.(Store to player)
+
+	[X]Buttons on inventory frame can throw exceptions
 
