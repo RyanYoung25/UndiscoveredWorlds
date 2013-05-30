@@ -17,12 +17,25 @@ public class Item implements Serializable, Comparable<Item>
   private static Random                     generator = new Random();
   private static ArrayList<ArrayList<Item>> Items     = new ArrayList<ArrayList<Item>>();
 
-  public Item()
+  /**
+ * Constructor. Creates a empty item.
+ */
+public Item()
   {
     this("", " ", 0, 0, 0, 0, 0);
   }
 
-  public Item(String name, String description, int IdNumber, int basePrice,
+  /**
+   * Creates an item record with the defined data.
+ * @param name
+ * @param description
+ * @param IdNumber
+ * @param basePrice
+ * @param modifier
+ * @param volatility
+ * @param classification
+ */
+public Item(String name, String description, int IdNumber, int basePrice,
       double modifier, double volatility, int classification)
   {
     setName(name);
@@ -34,7 +47,11 @@ public class Item implements Serializable, Comparable<Item>
     setClassification(classification);
   }
 
-  public Item(String[] rec) // this constructor should only be called when
+  /**
+   * Creates an Item record using an array of strings.
+ * @param rec
+ */
+public Item(String[] rec) // this constructor should only be called when
                             // reading items from a file
   {
     this(rec[0], rec[1], Integer.parseInt(rec[2]), Integer.parseInt(rec[3]),
@@ -46,7 +63,11 @@ public class Item implements Serializable, Comparable<Item>
     }
   }
 
-  public static void initItems(ArrayList<Item> loaded)
+  /**
+   * Sorts items into classified ArrayLists
+ * @param loaded
+ */
+public static void initItems(ArrayList<Item> loaded)
   {
     for (int x = 0; x <= highestClassification; x++)
     {
@@ -59,27 +80,48 @@ public class Item implements Serializable, Comparable<Item>
     }
   }
 
-  public static Item getRandomItem(int c)
+  /**
+   * Returns a random item.
+ * @param c = classification of item
+ * @return
+ */
+public static Item getRandomItem(int c)
   {
     return Items.get(c).get(generator.nextInt(Items.get(c).size()));
   }
 
-  public String getName()
+  /**
+   * Returns name of item.
+ * @return
+ */
+public String getName()
   {
     return name;
   }
 
-  public void setName(String name)
+  /**
+   * Sets the item name to the desired value.
+ * @param name
+ */
+public void setName(String name)
   {
     this.name = name;
   }
 
-  public int getIDNumber()
+  /**
+   * Returns item ID number.
+ * @return
+ */
+public int getIDNumber()
   {
     return IDNumber;
   }
 
-  public void setIDNumber(int iDNumber)
+  /**
+   * Sets item Id number.
+ * @param iDNumber
+ */
+public void setIDNumber(int iDNumber)
   {
     IDNumber = iDNumber;
   }
@@ -156,7 +198,11 @@ public class Item implements Serializable, Comparable<Item>
     }
   }
 
-  public static void modifyAll(Orbital locale)
+  /**
+   * Modifies all prices at specified location.
+ * @param locale
+ */
+public static void modifyAll(Orbital locale)
   {
     for (int x = 0; x < Items.size(); x++)
     {
@@ -167,62 +213,109 @@ public class Item implements Serializable, Comparable<Item>
     }
   }
 
-  public void unModify()
+  /**
+ * Resets modified price to base price
+ */
+public void unModify()
   {
     modifiedPrice = basePrice;
   }
 
-  public int getBasePrice()
+  /**
+   * Returns base price
+ * @return
+ */
+public int getBasePrice()
   {
     return basePrice;
   }
 
-  public void setBasePrice(int basePrice)
+  /**
+   * Sets item's base price
+ * @param basePrice
+ */
+public void setBasePrice(int basePrice)
   {
     this.basePrice = basePrice;
   }
 
-  public double getModifier()
+  /**
+   * Returns item's price modifier.
+ * @return
+ */
+public double getModifier()
   {
     return modifier;
   }
 
-  public int getModifiedPrice()
+  /**
+   * Returns modified price
+ * @return
+ */
+public int getModifiedPrice()
   {
     return modifiedPrice;
   }
 
-  public void setModifier(double modifier)
+  /**
+   * Sets item's price modifier.
+ * @param modifier
+ */
+public void setModifier(double modifier)
   {
     this.modifier = modifier;
   }
 
-  public double getVolatility()
+  /**
+   * Returns item's price volatility rating
+ * @return
+ */
+public double getVolatility()
   {
     return volatility;
   }
 
-  public void setVolatility(double volatility)
+  /**
+   * sets item's price volatility rating
+ * @param volatility
+ */
+public void setVolatility(double volatility)
   {
     this.volatility = volatility;
   }
 
-  public String getDescription()
+  /**
+   * Returns item's description
+ * @return
+ */
+public String getDescription()
   {
     return description;
   }
 
-  public void setDescription(String description)
+  /**
+   * Sets item's description.
+ * @param description
+ */
+public void setDescription(String description)
   {
     this.description = description;
   }
 
-  public int getClassification()
+  /**
+   * Returns item classification.
+ * @return
+ */
+public int getClassification()
   {
     return classification;
   }
 
-  public void setClassification(int classification)
+  /**
+   * Sets item's classification.
+ * @param classification
+ */
+public void setClassification(int classification)
   {
     this.classification = classification;
   }
@@ -232,7 +325,7 @@ public class Item implements Serializable, Comparable<Item>
     return "$" + getModifiedPrice() + " " + name;
   }
 
-  @Override
+@Override
   public int compareTo(Item comparedItem)
   {
 
