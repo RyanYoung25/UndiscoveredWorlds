@@ -24,23 +24,21 @@
 		<a href="UML.png">UML Document</a>
 	</div>
 	<pre>
-UWPanel
-This class was for testing importing classes that extend panel to the main GUI Frame. Will be removed before final submit.
+=====================================
+=Undiscovered Worlds Design Document=
+=====================================
 
 UWOptionsPanel
-This class now extends JFrame instead of JPanel. This window pops up to allow the user to save or load a game.
+This class now extends JFrame instead of JPanel. This window pops up to allow the user to return to the main menu.
 
 UndiscoveredWorldsGUI
-Creates the main frame and all of the components within the main window.
+Creates the main frame and all of the components within the main window. This also houses the main menu.
 
 UndiscoveredWorlds
 Creates the main JFrame and an object of UndiscoveredWorldsGUI.
 
 TradingMenu
 Creates the main GUI for trading. Displays the player inventory and the shops inventory as well as the wallets of both.
-
-SpacePanel
-Creates the visual representation of all of the generated orbitals. This is the main "map" panel on the main GUI.
 
 TradePort
 This is the "merchant" that can be traded with. Gets the orbitals items and wallet.
@@ -50,6 +48,9 @@ Generation of the Star System level of orbitals.
 
 StarRecord
 Sets classifications for all stars so that a proper image and planets can be generated.
+
+SpacePanel
+Creates the visual representation of all of the generated orbitals. This is the main "map" panel on the main GUI.
 
 Singularity
 This is essentially a black hole. Not implemented yet.
@@ -70,7 +71,7 @@ Planet
 Generates all orbitals on the planet level. This is close to the bottom level.
 
 PictureAlbum
-This class manages the images used in the game and creates a buffered images.
+This class manages most of the images used in the game and creates a buffered images.
 
 OrbitalRecord
 Manages all of the classification for general orbitals. Stores variables used for generation of lower level items.
@@ -90,11 +91,8 @@ Base class for all locations for all generated objects and the player. Sort of a
 Item
 Stores name, description and price of all items being bought and sold.
 
-GUITest
-Unused. Early representation of our galaxy.
-
-GalaxyTest
-Unused. Early frame and main GUI for game.
+InventoryFrame
+Visual representation of the player's inventory. This class allows the player to use items such as fuel or items used to win the game. The player can also discard of any items in their inventory by using this frame. The player's fuel and money is also shown.
 
 Galaxy
 Generates galaxies. Top level generation. Everything else being generated is below this.
