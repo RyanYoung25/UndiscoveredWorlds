@@ -3,7 +3,3 @@
 =========
 
 	∙ Implement loading and saving or remove buttons
-
-	∙ Fix Inventory frame
-
-	∙ Add end game scenario

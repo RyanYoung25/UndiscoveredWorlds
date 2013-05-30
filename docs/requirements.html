@@ -1,69 +1,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Requirements Document</title>
-	<style type="text/css">
-		<!--
-		.style2 {
-			color: #333333;
-			font-size: 18px;
-			
-		}
-		-->
-	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Requirements Document</title>
+<style type="text/css">
+<!--
+.style2 {
+	color: #333333;
+	font-size: 18px;
+}
+-->
+</style>
 </head>
-<body style="margin:3%;">
+<body style="margin: 3%;">
 	<div align="center">
 		<img src="LogoTitle.png" width="70%" style="padding: 20px" />
 	</div>
 	<div align="center">
-		<h1>Requirements Document for <em>Undiscovered Worlds</em></h1>
+		Requirements Document || <a href="design.html">Design Document</a>
+		<h1>
+			Requirements Document for <em>Undiscovered Worlds</em>
+		</h1>
 		<br />
 		<h2>Intro</h2>
 	</div>
 	<h3>Team members:</h3>
 	<blockquote>
 		<div class="style2">
-		<p>
-			Ryan Young (Project Leader) – Programming
-			<br />
-			Bryant Graff – Concept and Programming
-			<br />
-			Jon McDaniel – Design and Programming
-			<br />
-			Tanya Vakhilt – Design and Programming
-			<br />
-		</p>
+			<p>
+				Ryan Young (Project Leader) – Programming <br /> Bryant Graff –
+				Concept and Programming <br /> Jon McDaniel – Design and
+				Programming <br /> Tanya Vakhilt – Design and Programming <br />
+			</p>
 		</div>
 	</blockquote>
 	<br />
 	<blockquote>
-	<div class="style2">
-		<p>The game is a science fiction game in which the player explores the galaxy and trades commodities between the various ports in the galaxy.
-		The user can visit orbitals, star systems, sectors, clusters, and galaxies.
-		At its core, this game is a simple exercise in economics: buy low, sell high. This means that
-		any particular location will likely sell any given commodity at different prices. The player
-		will use the in-game currency to execute these transactions. Commodities purchased will
-		be placed in the cargo hold of the player’s ship, while those sold will be removed.</p>
-		
-		<p>The galaxy itself is procedurally generated at the user’s request. It is a reasonable
-		approximation of a real galaxy (albeit with significantly fewer star systems) and should
-		provide the player with plenty of space to explore.</p>
-		
-		<p>The player will be able to trade with any oribital that has a
-		trading port. The ports allow both the selling and buying of goods.
-		The game is in essence a <em>buy low, sell high</em> economy
-		concept. When trading, both the inventory of the player and the
-		merchant will be visible to the player. The goal of the game is
-		to accumulated more and more wealth until the player grows
-		bored. Then clusters can be regenerated with new items or the player can start a new game.</p>
-		
-		<p>After the core game elements are implemented (and if we have time), we intend to continue
-		adding more functionality to the game to make it more entertaining (for example, ability to negotiate with merchants). The ultimate goal is to
-		create a finished product that not only meets the requirements of this project, but also is
-		actually fun to use.</p>
-	</div>
+		<div class="style2">
+			<p>The game is a science fiction game in which the player
+				explores the galaxy and trades commodities between the various ports
+				in the galaxy. The user can visit orbitals, star systems, sectors,
+				clusters, and galaxies. At its core, this game is a simple exercise
+				in economics: buy low, sell high. This means that any particular
+				location will likely sell any given commodity at different prices.
+				The player will use the in-game currency to execute these
+				transactions. Commodities purchased will be placed in the cargo hold
+				of the player’s ship, while those sold will be removed.</p>
+
+			<p>The galaxy itself is procedurally generated at the user’s
+				request. It is a reasonable approximation of a real galaxy (albeit
+				with significantly fewer star systems) and should provide the player
+				with plenty of space to explore.</p>
+
+			<p>
+				The player will be able to trade with any orbital that has a trading
+				port. The ports allow both the selling and buying of goods. The game
+				is in essence a <em>buy low, sell high</em> economy concept. When
+				trading, both the inventory of the player and the merchant will be
+				visible to the player. The goal of the game is to accumulated more
+				and more wealth. The player wins the game by acquiring the necessary
+				materials to repair the ship and leave the galaxy Then clusters can
+				be regenerated with new items or the player can start a new game.
+			</p>
+
+			<p>After the core game elements are implemented (and if we have
+				time), we intend to continue adding more functionality to the game
+				to make it more entertaining (for example, ability to negotiate with
+				merchants). The ultimate goal is to create a finished product that
+				not only meets the requirements of this project, but also is
+				actually fun to use.</p>
+		</div>
 	</blockquote>
 	<br />
 	<div align="center">
@@ -72,39 +78,67 @@
 	<br />
 	<blockquote>
 		<div class="style2">
-		<p>Screen Resolution of at least 740x740 pixels.</p>
-		<p>Start the game by clicking on the <em>Start</em> button.</p>
-		<p>Procedurally generate galaxy objects:</p>
-		<ul>        
-			<li> Galaxy </li>
-			<li> Clusters </li>
-			<li> Sectors </li>
-			<li> Orbitals </li>
-			<ul>        
-				<li> Planets</li>
-				<li> Rings</li>
-				<li> Moons</li>
+			<p>Screen Resolution of at least 740x740 pixels.</p>
+			<p>
+				Start the game by clicking on the <em>Start</em> button.
+			</p>
+			<p>Procedurally generate galaxy objects:</p>
+			<ul>
+				<li>Galaxy</li>
+				<li>Clusters</li>
+				<li>Sectors</li>
+				<li>Orbitals</li>
+				<ul>
+					<li>Planets</li>
+					<li>Rings</li>
+					<li>Moons</li>
+				</ul>
 			</ul>
-		</ul>
-		<p>The user can travel between orbitals, star systems, sectors, clusters, and galaxies.</p>
-		<p>When on the orbital, the user can trade with merchants or go to the star system by zooming out.</p>
-		<p>When on the star system, the user can go the sector by zooming out or the orbital by zooming in.</p>
-		<p>When on the sector, the user can go to the cluster by zooming out or to the star system by zooming in.</p>
-		<p>When on the cluster, the user can go the galaxy by zooming out or to the sector by zooming in.</p>
-		<p>When on the galaxy, the user can go back to the cluster.</p>
-		<p>The user dies when he/she runs out of money.</p>
-		<p>The user can save the state of the game. </p>
-		<p>The user can reload the saved state of the game and keep on playing.</p>
+			<p>The user can travel between orbitals, star systems, sectors,
+				clusters, and galaxies.</p>
+			<p>When on the orbital, the user can trade with merchants or go
+				to the star system by zooming out.</p>
+			<p>When on the star system, the user can go the sector by zooming
+				out or the orbital by zooming in.</p>
+			<p>When on the sector, the user can go to the cluster by zooming
+				out or to the star system by zooming in.</p>
+			<p>When on the cluster, the user can go the galaxy by zooming out
+				or to the sector by zooming in.</p>
+			<p>When on the galaxy, the user can go back to the cluster.</p>
+			<p>The user dies when he/she runs out of fuel.</p>
+			<p>
+				On orbitals, the inventory of predetermined items (based on items
+				availability on a specific classification of an orbital)</br> is pseudo
+				randomly generated.
+			</p>
+			<p>The user does not know what commodities are available on a
+				specific orbital before visiting it.</p>
+			<p>
+				The user can buy items from merchants by selecting an item(s) from
+				the merchant's inventory list and clicking <em>Buy</em> button
+			</p>
+			<p>
+				The user can sell items to merchants by selecting an item(s) from
+				the player's inventory and clicking <em>Sell</em> button
+			</p>
+			<p>
+				The user buys an item from the merchant, it it removed from the
+				merchant's inventory list, added to the player's inventory, and the
+				</br> credit balance of the player and merchant is adjusted accordingly
+			</p>
+			<p>The goal of the game is to explore the galaxy, make money
+				through trading with the ultimate goal of acquiring the necessary
+				materials to repair the ship and win the game.</p>
 		</div>
 	</blockquote>
 	<br />
-	<h2 align="center">Non-Functional Requirements</h2> 
+	<h2 align="center">Non-Functional Requirements</h2>
 	<blockquote>
-	<div class="style2">
-		<p>Implemented language: Java </p>
-		<p>Cross platform portability</p>
-		<p>Java platform: Standard Edition 6</p>
-	</div>
+		<div class="style2">
+			<p>Implemented language: Java</p>
+			<p>Cross platform portability</p>
+			<p>Java platform: Standard Edition 6</p>
+		</div>
 	</blockquote>
 	<br />
 	<h3>Deadlines</h3>
@@ -124,35 +158,37 @@
 			<tr>
 				<td>May 9, 2013</td>
 				<td>
-					<p>GUI for <span class="style2">star systems, sectors, clusters, and galaxies</span></p>
+					<p>
+						GUI for <span class="style2">star systems, sectors,
+							clusters, and galaxies</span>
+					</p>
 					<p>Zooming ability</p>
 				</td>
 			</tr>
 			<tr>
 				<td>May 16, 2013</td>
-				<td><a href="UML.png">UML diagram</a><br />
-					<a href="Design Document.txt">Design Document</a>
-				</td>
+				<td><a href="UML.png">UML diagram</a><br /> <a
+					href="Design Document.txt">Design Document</a></td>
 			</tr>
 		</table>
 	</blockquote>
 	<br />
-	<h2 align="center">System Evolution</h2> 
+	<h2 align="center">System Evolution</h2>
 	<br />
 	<blockquote>
-	<div class="style2">
-		<p>Ability to haggle with merchants: </p>
-		<ul>        
-			<li> Pirates attack the user and steal commodities </li>
-			<li> Police inspects the user for the possession of contraband </li>
-		</ul>
-		<p>Increase the availability of commodities</p>
-		<p>Activate distress beacon when in trouble:</p>
-		<ul>        
-			<li> Friendly traders and the police may help </li>
-			<li> Pirates can take advantage of the player's weakness </li>
-		</ul>
-	</div>
+		<div class="style2">
+			<p>Ability to haggle with merchants:</p>
+			<ul>
+				<li>Pirates attack the user and steal commodities</li>
+				<li>Police inspects the user for the possession of contraband</li>
+			</ul>
+			<p>Increase the availability of commodities</p>
+			<p>Activate distress beacon when in trouble:</p>
+			<ul>
+				<li>Friendly traders and the police may help</li>
+				<li>Pirates can take advantage of the player's weakness</li>
+			</ul>
+		</div>
 	</blockquote>
 	<br />
 </body>
