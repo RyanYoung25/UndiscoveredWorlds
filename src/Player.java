@@ -10,7 +10,7 @@ public class Player implements Merchant
   private Vector<Item>      brokenDrive;
   private int               fuel;
   private Location          currentlocation;
-  private static final int MAX_INVENTORY_NUMBER = 50;
+  private static final int  MAX_INVENTORY_NUMBER = 50;
   private static final int  MAX_PORT_HISTORY = 15;
   private static final int  FUEL_CONSTANT    = 25;
   private static final int  MAX_FUEL_LEVEL   = 100;
@@ -27,7 +27,7 @@ public class Player implements Merchant
   {
     this.name = name;
     bank = 500;
-    fuel = 20;
+    fuel = 50;
     this.inventory = inventory;
     Collections.sort(this.inventory);
     recentLocations = new Vector<TradePort>();
