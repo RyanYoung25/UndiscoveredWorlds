@@ -50,6 +50,12 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 	private Vector<Integer> usableItems; 
 	private SpacePanel thepanel; 
 
+	/**
+	 * Constructor for IncentoryFrame
+	 * 
+	 * @param player the player
+	 * @param sp the space panel
+	 */
 	public InventoryFrame(Player player,SpacePanel sp) 
 	{  
 		super("Inventory");
@@ -188,6 +194,9 @@ public class InventoryFrame extends JFrame implements WindowFocusListener
 
 	} 
 
+	/**
+	 * Makes the player's inventory
+	 */
 	private void makeInventory() 
 	{ 
 		inventoryList = new DefaultListModel(); 

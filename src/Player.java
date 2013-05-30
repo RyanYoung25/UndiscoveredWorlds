@@ -18,11 +18,19 @@ public class Player implements Merchant
 
   private Vector<TradePort> recentLocations;
 
+  /**
+   * default constructor
+   */
   public Player()
   {
     this("Player", new Vector<Item>());
   }
 
+  /**
+   * The constructor that passes an actual inventory and name
+   * @param name name of player
+   * @param inventory  inventory
+   */
   public Player(String name, Vector<Item> inventory)
   {
     this.name = name;
@@ -35,18 +43,28 @@ public class Player implements Merchant
 
   }
 
+  /**
+   * @return The player's money
+   */
   @Override
   public double getMoney()
   {
     return bank;
   }
 
+  /**
+   * Returns the players inventory
+   * @return The Vector inventory
+   */
   @Override
   public Vector<Item> getInventory()
   {
     return inventory;
   }
 
+  /**
+   * does nothing in player
+   */
   @Override
   public void modifyPrice()
   {
@@ -54,6 +72,10 @@ public class Player implements Merchant
 
   }
 
+  /**
+   * @param price The price the item was sold for
+   * @param item  The item sold
+   */
   @Override
   public void sale(double price, Item item)
   {
@@ -62,6 +84,10 @@ public class Player implements Merchant
 
   }
 
+  /**
+   * @param price The price the item was bought for
+   * @param item  The item bought
+   */
   @Override
   public void purchase(double price, Item item)
   {
@@ -69,6 +95,10 @@ public class Player implements Merchant
     inventory.add(item);
   }
   
+  /**
+   * Checks to see if another item can fit in the inventory.
+   * @return true if there is room for another item.
+   */
   public boolean canFitAnotherItem()
   {
     if(inventory.size() + 1 >= MAX_INVENTORY_NUMBER)
@@ -79,6 +109,9 @@ public class Player implements Merchant
     return true;
   }
 
+  /**
+   * @return A string representation of the inventory.
+   */
   @Override
   public String toString()
   {
@@ -97,7 +130,12 @@ public class Player implements Merchant
       recentLocations.add(port);
     }
   }
-
+  
+  /**
+   * checks if the player has been to this location
+   * @param locale the location to be checked
+   * @return True if the player has been to that location. false if they haven't.
+   */
   public boolean hasBeenHere(Location locale)
   {
     boolean test = false;
@@ -121,6 +159,11 @@ public class Player implements Merchant
     currentlocation = locale;
   }
 
+  /**
+   * Try to get a trade port from a passed location
+   * @param locale the current location you are at
+   * @return The trade port that you were previously at
+   */
   public TradePort getPort(Location locale)
   {
     TradePort port = null;
@@ -134,11 +177,20 @@ public class Player implements Merchant
     return port;
   }
 
+  /**
+   * Decrements the fuel by a constant.
+   */
   public void useFuel()
   {
     fuel -= FUEL_CONSUMPTION;
   }
 
+  /**
+   * Try to use the item passed. Different things will happen with different used items
+   * 
+   * @param item - the item to be used
+   * @return A string message to be displayed elsewhere.
+   */
   public String use(Item item)
   {
     if (item.getIDNumber() == 4)
@@ -194,6 +246,10 @@ public class Player implements Merchant
     return "You already have that in your drive";
   }
 
+  /**
+   * check to see if the player can win
+   * @return true if the player wins, false if they don't
+   */
   public boolean tryToWin()
   {
     if (brokenDrive.size() == 3)
@@ -205,24 +261,27 @@ public class Player implements Merchant
       return false;
     }
   }
-
+  
+  /**
+   * Drops the item from the inventory
+   * @param item item to be dropped 
+   */
   public void drop(Item item)
   {
     inventory.remove(item);
   }
 
-  /*
-   * 
+
+  /**
+   * Returns the fuel level of the player
+   * @return an integer fuel level of the player
    */
   public int getFuelLevel()
-  {
-
-
-	  
+  {	  
     return fuel;
   }
   
-  /*
+  /**
    * Checks fuel then uses fuel in inventory if needed.
    */
   public boolean hasFuel()
